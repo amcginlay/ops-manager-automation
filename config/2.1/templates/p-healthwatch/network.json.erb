@@ -1,0 +1,22 @@
+{
+  "singleton_availability_zone": {
+    "name": "<%= ENV.fetch('PCF_AZ_1') %>"
+  },
+  "other_availability_zones": [
+    {
+      "name": "<%= ENV.fetch('PCF_AZ_1') %>"
+    },
+    {
+      "name": "<%= ENV.fetch('PCF_AZ_2') %>"
+    },
+    {
+      "name": "<%= ENV.fetch('PCF_AZ_3') %>"
+    }
+  ],
+  "network": {
+    "name": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pas-subnet"
+  },
+  "service_network": {
+    "name": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-services-subnet"
+  }
+}

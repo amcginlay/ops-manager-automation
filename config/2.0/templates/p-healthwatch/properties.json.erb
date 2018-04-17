@@ -1,0 +1,11 @@
+{
+  ".properties.opsman": {
+    "value": "enable"
+  },
+  ".properties.opsman.enable.url": {
+    "value": "https://pcf.<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>.<%= ENV.fetch('PCF_DOMAIN_NAME') %>"
+  },
+  ".healthwatch-forwarder.health_check_az": {
+    "value": "<%= ENV.fetch('PCF_AZ_1') %>"
+  }
+}

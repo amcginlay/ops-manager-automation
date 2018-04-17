@@ -1,0 +1,18 @@
+{
+  "router": {
+    "elb_names": [
+      "tcp:<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-cf-ws",
+      "http:<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-httpslb"
+    ]
+  },
+  "control": {
+    "elb_names": [
+      "tcp:<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-cf-ssh"
+    ]
+  },
+  "compute": {
+    "instance_type": { 
+      "id": "2xlarge.mem"
+    }
+  }
+}

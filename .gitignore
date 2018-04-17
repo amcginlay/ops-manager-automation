@@ -1,0 +1,4 @@
+vars.txt
+*.key
+*.crt
+downloads/
