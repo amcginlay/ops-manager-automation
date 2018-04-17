@@ -3,6 +3,11 @@
 SCRIPTDIR=$(cd $(dirname "$0") && pwd -P)
 source ${SCRIPTDIR}/shared.sh
 
+if [ -z ${PCF_DOMAIN_KEY+x} ]; then
+	echo "PCF_DOMAIN_KEY is not set.  Did you forget to create a certificate? (see mk-ssl-cert-key.sh)"
+	exit 1
+fi
+
 PRODUCT_GUID=$(
   ${OM} -k -t ${PCF_OPSMAN_FQDN} -u ${PCF_OPSMAN_ADMIN_USER} -p ${PCF_OPSMAN_ADMIN_PASSWD} \
     curl --silent \
