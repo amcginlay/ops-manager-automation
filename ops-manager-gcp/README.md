@@ -215,20 +215,3 @@ terraform apply --auto-approve
 ```
 
 This will take about 5 minutes to complete
-
-## Configure bi-directional VPC Network Peering for SSH
-
-The jumpbox has no option but to go in the `default` network but the terraform scripts create the Ops Manager VM in a custom network, 
-not directly accessible from the jumpbox.  We can address this in GCP with VPC Network Peering.
-
-```bash
-gcloud compute networks peerings create default-to-${PCF_SUBDOMAIN_NAME}-pcf-network \
-  --network=default \
-  --peer-network=${PCF_SUBDOMAIN_NAME}-pcf-network \
-  --auto-create-routes
-
-gcloud compute networks peerings create ${PCF_SUBDOMAIN_NAME}-pcf-network-to-default \
-  --network=${PCF_SUBDOMAIN_NAME}-pcf-network \
-  --peer-network=default \
-  --auto-create-routes
-```
