@@ -18,28 +18,6 @@ gcloud compute ssh ubuntu@jumpbox \
   --zone "${PCF_AZ_1}"
 ```
 
-## Configuring jumpbox for use with private GitHub repos
-
-To interract with private repos, we need to _generate_ an SSH key on your jumpbox and _register_ it with GitHub.
-
-The following step are taken from the [GitHub docs](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#platform-linux).
-
-### SSH Key Generation
-
-```bash
-GITHUB_USER=CHANGE_ME_GITHUB_USER # e.g. fbloggs@gmail.com
-eval "$(ssh-agent -s)"
-ssh-keygen -t rsa -b 4096 -C "${GITHUB_USER}"
-ssh-add ~/.ssh/id_rsa
-
-# inspect the public key which Github will need to know
-cat ${HOME}/.ssh/id_rsa.pub
-```
-
-### SSH Key Registration
-
-Follow these [GitHub docs](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/) to get your newly generated SSH key registered with your GitHub account.  This involves copying and pasting text between your SSH session and the GitHub website.
-
 ## Clone _this_ repo
 
 From the jumpbox:
