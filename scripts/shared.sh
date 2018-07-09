@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -u # explode if any env vars are not set (e.g. PCF_PIVNET_LEGACY_TOKEN)
+set -u # explode if any env vars are not set
 
 function printline() {
   echo && printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' - && echo $1
@@ -15,13 +15,15 @@ if ! which erb > /dev/null; then
 fi
 
 if [ ! -f ${VARS} ]; then
-	echo "Please create a valid \${HOME}/.env by executing ./scripts/create-env.sh and customizing to suit your target environment"
+	echo "Please create a valid ~/.env by executing ./scripts/create-env.sh and customizing to suit your target environment"
 	exit 1
 fi
 
 while read LINE; do
   [[ ! -z ${LINE} ]] && eval export ${LINE}
 done < ${VARS}
+
+export PCF_PROJECT_ID=$(gcloud config get-value core/project)
 
 # calculated vars
 export PCF_DOMAIN=${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}
