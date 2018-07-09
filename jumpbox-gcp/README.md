@@ -29,13 +29,14 @@ SSH to your new jumpbox
 gcloud compute ssh ubuntu@jumpbox --zone us-central1-a
 ```
 
-Initialize the gcloud CLI on the jumpbox:
+Initialize the `gcloud` CLI on the jumpbox:
 
 ```bash
 gcloud auth login
 ```
 
-Follow the on-screen prompts. We will need to copy-paste the URL into a 
-local browser in order to select the account you have registered for use 
-with Google Cloud. Additionally, you'll need copy-paste the verification 
-code back into your jumpbox session to complete the login sequence.
+Follow the on-screen prompts. We will need to copy-paste the URL from 
+our `gcloud` CLI session into a local browser in order to select the 
+account you have registered for use with Google Cloud. Additionally, 
+you'll need copy-paste the verification code back into your jumpbox 
+session to complete the login sequence.
