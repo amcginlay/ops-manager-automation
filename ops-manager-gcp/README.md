@@ -168,6 +168,8 @@ openssl req -x509 \
 cat > ./terraform.tfvars <<-EOF
 env_name            = "${PCF_SUBDOMAIN_NAME}"
 project             = "${PCF_PROJECT_ID}"
+region              = "${PCF_REGION}"
+zones               = ["${PCF_AZ_1}", "${PCF_AZ_2}", "${PCF_AZ_3}"]
 region              = "us-central1"
 zones               = ["us-central1-b", "us-central1-a", "us-central1-c"]
 dns_suffix          = "${PCF_DOMAIN_NAME}"
