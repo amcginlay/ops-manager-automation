@@ -167,7 +167,7 @@ openssl req -x509 \
 ```bash
 cat > ./terraform.tfvars <<-EOF
 env_name            = "${PCF_SUBDOMAIN_NAME}"
-project             = "${PCF_PROJECT_ID}"
+project             = "$(gcloud config get-value core/project)"
 region              = "${PCF_REGION}"
 zones               = ["${PCF_AZ_1}", "${PCF_AZ_2}", "${PCF_AZ_3}"]
 dns_suffix          = "${PCF_DOMAIN_NAME}"
