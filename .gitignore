@@ -2,3 +2,4 @@ vars.txt
 *.key
 *.crt
 downloads/
+.idea

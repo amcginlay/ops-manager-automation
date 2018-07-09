@@ -11,11 +11,7 @@ On GCP:
 From Cloud Shell:
 
 ```bash
-PCF_AZ_1=CHANGE_ME_AZ_1 # e.g. us-central1-a
-
-gcloud compute ssh ubuntu@jumpbox \
-  --project "$(gcloud config get-value core/project 2> /dev/null)" \
-  --zone "${PCF_AZ_1}"
+gcloud compute ssh ubuntu@jumpbox --zone us-central1-a
 ```
 
 ## Clone _this_ repo
@@ -23,31 +19,34 @@ gcloud compute ssh ubuntu@jumpbox \
 From the jumpbox:
 
 ```bash
-# [Clone with SSH]
-git clone git@github.com:amcginlay/ops-manager-automation.git ${HOME}/ops-manager-automation
+git clone https://github.com/amcginlay/ops-manager-automation.git ~/ops-manager-automation
 
-# [Clone with HTTPS]
-git clone https://github.com/amcginlay/ops-manager-automation.git ${HOME}/ops-manager-automation
+# [or clone with SSH]
+git clone git@github.com:amcginlay/ops-manager-automation.git ~/ops-manager-automation
 ```
 
 ## Create a configuration file
 
-From your jumpbox, create a `${HOME}/.env` configuration file to describe the specifics of your environment.
+From your jumpbox, create a `~/.env` configuration file to describe the 
+specifics of your environment.
 
 ```bash
-${HOME}/ops-manager-automation/scripts/create-env.sh
+~/ops-manager-automation/scripts/create-env.sh
 ```
 
-_Note_ you should not proceed until you have __customized__ your `${HOME}/.env` file to suit your target environment
+_Note_ you should not proceed until you have __customized__ your 
+`~/.env` file to suit your target environment
 
 ## Register the configuration file
 
-Run the configuration file into the current jumpbox shell session so we can make use of the variables straight away
+Now that we have the .env file with our critical variables, we need to 
+ensure that these get set into the shell, both now and every subsequent 
+time the ubuntu user connects to the jumpbox.
 
 ```bash
-eval $(cat ${HOME}/.env | cut -d'#' -f1 | tr '\n' ' ')
+source ~/.env
+echo "source ~/.env" >> ~/.bashrc
 ```
-_Note_ repeat this step if you need to make changes to your configuration file or have to reconnect to your jumpbox.
 
 ## Enable the gcloud services APIs
 
@@ -64,15 +63,15 @@ gcloud services enable sqladmin.googleapis.com
 ```bash
 sudo apt-get update && sudo apt-get --yes install unzip jq ruby
 
-wget -O terraform.zip https://releases.hashicorp.com/terraform/0.11.6/terraform_0.11.6_linux_amd64.zip && \
+wget -O terraform.zip https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip && \
   unzip terraform.zip && \
   sudo mv terraform /usr/local/bin
   
-wget -O om https://github.com/pivotal-cf/om/releases/download/0.35.0/om-linux && \
+wget -O om https://github.com/pivotal-cf/om/releases/download/0.38.0/om-linux && \
   chmod +x om && \
   sudo mv om /usr/local/bin/
   
-wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-3.0.1-linux-amd64 && \
+wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-4.0.1-linux-amd64 && \
   chmod +x bosh && \
   sudo mv bosh /usr/local/bin/
 ```
@@ -88,32 +87,37 @@ RELEASES_ID=76599
 PRODUCT_FILE_ID=108845
 
 PIVNET_ACCESS_TOKEN=$(curl \
+  --fail \
   --header "Content-Type: application/json" \
   --data "{\"refresh_token\": \"${PCF_PIVNET_UAA_TOKEN}\"}" \
   "https://network.pivotal.io/api/v2/authentication/access_tokens" | \
      jq -r '.access_token')
 
 curl \
+  --fail \
   --location \
   --header "Authorization: Bearer ${PIVNET_ACCESS_TOKEN}" \
   --request POST \
   "https://network.pivotal.io/api/v2/products/${PRODUCT_SLUG}/releases/${RELEASES_ID}/eula_acceptance"
 
 curl \
+  --fail \
   --location \
   --output ${HOME}/terraforming-gcp.zip \
   --header "Authorization: Bearer ${PIVNET_ACCESS_TOKEN}" \
   "https://network.pivotal.io/api/v2/products/${PRODUCT_SLUG}/releases/${RELEASES_ID}/product_files/${PRODUCT_FILE_ID}/download"
     
-unzip ${HOME}/terraforming-gcp.zip -d ${HOME}
+unzip ~/terraforming-gcp.zip -d ${HOME}
 ```
 
 ## Create a gcloud services account for Terraform
 
-From the `${HOME}/pivotal-cf-terraforming-gcp-*/` directory, perform the following
+From the `~/pivotal-cf-terraforming-gcp-*/` directory, perform the following
 
 ```bash
-cd ${HOME}/pivotal-cf-terraforming-gcp-*/
+PCF_PROJECT_ID=$(gcloud config get-value core/project)
+
+cd ~/pivotal-cf-terraforming-gcp-*/
 
 gcloud iam service-accounts create terraform-service-account --display-name terraform
 
@@ -164,8 +168,8 @@ openssl req -x509 \
 cat > ./terraform.tfvars <<-EOF
 env_name            = "${PCF_SUBDOMAIN_NAME}"
 project             = "${PCF_PROJECT_ID}"
-region              = "${PCF_REGION}"
-zones               = ["${PCF_AZ_1}", "${PCF_AZ_2}", "${PCF_AZ_3}"]
+region              = "us-central1"
+zones               = ["us-central1-b", "us-central1-a", "us-central1-c"]
 dns_suffix          = "${PCF_DOMAIN_NAME}"
 opsman_image_url    = "https://storage.googleapis.com/${PCF_OPSMAN_IMAGE}"
 buckets_location    = "US"
@@ -179,7 +183,7 @@ ssl_private_key     = <<SSL_KEY
 $(cat ./${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.key)
 SSL_KEY
 service_account_key = <<SERVICE_ACCOUNT_KEY
-$(cat ./gcp_credentials.json | tr -d '\n')
+$(cat ./gcp_credentials.json)
 SERVICE_ACCOUNT_KEY
 EOF
 ```
