@@ -18,7 +18,7 @@ for FILENAME in $(ls ${TARGETDIR}); do
     OM_CMD="upload-stemcell -f -s"
   fi
   
-  ${OM} -k -t ${PCF_OPSMAN_FQDN} -u ${PCF_OPSMAN_ADMIN_USER} -p ${PCF_OPSMAN_ADMIN_PASSWD} \
+  ${OM} -k -t ${PCF_OPSMAN_FQDN} -u "admin" -p ${PCF_OPSMAN_ADMIN_PASSWD} \
     ${OM_CMD} ${TARGETDIR}/${FILENAME}
 
   echo "Imported ${PRODUCT_SLUG}_${PRODUCT_VERSION}_${PRODUCT_FILE_ID}/${FILENAME}"

@@ -8,7 +8,7 @@ if [ ! -d ${TARGETDIR} ]; then
   mkdir -p ${TARGETDIR}
 fi
 
-if ${PIVNET} login --api-token=${PCF_PIVNET_LEGACY_TOKEN}; then
+if ${PIVNET} login --api-token=${PCF_PIVNET_UAA_TOKEN}; then
   ${PIVNET} download-product-files \
     -p ${PRODUCT_SLUG} \
     -r ${PRODUCT_VERSION} \
