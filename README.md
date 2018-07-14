@@ -21,7 +21,6 @@ gcloud compute ssh ubuntu@jumpbox --zone us-central1-a
 From the jumpbox:
 
 ```bash
-# [Clone with HTTPS]
 git clone https://github.com/amcginlay/ops-manager-automation.git ~/ops-manager-automation
 
 # [Clone with SSH]
@@ -31,7 +30,7 @@ git clone git@github.com:amcginlay/ops-manager-automation.git ~/ops-manager-auto
 ## Create a configuration file (if necessary)
 
 When we installed the Ops Manager from the jumpbox we created and 
-_customized_ a configuration file for your environment.  Review [those instructions](./ops-manager-gcp/README.md#create-a-configuration-file) 
+__customized__ a configuration file for your environment.  Review [those instructions](./ops-manager-gcp/README.md#create-a-configuration-file) 
 and inspect the contents of the `~/.env` file.
 
 The `scripts` in this repo will make use of the same configuration file 

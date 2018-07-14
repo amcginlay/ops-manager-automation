@@ -6,9 +6,9 @@
       "subnets": [{
         "iaas_identifier": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pcf-network/<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pas-subnet/<%= ENV.fetch('PCF_REGION') %>",
         "cidr": "10.0.4.0/22",
-        "dns": "169.254.169.254,8.8.8.8,4.4.4.4",
+        "dns": "169.254.169.254,8.8.8.8",
         "gateway": "10.0.4.1",
-        "availability_zones": ["<%= ENV.fetch('PCF_AZ_1') %>","<%= ENV.fetch('PCF_AZ_2') %>","<%= ENV.fetch('PCF_AZ_3') %>"]
+        "availability_zone_names": ["<%= ENV.fetch('PCF_AZ_1') %>","<%= ENV.fetch('PCF_AZ_2') %>","<%= ENV.fetch('PCF_AZ_3') %>"]
       }]
     },
     {
@@ -17,9 +17,9 @@
         "iaas_identifier": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pcf-network/<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-management-subnet/<%= ENV.fetch('PCF_REGION') %>",
         "cidr": "10.0.0.0/24",
         "reserved_ip_ranges": "10.0.0.1-10.0.0.9",
-        "dns": "169.254.169.254,8.8.8.8,4.4.4.4",
+        "dns": "169.254.169.254,8.8.8.8",
         "gateway": "10.0.0.1",
-        "availability_zones": ["<%= ENV.fetch('PCF_AZ_1') %>","<%= ENV.fetch('PCF_AZ_2') %>","<%= ENV.fetch('PCF_AZ_3') %>"]
+        "availability_zone_names": ["<%= ENV.fetch('PCF_AZ_1') %>","<%= ENV.fetch('PCF_AZ_2') %>","<%= ENV.fetch('PCF_AZ_3') %>"]
       }]
     },
     {
@@ -27,9 +27,9 @@
       "subnets": [{
         "iaas_identifier": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pcf-network/<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-services-subnet/<%= ENV.fetch('PCF_REGION') %>",
         "cidr": "10.0.8.0/22",
-        "dns": "169.254.169.254,8.8.8.8,4.4.4.4",
+        "dns": "169.254.169.254,8.8.8.8",
         "gateway": "10.0.8.1",
-        "availability_zones": ["<%= ENV.fetch('PCF_AZ_1') %>","<%= ENV.fetch('PCF_AZ_2') %>","<%= ENV.fetch('PCF_AZ_3') %>"]
+        "availability_zone_names": ["<%= ENV.fetch('PCF_AZ_1') %>","<%= ENV.fetch('PCF_AZ_2') %>","<%= ENV.fetch('PCF_AZ_3') %>"]
       }]
     }
   ]

@@ -3,8 +3,6 @@
 SCRIPTDIR=$(cd $(dirname "$0") && pwd -P)
 source ${SCRIPTDIR}/shared.sh
 
-API="https://network.pivotal.io/api/v2"
-
 PRODUCT_SLUG=$(curl \
   --fail \
   --silent \

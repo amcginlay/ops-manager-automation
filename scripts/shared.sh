@@ -23,6 +23,7 @@ while read LINE; do
   [[ ! -z ${LINE} ]] && eval export ${LINE}
 done < ${VARS}
 
+export API="https://network.pivotal.io/api/v2"
 export PCF_PROJECT_ID=$(gcloud config get-value core/project)
 
 # calculated vars
