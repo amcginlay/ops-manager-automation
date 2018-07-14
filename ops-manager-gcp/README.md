@@ -27,21 +27,28 @@ git clone git@github.com:amcginlay/ops-manager-automation.git ~/ops-manager-auto
 
 ## Create a configuration file
 
+Let's change into the directory of our cloned repo to keep our task 
+script commands short:
+
+```bash
+cd ~/ops-manager-automation
+```
+
 From your jumpbox, create a `~/.env` configuration file to describe the 
 specifics of your environment.
 
 ```bash
-~/ops-manager-automation/scripts/create-env.sh
+./scripts/create-env.sh
 ```
 
-_Note_ you should not proceed until you have __customized__ your 
-`~/.env` file to suit your target environment
+_Note_ you should not proceed until you have __customized__ the settings 
+in your `~/.env` file to suit your target environment
 
 ## Register the configuration file
 
-Now that we have the .env file with our critical variables, we need to 
-ensure that these get set into the shell, both now and every subsequent 
-time the ubuntu user connects to the jumpbox.
+Now that we have the `~/.env` file with our critical variables, we need 
+to ensure that these get set into the shell, both now and every 
+subsequent time the ubuntu user connects to the jumpbox.
 
 ```bash
 source ~/.env
@@ -76,49 +83,35 @@ wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-4.0.1-linux-am
   sudo mv bosh /usr/local/bin/
 ```
 
-## Download the Terraform scripts from Pivotal Network
-
-Check that `PCF_PIVNET_UAA_TOKEN` is set then run the following.
+## Download an Ops Manager image identifier from Pivotal Network
 
 ```bash
-# the following identifiers represent The GCP Terraform scripts for PAS v2.1.1 
-PRODUCT_SLUG=elastic-runtime
-RELEASES_ID=122401
-PRODUCT_FILE_ID=162254
+PRODUCT_NAME="Pivotal Cloud Foundry Operations Manager" \
+DOWNLOAD_NAME="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
+PRODUCT_VERSION=2.2.0 \
+  ./scripts/download-product.sh
 
-PIVNET_ACCESS_TOKEN=$(curl \
-  --fail \
-  --header "Content-Type: application/json" \
-  --data "{\"refresh_token\": \"${PCF_PIVNET_UAA_TOKEN}\"}" \
-  "https://network.pivotal.io/api/v2/authentication/access_tokens" | \
-     jq -r '.access_token')
-
-curl \
-  --fail \
-  --location \
-  --header "Authorization: Bearer ${PIVNET_ACCESS_TOKEN}" \
-  --request POST \
-  "https://network.pivotal.io/api/v2/products/${PRODUCT_SLUG}/releases/${RELEASES_ID}/eula_acceptance"
-
-curl \
-  --fail \
-  --location \
-  --output ~/terraforming-gcp.zip \
-  --header "Authorization: Bearer ${PIVNET_ACCESS_TOKEN}" \
-  "https://network.pivotal.io/api/v2/products/${PRODUCT_SLUG}/releases/${RELEASES_ID}/product_files/${PRODUCT_FILE_ID}/download"
-    
-unzip ~/terraforming-gcp.zip -d ~
+OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --path /us)
 ```
+
+## Download and unzip the Terraform scripts from Pivotal Network
+
+```bash
+PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
+DOWNLOAD_NAME="GCP Terraform Templates" \
+PRODUCT_VERSION=2.2.0 \
+  ./scripts/download-product.sh
+    
+unzip ./downloads/elastic-runtime*/terraforming-gcp-*.zip -d .
 ```
 
 ## Create a gcloud services account for Terraform
 
-From the `~/pivotal-cf-terraforming-gcp-*/` directory, perform the following
+Let's change into the extracted directory and perform the following 
+steps:
 
 ```bash
 PCF_PROJECT_ID=$(gcloud config get-value core/project)
-
-cd ~/pivotal-cf-terraforming-gcp-*/
 
 gcloud iam service-accounts create terraform-service-account --display-name terraform
 
@@ -166,25 +159,27 @@ openssl req -x509 \
 ## Create the `terraform.tfvars` file
 
 ```bash
+cd ./pivotal-cf-terraforming-gcp-*
+
 cat > ./terraform.tfvars <<-EOF
 env_name            = "${PCF_SUBDOMAIN_NAME}"
 project             = "$(gcloud config get-value core/project)"
 region              = "${PCF_REGION}"
-zones               = ["${PCF_AZ_1}", "${PCF_AZ_2}", "${PCF_AZ_3}"]
+zones               = ["${PCF_AZ_2}", "${PCF_AZ_1}", "${PCF_AZ_3}"]
 dns_suffix          = "${PCF_DOMAIN_NAME}"
-opsman_image_url    = "https://storage.googleapis.com/${PCF_OPSMAN_IMAGE}"
+opsman_image_url    = "https://storage.googleapis.com/${OPSMAN_IMAGE}"
 buckets_location    = "US"
 create_gcs_buckets  = "false"
 external_database   = "false"
 isolation_segment   = "false"
 ssl_cert            = <<SSL_CERT
-$(cat ./${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.cert)
+$(cat ../${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.cert)
 SSL_CERT
 ssl_private_key     = <<SSL_KEY
-$(cat ./${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.key)
+$(cat ../${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.key)
 SSL_KEY
 service_account_key = <<SERVICE_ACCOUNT_KEY
-$(cat ./gcp_credentials.json)
+$(cat ../gcp_credentials.json)
 SERVICE_ACCOUNT_KEY
 EOF
 ```
