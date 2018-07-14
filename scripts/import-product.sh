@@ -3,8 +3,25 @@
 SCRIPTDIR=$(cd $(dirname "$0") && pwd -P)
 source ${SCRIPTDIR}/shared.sh
 
-TARGETDIR=${SCRIPTDIR}/../downloads/${PRODUCT_SLUG}_${PRODUCT_VERSION}_${PRODUCT_FILE_ID}
+PRODUCT_SLUG=$(curl \
+  --fail \
+  --silent \
+  ${API}/products | \
+    jq -r --arg PRODUCT_NAME "${PRODUCT_NAME}" '.products[] | select(.name==$PRODUCT_NAME) | .slug')
 
+RELEASE_ID=$(curl \
+  --fail \
+  --silent \
+  ${API}/products/${PRODUCT_SLUG}/releases | \
+    jq -r --arg PRODUCT_VERSION "${PRODUCT_VERSION}" '.releases[] | select(.version==$PRODUCT_VERSION) | .id')
+
+PRODUCT_FILE_ID=$(curl \
+  --fail \
+  --silent \
+  ${API}/products/${PRODUCT_SLUG}/releases/${RELEASE_ID} | \
+    jq -r --arg DOWNLOAD_NAME "${DOWNLOAD_NAME}" '.product_files[] | select(.name | contains($DOWNLOAD_NAME)) | .id')
+
+TARGETDIR=${SCRIPTDIR}/../downloads/${PRODUCT_SLUG}_${PRODUCT_VERSION}_${PRODUCT_FILE_ID}
 # if product/stemcell directory does not exist in downloads, make it happen
 if [ ! -d ${TARGETDIR} ]; then
 	eval PRODUCT_SLUG=${PRODUCT_SLUG} PRODUCT_VERSION=${PRODUCT_VERSION} PRODUCT_FILE_ID=${PRODUCT_FILE_ID} \
