@@ -83,8 +83,8 @@ Check that `PCF_PIVNET_UAA_TOKEN` is set then run the following.
 ```bash
 # the following identifiers represent The GCP Terraform scripts for PAS v2.1.1 
 PRODUCT_SLUG=elastic-runtime
-RELEASES_ID=76599
-PRODUCT_FILE_ID=108845
+RELEASES_ID=122401
+PRODUCT_FILE_ID=162254
 
 PIVNET_ACCESS_TOKEN=$(curl \
   --fail \
@@ -103,11 +103,12 @@ curl \
 curl \
   --fail \
   --location \
-  --output ${HOME}/terraforming-gcp.zip \
+  --output ~/terraforming-gcp.zip \
   --header "Authorization: Bearer ${PIVNET_ACCESS_TOKEN}" \
   "https://network.pivotal.io/api/v2/products/${PRODUCT_SLUG}/releases/${RELEASES_ID}/product_files/${PRODUCT_FILE_ID}/download"
     
-unzip ~/terraforming-gcp.zip -d ${HOME}
+unzip ~/terraforming-gcp.zip -d ~
+```
 ```
 
 ## Create a gcloud services account for Terraform
@@ -192,7 +193,6 @@ EOF
 
 ```bash
 terraform init
-terraform plan
 terraform apply --auto-approve
 ```
 
