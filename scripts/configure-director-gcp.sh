@@ -22,3 +22,7 @@ ${OM} -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
 erb -T - ${TEMPLATES}/director/gcp/network_assignment.json.erb > ${TMPDIR}/network_assignment.json
 ${OM} -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
   configure-director --network-assignment "$(cat ${TMPDIR}/network_assignment.json)"
+
+erb -T - ${TEMPLATES}/director/gcp/resources.json.erb > ${TMPDIR}/resources.json
+${OM} -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
+  configure-director --resource-configuration "$(cat ${TMPDIR}/resources.json)"
