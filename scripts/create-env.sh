@@ -6,7 +6,7 @@ if [ -f ${HOME}/.env ]; then
 fi
 
 cat > ${HOME}/.env <<-EOF
-PCF_VERSION_PATH=2.1                                  # maps to a product config path in this repo
+PCF_VERSION_PATH=2.1                                  # maps to a product config path in this ops-manager-automation github repo
 PCF_PIVNET_UAA_TOKEN=CHANGE_ME_PCF_PIVNET_UAA_TOKEN   # see https://network.pivotal.io/users/dashboard/edit-profile
 PCF_DOMAIN_NAME=CHANGE_ME_DOMAIN_NAME                 # e.g. pivotaledu.io
 PCF_SUBDOMAIN_NAME=CHANGE_ME_SUBDOMAIN_NAME           # e.g. cls99env66
