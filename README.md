@@ -39,20 +39,6 @@ to provide context for the installation.
 Each task script will call `source scripts/shared.sh` to ensure that 
 these name value pairs are made available as environment variables.
 
-## Product Specific Variables
-
-Identifiers for specific products on [Pivotal Network](https://network.pivotal.io) 
-can be sourced from the Show Product Info (i) buttons within the [Pivotal Network](https://network.pivotal.io).  
-See the screenshot below for clarification:
-
-![product_params](img/product_params.png "Product Params")
-
-For many products, you will discover that `PRODUCT_SLUG` is identical to 
-`IMPORTED_NAME` and the same is true when comparing `PRODUCT_VERSION` 
-to `INSTALLED_VERSION` but there are a handful of exceptions to this 
-rule.  The `list-imports.sh` script will help us identify these 
-exceptions (see later).
-
 ## Task Scripts
 
 Let's change into the directory of our cloned repo to keep our task 
@@ -130,13 +116,13 @@ quite large, we recommend you only run this script from a Jumpbox VM
 alongside your targeted Ops Manager.  For a large products like PAS, you 
 can expect this to take ~5 mins.
 
-**Note** the script expects values for the Product Variable `PRODUCT_SLUG`, 
-`PRODUCT_VERSION` and `PRODUCT_FILE_ID`
-
 Example usage:
 
 ```no-highlight
-PRODUCT_SLUG="elastic-runtime" PRODUCT_VERSION="2.1.1" PRODUCT_FILE_ID=112577 ./scripts/download-product.sh
+PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
+PRODUCT_VERSION="2.2.0" \
+DOWNLOAD_REGEX="Small Footprint PAS" \
+  ./scripts/download-product.sh
 ```
 
 ### `import-product.sh`
@@ -144,18 +130,18 @@ PRODUCT_SLUG="elastic-runtime" PRODUCT_VERSION="2.1.1" PRODUCT_FILE_ID=112577 ./
 This script takes **previously downloaded** products and stemcells from 
 the directory structure beneath `downloads` and imports them to an Ops 
 Manager instance.  The script will attempt to resolve any missing 
-products by invoking `download-product.sh` as appropriate.  We recommend 
-you only run this script from a Jumpbox VM alongside your targeted Ops 
-Manager.  For a large product like PAS, you can expect this to take ~15 
-mins.
-
-**Note** the script expects values for the Product Variable 
-`PRODUCT_SLUG`, `PRODUCT_VERSION` and `PRODUCT_FILE_ID` (see above)
+products by internally invoking `download-product.sh` as appropriate.  
+We recommend you only run this script from a Jumpbox VM alongside your 
+targeted Ops Manager.  For a large product like PAS, you can expect this 
+to take ~15 mins.
 
 Example usage:
 
 ```no-highlight
-PRODUCT_SLUG="elastic-runtime" PRODUCT_VERSION="2.1.1" PRODUCT_FILE_ID=112577 ./scripts/import-product.sh
+PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
+PRODUCT_VERSION="2.2.0" \
+DOWNLOAD_REGEX="Small Footprint PAS" \
+  ./scripts/import-product.sh
 ```
 
 ### `list-imports.sh`
@@ -178,17 +164,10 @@ dashboard.  That procedure is referred to as
 **staging an imported product**.  This script automates that button 
 click.
 
-**Note** As mentioned previously, for many products, you will discover 
-that `PRODUCT_SLUG` is identical to `IMPORTED_NAME` and the same is true 
-of `PRODUCT_VERSION` versus `INSTALLED_VERSION` but there are a handful 
-of exceptions to this rule.  For example, the PAS product uses 
-`IMPORTED_NAME=cf` in contrast to `PRODUCT_SLUG=elastic-runtime`.  
-(see `list-imports.sh`)
-
 Example usage:
 
 ```no-highlight
-IMPORTED_NAME="cf" IMPORTED_VERSION="2.1.1" ./scripts/stage-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.0" ./scripts/stage-product.sh
 ```
 
 ### `mk-ssl-cert-key.sh`

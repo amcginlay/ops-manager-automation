@@ -87,7 +87,7 @@ wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-4.0.1-linux-am
 
 ```bash
 PRODUCT_NAME="Pivotal Cloud Foundry Operations Manager" \
-DOWNLOAD_NAME="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
+DOWNLOAD_REGEX="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
 PRODUCT_VERSION=2.2.0 \
   ./scripts/download-product.sh
 
@@ -98,7 +98,7 @@ OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --
 
 ```bash
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
-DOWNLOAD_NAME="GCP Terraform Templates" \
+DOWNLOAD_REGEX="GCP Terraform Templates" \
 PRODUCT_VERSION=2.2.0 \
   ./scripts/download-product.sh
     
@@ -107,19 +107,14 @@ unzip ./downloads/elastic-runtime*/terraforming-gcp-*.zip -d .
 
 ## Create a gcloud services account for Terraform
 
-Let's change into the extracted directory and perform the following 
-steps:
-
 ```bash
-PCF_PROJECT_ID=$(gcloud config get-value core/project)
-
 gcloud iam service-accounts create terraform-service-account --display-name terraform
 
 gcloud iam service-accounts keys create 'gcp_credentials.json' \
-  --iam-account "terraform-service-account@${PCF_PROJECT_ID}.iam.gserviceaccount.com"
+  --iam-account "terraform-service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com"
 
-gcloud projects add-iam-policy-binding ${PCF_PROJECT_ID} \
-  --member "serviceAccount:terraform-service-account@${PCF_PROJECT_ID}.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
+  --member "serviceAccount:terraform-service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com" \
   --role 'roles/owner'
 ```
 
