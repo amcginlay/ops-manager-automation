@@ -236,7 +236,7 @@ PRODUCT_NAME="Spring Cloud Services for PCF" PRODUCT_VERSION="1.5.6" DOWNLOAD_RE
 PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3541.34" DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" ./scripts/import-product.sh
 PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3468.51" DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" ./scripts/import-product.sh
 
-# install Small Footprint PAS (NOTE PRODUCT_SLUG -> IMPORTED_NAME discrepancy)
+# install Small Footprint PAS
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.2.0" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/import-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.0" ./scripts/stage-product.sh
 IMPORTED_NAME="cf" ./scripts/configure-product.sh
@@ -256,7 +256,7 @@ PRODUCT_NAME="Redis for PCF" PRODUCT_VERSION="1.12.1" DOWNLOAD_REGEX="Redis for 
 IMPORTED_NAME="p-redis" IMPORTED_VERSION="1.12.1" ./scripts/stage-product.sh
 IMPORTED_NAME="p-redis" ./scripts/configure-product.sh
 
-# install SSO (NOTE PRODUCT_SLUG -> IMPORTED_NAME discrepancy)
+# install SSO
 PRODUCT_NAME="Single Sign-On for PCF" PRODUCT_VERSION="1.6.0" DOWNLOAD_REGEX="Pivotal_Single_Sign-On_Service" ./scripts/import-product.sh
 IMPORTED_NAME="Pivotal_Single_Sign-On_Service" IMPORTED_VERSION="1.6.0" ./scripts/stage-product.sh
 IMPORTED_NAME="Pivotal_Single_Sign-On_Service" ./scripts/configure-product.sh
