@@ -21,9 +21,6 @@ PRODUCT_FILE_ID=$(curl \
   ${API}/products/${PRODUCT_SLUG}/releases/${RELEASE_ID} | \
   jq -r --arg DOWNLOAD_REGEX "${DOWNLOAD_REGEX}" '.product_files[] | select(.name | match($DOWNLOAD_REGEX)) | .id')
 
-echo PRODUCT_SLUG=${PRODUCT_SLUG} RELEASE_ID=${RELEASE_ID} PRODUCT_FILE_ID=${PRODUCT_FILE_ID}
-exit
-
 TARGETDIR=${SCRIPTDIR}/../downloads/${PRODUCT_SLUG}_${PRODUCT_VERSION}_${PRODUCT_FILE_ID}
 
 # if product/stemcell directory does not exist in downloads, make it happen
