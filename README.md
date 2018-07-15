@@ -122,7 +122,10 @@ can expect this to take ~5 mins.
 Example usage:
 
 ```no-highlight
-PRODUCT_SLUG="elastic-runtime" PRODUCT_VERSION="2.1.1" PRODUCT_FILE_ID=112577 ./scripts/download-product.sh
+PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
+PRODUCT_VERSION="2.2.0" \
+DOWNLOAD_REGEX="Small Footprint PAS" \
+  ./scripts/download-product.sh
 ```
 
 ### `import-product.sh`
@@ -135,13 +138,13 @@ you only run this script from a Jumpbox VM alongside your targeted Ops
 Manager.  For a large product like PAS, you can expect this to take ~15 
 mins.
 
-**Note** the script expects values for the Product Variable 
-`PRODUCT_SLUG`, `PRODUCT_VERSION` and `PRODUCT_FILE_ID` (see above)
-
 Example usage:
 
 ```no-highlight
-PRODUCT_SLUG="elastic-runtime" PRODUCT_VERSION="2.1.1" PRODUCT_FILE_ID=112577 ./scripts/import-product.sh
+PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
+PRODUCT_VERSION="2.2.0" \
+DOWNLOAD_REGEX="Small Footprint PAS" \
+  ./scripts/import-product.sh
 ```
 
 ### `list-imports.sh`
@@ -174,7 +177,7 @@ of exceptions to this rule.  For example, the PAS product uses
 Example usage:
 
 ```no-highlight
-IMPORTED_NAME="cf" IMPORTED_VERSION="2.1.1" ./scripts/stage-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.0" ./scripts/stage-product.sh
 ```
 
 ### `mk-ssl-cert-key.sh`
