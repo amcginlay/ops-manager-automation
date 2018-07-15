@@ -116,9 +116,6 @@ quite large, we recommend you only run this script from a Jumpbox VM
 alongside your targeted Ops Manager.  For a large products like PAS, you 
 can expect this to take ~5 mins.
 
-**Note** the script expects values for the Product Variable `PRODUCT_SLUG`, 
-`PRODUCT_VERSION` and `PRODUCT_FILE_ID`
-
 Example usage:
 
 ```no-highlight
