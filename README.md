@@ -224,50 +224,57 @@ script from a Jumpbox VM alongside your targeted Ops Manager.
 
 # download stemcells and products - 25GB of downloads will take time!
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.2.0" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/download-product.sh
+PRODUCT_NAME="MySQL for PCF v2" PRODUCT_VERSION="2.3.1" DOWNLOAD_REGEX="MySQL for PCF v2" ./scripts/download-product.sh
 PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.2.3" DOWNLOAD_REGEX="PCF Healthwatch$" ./scripts/download-product.sh
-PRODUCT_NAME="RabbitMQ for PCF" PRODUCT_VERSION="1.12.7" DOWNLOAD_REGEX="RabbitMQ for PCF" ./scripts/download-product.sh
-PRODUCT_NAME="Redis for PCF" PRODUCT_VERSION="1.12.1" DOWNLOAD_REGEX="Redis for PCF" ./scripts/download-product.sh
+PRODUCT_NAME="RabbitMQ for PCF" PRODUCT_VERSION="1.12.7" DOWNLOAD_REGEX="RabbitMQ for PCF$" ./scripts/download-product.sh
+PRODUCT_NAME="Redis for PCF" PRODUCT_VERSION="1.12.1" DOWNLOAD_REGEX="Redis for PCF$" ./scripts/download-product.sh
 PRODUCT_NAME="Single Sign-On for PCF" PRODUCT_VERSION="1.6.0" DOWNLOAD_REGEX="Pivotal_Single_Sign-On_Service" ./scripts/download-product.sh
 PRODUCT_NAME="Pivotal Cloud Foundry Service Broker for AWS" PRODUCT_VERSION="1.4.8" DOWNLOAD_REGEX="Service Broker for AWS" ./scripts/download-product.sh
 PRODUCT_NAME="Spring Cloud Services for PCF" PRODUCT_VERSION="1.5.6" DOWNLOAD_REGEX="Spring Cloud Services Product Installer" ./scripts/download-product.sh
 
 # import required stemcells
-# ???
+PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3541.34" DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" ./scripts/import-product.sh
+PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3468.51" DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" ./scripts/import-product.sh
 
-# install Small Footprint PAS (NOTE PRODUCT_SLUG -> IMPORTED_NAME discrepancy)
-PRODUCT_SLUG="elastic-runtime" PRODUCT_VERSION="2.1.1" PRODUCT_FILE_ID="112577" ./scripts/import-product.sh
-IMPORTED_NAME="cf" IMPORTED_VERSION="2.1.1" ./scripts/stage-product.sh
+# install Small Footprint PAS
+PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.2.0" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/import-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.0" ./scripts/stage-product.sh
 IMPORTED_NAME="cf" ./scripts/configure-product.sh
 
+# install MySQL
+PRODUCT_NAME="MySQL for PCF v2" PRODUCT_VERSION="2.3.1" DOWNLOAD_REGEX="MySQL for PCF v2" ./scripts/import-product.sh
+IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.3.1-build.11" ./scripts/stage-product.sh
+IMPORTED_NAME="pivotal-mysql" ./scripts/configure-product.sh
+
 # install Healthwatch
-PRODUCT_SLUG="p-healthwatch" PRODUCT_VERSION="1.1.6" PRODUCT_FILE_ID="103069" ./scripts/import-product.sh
-IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.1.6-build.3" ./scripts/stage-product.sh
+PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.2.3" DOWNLOAD_REGEX="PCF Healthwatch$" ./scripts/import-product.sh
+IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.2.3-build.19" ./scripts/stage-product.sh
 IMPORTED_NAME="p-healthwatch" ./scripts/configure-product.sh
 
 # install RabbitMQ
-PRODUCT_SLUG="p-rabbitmq" PRODUCT_VERSION="1.11.8" PRODUCT_FILE_ID="88738" ./scripts/import-product.sh
-IMPORTED_NAME="p-rabbitmq" IMPORTED_VERSION="1.11.8" ./scripts/stage-product.sh
+PRODUCT_NAME="RabbitMQ for PCF" PRODUCT_VERSION="1.12.7" DOWNLOAD_REGEX="RabbitMQ for PCF$" ./scripts/import-product.sh
+IMPORTED_NAME="p-rabbitmq" IMPORTED_VERSION="1.12.7" ./scripts/stage-product.sh
 IMPORTED_NAME="p-rabbitmq" ./scripts/configure-product.sh
 
 # install Redis
-PRODUCT_SLUG="p-redis" PRODUCT_VERSION="1.11.3" PRODUCT_FILE_ID="94537" ./scripts/import-product.sh
-IMPORTED_NAME="p-redis" IMPORTED_VERSION="1.11.3" ./scripts/stage-product.sh
+PRODUCT_NAME="Redis for PCF" PRODUCT_VERSION="1.12.1" DOWNLOAD_REGEX="Redis for PCF$" ./scripts/import-product.sh
+IMPORTED_NAME="p-redis" IMPORTED_VERSION="1.12.1" ./scripts/stage-product.sh
 IMPORTED_NAME="p-redis" ./scripts/configure-product.sh
 
-# install SSO (NOTE PRODUCT_SLUG -> IMPORTED_NAME discrepancy)
-PRODUCT_SLUG="pivotal_single_sign-on_service" PRODUCT_VERSION="1.5.3" PRODUCT_FILE_ID="36424" ./scripts/import-product.sh
-IMPORTED_NAME="Pivotal_Single_Sign-On_Service" IMPORTED_VERSION="1.5.3" ./scripts/stage-product.sh
+# install SSO
+PRODUCT_NAME="Single Sign-On for PCF" PRODUCT_VERSION="1.6.0" DOWNLOAD_REGEX="Pivotal_Single_Sign-On_Service" ./scripts/import-product.sh
+IMPORTED_NAME="Pivotal_Single_Sign-On_Service" IMPORTED_VERSION="1.6.0" ./scripts/stage-product.sh
 IMPORTED_NAME="Pivotal_Single_Sign-On_Service" ./scripts/configure-product.sh
 
+# install AWS Broker
+PRODUCT_NAME="Pivotal Cloud Foundry Service Broker for AWS" PRODUCT_VERSION="1.4.8" DOWNLOAD_REGEX="Service Broker for AWS" ./scripts/import-product.sh
+IMPORTED_NAME="aws-services" IMPORTED_VERSION="1.4.8" ./scripts/stage-product.sh
+IMPORTED_NAME="aws-services" PCF_AWS_ACCESS_KEY_ID="SOME_ID" PCF_AWS_SECRET_ACCESS_KEY="SOME_SECRET" ./scripts/configure-product.sh
+
 # install SCS
-PRODUCT_SLUG="p-spring-cloud-services" PRODUCT_VERSION="1.5.2" PRODUCT_FILE_ID="88958" ./scripts/import-product.sh
+PRODUCT_NAME="Spring Cloud Services for PCF" PRODUCT_VERSION="1.5.6" DOWNLOAD_REGEX="Spring Cloud Services Product Installer" ./scripts/import-product.sh
 IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.2" ./scripts/stage-product.sh
 IMPORTED_NAME="p-spring-cloud-services" ./scripts/configure-product.sh
-
-# install AWS Broker
-PRODUCT_SLUG="aws-services" PRODUCT_VERSION="1.4.6" PRODUCT_FILE_ID="79951" ./scripts/import-product.sh
-IMPORTED_NAME="aws-services" IMPORTED_VERSION="1.4.6" ./scripts/stage-product.sh
-IMPORTED_NAME="aws-services" PCF_AWS_ACCESS_KEY_ID="SOME_ID" PCF_AWS_SECRET_ACCESS_KEY="SOME_SECRET" ./scripts/configure-product.sh
 
 # apply changes
 ./scripts/apply-changes.sh
