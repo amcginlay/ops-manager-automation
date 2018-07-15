@@ -219,9 +219,6 @@ script from a Jumpbox VM alongside your targeted Ops Manager.
 ./scripts/configure-authentication.sh
 ./scripts/configure-director-gcp.sh
 
-# apply changes for director
-./scripts/apply-changes-director.sh
-
 # create certificate and key (if necessary)
 ./scripts/mk-ssl-cert-key.sh
 
@@ -279,6 +276,7 @@ PRODUCT_NAME="Spring Cloud Services for PCF" PRODUCT_VERSION="1.5.6" DOWNLOAD_RE
 IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.2" ./scripts/stage-product.sh
 IMPORTED_NAME="p-spring-cloud-services" ./scripts/configure-product.sh
 
-# apply changes for products
+# apply changes for director first, then products
+./scripts/apply-changes-director.sh
 ./scripts/apply-changes.sh
 ```
