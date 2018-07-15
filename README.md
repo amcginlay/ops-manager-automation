@@ -209,7 +209,7 @@ configuration/deployment of the Ops Manager Director, Pivotal Application
 Service (PAS - Small Footprint) and a handful of common products.  This 
 assumes a valid `~/.env` file and a fresh install of the Ops Manager, 
 the version of which is compatible with the target PAS - in this case 
-v2.1.1.  These steps incorporate both a PivNet download and an Ops 
+v2.2.0.  These steps incorporate both a PivNet download and an Ops 
 Manager import which could take a long time to complete.  As the script 
 incorporates large downloads/imports, we recommend you only run this 
 script from a Jumpbox VM alongside your targeted Ops Manager.
