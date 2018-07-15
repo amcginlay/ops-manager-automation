@@ -39,20 +39,6 @@ to provide context for the installation.
 Each task script will call `source scripts/shared.sh` to ensure that 
 these name value pairs are made available as environment variables.
 
-## Product Specific Variables
-
-Identifiers for specific products on [Pivotal Network](https://network.pivotal.io) 
-can be sourced from the Show Product Info (i) buttons within the [Pivotal Network](https://network.pivotal.io).  
-See the screenshot below for clarification:
-
-![product_params](img/product_params.png "Product Params")
-
-For many products, you will discover that `PRODUCT_SLUG` is identical to 
-`IMPORTED_NAME` and the same is true when comparing `PRODUCT_VERSION` 
-to `INSTALLED_VERSION` but there are a handful of exceptions to this 
-rule.  The `list-imports.sh` script will help us identify these 
-exceptions (see later).
-
 ## Task Scripts
 
 Let's change into the directory of our cloned repo to keep our task 
