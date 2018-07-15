@@ -164,13 +164,6 @@ dashboard.  That procedure is referred to as
 **staging an imported product**.  This script automates that button 
 click.
 
-**Note** As mentioned previously, for many products, you will discover 
-that `PRODUCT_SLUG` is identical to `IMPORTED_NAME` and the same is true 
-of `PRODUCT_VERSION` versus `INSTALLED_VERSION` but there are a handful 
-of exceptions to this rule.  For example, the PAS product uses 
-`IMPORTED_NAME=cf` in contrast to `PRODUCT_SLUG=elastic-runtime`.  
-(see `list-imports.sh`)
-
 Example usage:
 
 ```no-highlight
