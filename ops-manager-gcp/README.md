@@ -159,4 +159,11 @@ terraform init
 terraform apply --auto-approve
 ```
 
-This will take about 5 minutes to complete
+This will take about 5 minutes to complete but you should allow some 
+extra time for the DNS updates to propagate.
+
+Once `dig` can resolve the Ops Manager FQDN to an IP address, we're good to move on.
+
+```bash
+watch dig ${PCF_OPSMAN_FQDN}
+```
