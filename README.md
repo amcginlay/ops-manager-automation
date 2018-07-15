@@ -242,7 +242,7 @@ IMPORTED_NAME="cf" ./scripts/configure-product.sh
 
 # install Healthwatch
 PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.2.3" DOWNLOAD_REGEX="PCF Healthwatch$" ./scripts/import-product.sh
-IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.2.3" ./scripts/stage-product.sh
+IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.2.3-build.19" ./scripts/stage-product.sh
 IMPORTED_NAME="p-healthwatch" ./scripts/configure-product.sh
 
 # install RabbitMQ
