@@ -119,36 +119,9 @@ gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
 ```
 
 ## Generate a wildcard SAN certificate
-```no-highlight
-cat > ./${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.cnf <<-EOF
-[req]
-default_bits = 2048
-prompt = no
-default_md = sha256
-req_extensions = req_ext
-distinguished_name = dn
-[ dn ]
-C=US
-ST=Colorado
-L=Boulder
-O=PIVOTAL, INC.
-OU=EDUCATION
-CN = ${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}
-[ req_ext ]
-subjectAltName = @alt_names
-[ alt_names ]
-DNS.1 = *.sys.${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}
-DNS.2 = *.login.sys.${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}
-DNS.3 = *.uaa.sys.${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}
-DNS.4 = *.apps.${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}
-EOF
 
-openssl req -x509 \
-  -newkey rsa:2048 \
-  -nodes \
-  -keyout ${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.key \
-  -out ${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.cert \
-  -config ./${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.cnf
+```no-highlight
+./scripts/mk-ssl-cert-key.sh
 ```
 
 ## Create the `terraform.tfvars` file
@@ -168,7 +141,7 @@ create_gcs_buckets  = "false"
 external_database   = "false"
 isolation_segment   = "false"
 ssl_cert            = <<SSL_CERT
-$(cat ../${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.cert)
+$(cat ../${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.crt)
 SSL_CERT
 ssl_private_key     = <<SSL_KEY
 $(cat ../${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.key)
@@ -186,4 +159,11 @@ terraform init
 terraform apply --auto-approve
 ```
 
-This will take about 5 minutes to complete
+This will take about 5 minutes to complete but you should allow some 
+extra time for the DNS updates to propagate.
+
+Once `dig` can resolve the Ops Manager FQDN to an IP address, we're good to move on.
+
+```bash
+watch dig ${PCF_OPSMAN_FQDN}
+```

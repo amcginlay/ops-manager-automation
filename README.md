@@ -219,35 +219,25 @@ script from a Jumpbox VM alongside your targeted Ops Manager.
 ./scripts/configure-authentication.sh
 ./scripts/configure-director-gcp.sh
 
+# create certificate and key (if necessary)
 ./scripts/mk-ssl-cert-key.sh
 
 # download stemcells and products - 25GB of downloads will take time!
-PRODUCT_SLUG="stemcells" PRODUCT_VERSION="3445.28" PRODUCT_FILE_ID="86664" ./scripts/downlod-product.sh
-PRODUCT_SLUG="stemcells" PRODUCT_VERSION="3445.32" PRODUCT_FILE_ID="114231" ./scripts/download-product.sh
-PRODUCT_SLUG="stemcells" PRODUCT_VERSION="3468.30" PRODUCT_FILE_ID="114229" ./scripts/download-product.sh
-PRODUCT_SLUG="elastic-runtime" PRODUCT_VERSION="2.1.1" PRODUCT_FILE_ID="112577" ./scripts/download-product.sh
-PRODUCT_SLUG="p-mysql" PRODUCT_VERSION="1.10.12" PRODUCT_FILE_ID="87255" ./scripts/download-product.sh
-PRODUCT_SLUG="p-healthwatch" PRODUCT_VERSION="1.1.6" PRODUCT_FILE_ID="103069" ./scripts/download-product.sh
-PRODUCT_SLUG="p-rabbitmq" PRODUCT_VERSION="1.11.8" PRODUCT_FILE_ID="88738" ./scripts/download-product.sh
-PRODUCT_SLUG="p-redis" PRODUCT_VERSION="1.11.3" PRODUCT_FILE_ID="94537" ./scripts/download-product.sh
-PRODUCT_SLUG="pivotal_single_sign-on_service" PRODUCT_VERSION="1.5.3" PRODUCT_FILE_ID="36424" ./scripts/download-product.sh
-PRODUCT_SLUG="aws-services" PRODUCT_VERSION="1.4.6" PRODUCT_FILE_ID="79951" ./scripts/download-product.sh
-PRODUCT_SLUG="p-spring-cloud-services" PRODUCT_VERSION="1.5.2" PRODUCT_FILE_ID="88958" ./scripts/download-product.sh
+PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.2.0" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/download-product.sh
+PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.2.3" DOWNLOAD_REGEX="PCF Healthwatch$" ./scripts/download-product.sh
+PRODUCT_NAME="RabbitMQ for PCF" PRODUCT_VERSION="1.12.7" DOWNLOAD_REGEX="RabbitMQ for PCF" ./scripts/download-product.sh
+PRODUCT_NAME="Redis for PCF" PRODUCT_VERSION="1.12.1" DOWNLOAD_REGEX="Redis for PCF" ./scripts/download-product.sh
+PRODUCT_NAME="Single Sign-On for PCF" PRODUCT_VERSION="1.6.0" DOWNLOAD_REGEX="Pivotal_Single_Sign-On_Service" ./scripts/download-product.sh
+PRODUCT_NAME="Pivotal Cloud Foundry Service Broker for AWS" PRODUCT_VERSION="1.4.8" DOWNLOAD_REGEX="Service Broker for AWS" ./scripts/download-product.sh
+PRODUCT_NAME="Spring Cloud Services for PCF" PRODUCT_VERSION="1.5.6" DOWNLOAD_REGEX="Spring Cloud Services Product Installer" ./scripts/download-product.sh
 
 # import required stemcells
-PRODUCT_SLUG="stemcells" PRODUCT_VERSION="3445.28" PRODUCT_FILE_ID="86664" ./scripts/import-product.sh
-PRODUCT_SLUG="stemcells" PRODUCT_VERSION="3445.32" PRODUCT_FILE_ID="114231" ./scripts/import-product.sh
-PRODUCT_SLUG="stemcells" PRODUCT_VERSION="3468.30" PRODUCT_FILE_ID="114229" ./scripts/import-product.sh
+# ???
 
 # install Small Footprint PAS (NOTE PRODUCT_SLUG -> IMPORTED_NAME discrepancy)
 PRODUCT_SLUG="elastic-runtime" PRODUCT_VERSION="2.1.1" PRODUCT_FILE_ID="112577" ./scripts/import-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.1.1" ./scripts/stage-product.sh
 IMPORTED_NAME="cf" ./scripts/configure-product.sh
-
-# install MySQL
-PRODUCT_SLUG="p-mysql" PRODUCT_VERSION="1.10.12" PRODUCT_FILE_ID="87255" ./scripts/import-product.sh
-IMPORTED_NAME="p-mysql" IMPORTED_VERSION="1.10.12" ./scripts/stage-product.sh
-IMPORTED_NAME="p-mysql" ./scripts/configure-product.sh
 
 # install Healthwatch
 PRODUCT_SLUG="p-healthwatch" PRODUCT_VERSION="1.1.6" PRODUCT_FILE_ID="103069" ./scripts/import-product.sh
