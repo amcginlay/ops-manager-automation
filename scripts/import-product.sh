@@ -19,13 +19,17 @@ PRODUCT_FILE_ID=$(curl \
   --fail \
   --silent \
   ${API}/products/${PRODUCT_SLUG}/releases/${RELEASE_ID} | \
-    jq -r --arg DOWNLOAD_NAME "${DOWNLOAD_NAME}" '.product_files[] | select(.name | contains($DOWNLOAD_NAME)) | .id')
+  jq -r --arg DOWNLOAD_REGEX "${DOWNLOAD_REGEX}" '.product_files[] | select(.name | match($DOWNLOAD_REGEX)) | .id')
+
+echo PRODUCT_SLUG=${PRODUCT_SLUG} RELEASE_ID=${RELEASE_ID} PRODUCT_FILE_ID=${PRODUCT_FILE_ID}
+exit
 
 TARGETDIR=${SCRIPTDIR}/../downloads/${PRODUCT_SLUG}_${PRODUCT_VERSION}_${PRODUCT_FILE_ID}
+
 # if product/stemcell directory does not exist in downloads, make it happen
-if [ ! -d ${TARGETDIR} ]; then
-	eval PRODUCT_SLUG=${PRODUCT_SLUG} PRODUCT_VERSION=${PRODUCT_VERSION} PRODUCT_FILE_ID=${PRODUCT_FILE_ID} \
-	  ${SCRIPTDIR}/download-product.sh
+if [ ! -d "${TARGETDIR}" ]; then
+  export PRODUCT_NAME DOWNLOAD_NAME PRODUCT_VERSION
+  ${SCRIPTDIR}/download-product.sh
 fi 
 
 # just cycle contents of the target directory because we don't know the name of the file
