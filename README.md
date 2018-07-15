@@ -241,6 +241,11 @@ PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VE
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.0" ./scripts/stage-product.sh
 IMPORTED_NAME="cf" ./scripts/configure-product.sh
 
+# install MySQL
+PRODUCT_NAME="MySQL for PCF v2" PRODUCT_VERSION="2.3.1" DOWNLOAD_REGEX="MySQL for PCF v2" ./scripts/import-product.sh
+IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.3.1-build.11" ./scripts/stage-product.sh
+IMPORTED_NAME="pivotal-mysql" ./scripts/configure-product.sh
+
 # install Healthwatch
 PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.2.3" DOWNLOAD_REGEX="PCF Healthwatch$" ./scripts/import-product.sh
 IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.2.3-build.19" ./scripts/stage-product.sh
