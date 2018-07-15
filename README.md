@@ -130,10 +130,10 @@ DOWNLOAD_REGEX="Small Footprint PAS" \
 This script takes **previously downloaded** products and stemcells from 
 the directory structure beneath `downloads` and imports them to an Ops 
 Manager instance.  The script will attempt to resolve any missing 
-products by invoking `download-product.sh` as appropriate.  We recommend 
-you only run this script from a Jumpbox VM alongside your targeted Ops 
-Manager.  For a large product like PAS, you can expect this to take ~15 
-mins.
+products by internally invoking `download-product.sh` as appropriate.  
+We recommend you only run this script from a Jumpbox VM alongside your 
+targeted Ops Manager.  For a large product like PAS, you can expect this 
+to take ~15 mins.
 
 Example usage:
 
