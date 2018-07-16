@@ -209,7 +209,7 @@ configuration/deployment of the Ops Manager Director, Pivotal Application
 Service (PAS - Small Footprint) and a handful of common products.  This 
 assumes a valid `~/.env` file and a fresh install of the Ops Manager, 
 the version of which is compatible with the target PAS - in this case 
-v2.1.1.  These steps incorporate both a PivNet download and an Ops 
+v2.2.0.  These steps incorporate both a PivNet download and an Ops 
 Manager import which could take a long time to complete.  As the script 
 incorporates large downloads/imports, we recommend you only run this 
 script from a Jumpbox VM alongside your targeted Ops Manager.
@@ -276,6 +276,7 @@ PRODUCT_NAME="Spring Cloud Services for PCF" PRODUCT_VERSION="1.5.6" DOWNLOAD_RE
 IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.2" ./scripts/stage-product.sh
 IMPORTED_NAME="p-spring-cloud-services" ./scripts/configure-product.sh
 
-# apply changes
+# apply changes for director first, then products
+./scripts/apply-changes-director.sh
 ./scripts/apply-changes.sh
 ```
