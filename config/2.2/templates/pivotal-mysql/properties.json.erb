@@ -19,12 +19,9 @@
     "value": "ps-amcginlay"
   },
   ".properties.backups_selector.gcs.bucket_name": {
-    "value": "backups"
+    "value": "pivotal-mysql-backups"
   },
   ".properties.backups_selector.gcs.service_account_json": {
-    "value": "not used"
-  },
-  ".properties.backups_selector.gcs.cron_schedule": {
-    "value": "#"
+    "value": <%= ENV.fetch('PCF_SERVICE_ACCOUNT_JSON').dump %>
   }
 }
