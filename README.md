@@ -1,10 +1,10 @@
 # [ops-manager-automation](./README.md)
 
-# What?
+## What?
 
 A set of scripts for deploying PCF with automation tools at its heart.
 
-# Why?
+## Why?
 
 Because we need something to bridge the gap between:
 
@@ -14,7 +14,7 @@ b) doing everything automated (i.e. [PCF Pipelines](https://github.com/pivotal-c
 
 As per PCF Pipelines, these scripts use both [Om](https://github.com/pivotal-cf/om) and [PivNet](https://github.com/pivotal-cf/pivnet-cli) CLIs.  The difference is we don't encase all that logic behind [Concourse](https://concourse-ci.org/), which makes these scripts a great educational tool with added transparency and flexibility.
 
-# How?
+## How?
 
 On GCP:
 - A pristine GCP project
@@ -22,7 +22,7 @@ On GCP:
 ([click here](./jumpbox-gcp/README.md))
 - A fresh installation of Ops Manager hosted on GCP ([click here](./ops-manager-gcp/README.md))
 
-# SSH to your jumpbox (if necessary)
+## SSH to your jumpbox (if necessary)
 
 From Cloud Shell:
 
@@ -30,7 +30,7 @@ From Cloud Shell:
 gcloud compute ssh ubuntu@jumpbox --zone us-central1-a
 ```
 
-# Clone _this_ repo (if necessary)
+## Clone _this_ repo (if necessary)
 
 From the jumpbox:
 
@@ -41,7 +41,7 @@ git clone https://github.com/amcginlay/ops-manager-automation.git ~/ops-manager-
 git clone git@github.com:amcginlay/ops-manager-automation.git ~/ops-manager-automation
 ```
 
-# Create a configuration file (if necessary)
+## Create a configuration file (if necessary)
 
 When we installed the Ops Manager from the jumpbox we created and 
 __customized__ a configuration file for your environment.  Review [those instructions](./ops-manager-gcp/README.md#create-a-configuration-file) 
@@ -53,7 +53,7 @@ to provide context for the installation.
 Each task script will call `source scripts/shared.sh` to ensure that 
 these name value pairs are made available as environment variables.
 
-# Task Scripts
+## Task Scripts
 
 Let's change into the directory of our cloned repo to keep our task 
 script commands short:
@@ -62,7 +62,7 @@ script commands short:
 cd ~/ops-manager-automation
 ```
 
-## `create-env.sh`
+### `create-env.sh`
 
 We always start here.  This is the script we used from the jumpbox when 
 installing the Ops Manager.  It creates a template for our configuration 
@@ -78,7 +78,7 @@ Example usage:
 ./scripts/create-env.sh
 ```
 
-## `configure-authentication.sh`
+### `configure-authentication.sh`
 
 This script is designed to be used against a **freshly installed** Ops 
 Manager installation which has not yet had authentication configured.  
@@ -94,7 +94,7 @@ Example usage:
 ./scripts/configure-authentication.sh
 ```
 
-## `configure-director-gcp.sh`
+### `configure-director-gcp.sh`
 
 This script should be used against an **freshly authenticated** Ops 
 Manager installation to turn the Ops Manager Director tile from "orange" 
@@ -107,7 +107,7 @@ Example usage:
 ./scripts/configure-director-gcp.sh
 ```
 
-## `apply-changes-director.sh` and `apply-changes.sh`
+### `apply-changes-director.sh` and `apply-changes.sh`
 
 Does exactly what it says ... clicks the big blue button!
 
@@ -122,7 +122,7 @@ Example usage:
 ./scripts/apply-changes.sh
 ```
 
-## `download-product.sh`
+### `download-product.sh`
 
 This script fetches products and stemcells from PivNet and stores them 
 in a directory structure beneath `downloads`.  As these files can be 
@@ -139,7 +139,7 @@ DOWNLOAD_REGEX="Small Footprint PAS" \
   ./scripts/download-product.sh
 ```
 
-## `import-product.sh`
+### `import-product.sh`
 
 This script takes **previously downloaded** products and stemcells from 
 the directory structure beneath `downloads` and imports them to an Ops 
@@ -158,7 +158,7 @@ DOWNLOAD_REGEX="Small Footprint PAS" \
   ./scripts/import-product.sh
 ```
 
-## `list-imports.sh`
+### `list-imports.sh`
 
 Shows which products have been imported and are ready to be staged.  
 Useful when establishing correct terms for `IMPORTED_NAME` and 
@@ -170,7 +170,7 @@ Example usage:
 ./scripts/list-imports.sh
 ```
 
-## `stage-product.sh`
+### `stage-product.sh`
 
 Whenever we click the `+` (plus) button next to an imported product in 
 the Ops Manager we'll see a new or updated tile in the installation 
@@ -184,7 +184,7 @@ Example usage:
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.0" ./scripts/stage-product.sh
 ```
 
-## `mk-ssl-cert-key.sh`
+### `mk-ssl-cert-key.sh`
 
 Customized from the Pivotal Toolsmiths original, this script uses the 
 `openssl` CLI tool to generate self-signed certificate and key files for 
@@ -198,7 +198,7 @@ Example usage:
 ./scripts/mk-ssl-cert-key.sh
 ```
 
-## `configure-product.sh`
+### `configure-product.sh`
 
 The intention of this script is to turn any given tile from "orange" to 
 "green".  Please inspect the `templates/cf` and `templates/p-healthwatch` 
