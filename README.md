@@ -2,7 +2,7 @@
 
 ## What?
 
-A set of scripts for deploying PCF with automation tools at its heart.
+A set of scripts for deploying PCF on GCP with automation tools at its heart.
 
 ## Why?
 
@@ -20,7 +20,8 @@ Like this ...
 
 ## Prerequisites
 
-On GCP:
+Stop!  You don't get something for nothing.  You need to do some important groundwork first.  Make sure you follow these links first.
+
 - A pristine GCP project
 - An SSH session on a pristine Ubuntu jumpbox with `gcloud` initialized 
 ([click here](./jumpbox-gcp/README.md))
