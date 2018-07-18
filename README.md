@@ -16,6 +16,10 @@ As per PCF Pipelines, these scripts use both [Om](https://github.com/pivotal-cf/
 
 ## How?
 
+Like this ...
+
+## Prerequisites
+
 On GCP:
 - A pristine GCP project
 - An SSH session on a pristine Ubuntu jumpbox with `gcloud` initialized 
