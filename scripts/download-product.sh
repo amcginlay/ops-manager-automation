@@ -19,7 +19,7 @@ PRODUCT_FILE_ID=$(curl \
   --fail \
   --silent \
   ${API}/products/${PRODUCT_SLUG}/releases/${RELEASE_ID} | \
-    jq -r --arg DOWNLOAD_REGEX "${DOWNLOAD_REGEX}" '.product_files[] | select(.name | select(.sha256 | length>0) | match($DOWNLOAD_REGEX)) | .id')
+    jq -r --arg DOWNLOAD_REGEX "${DOWNLOAD_REGEX}" '.product_files[] | select(.sha256 | length>0) | select(.name | match($DOWNLOAD_REGEX)) | .id')
 
 TARGETDIR=${SCRIPTDIR}/../downloads/${PRODUCT_SLUG}_${PRODUCT_VERSION}_${PRODUCT_FILE_ID}
 if [ ! -d ${TARGETDIR} ]; then
