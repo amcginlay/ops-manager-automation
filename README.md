@@ -22,14 +22,15 @@ Like this ...
 
 Stop!  You don't get something for nothing.  You need to do some important groundwork first.  Make sure you follow these links first.
 
+You will need:
 - A pristine GCP project
-- An SSH session on a pristine Ubuntu jumpbox with `gcloud` initialized 
+- An SSH session on a pristine Ubuntu jumpbox with `gcloud` logged in to the GCP project 
 ([click here](./jumpbox-gcp/README.md))
 - A fresh installation of Ops Manager hosted on GCP ([click here](./ops-manager-gcp/README.md))
 
 ## SSH to your jumpbox (if necessary)
 
-From Cloud Shell:
+From [Cloud Shell](https://cloud.google.com/shell/docs/) or an authenticated local install of [Google Cloud SDK](https://cloud.google.com/sdk) configured to use your project:
 
 ```bash
 gcloud compute ssh ubuntu@jumpbox --zone us-central1-a
