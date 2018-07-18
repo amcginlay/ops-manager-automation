@@ -2,7 +2,7 @@
 
 # What?
 
-A set of scripts for deploying PCF with automation tools at it's heart.
+A set of scripts for deploying PCF with automation tools at its heart.
 
 # Why?
 
