@@ -1,5 +1,22 @@
 # [ops-manager-automation](./README.md)
 
+# What?
+
+A set of scripts for deploying PCF with automation tools at it's heart.
+
+# Why?
+
+Because we need something to bridge the gap between:
+
+a) doing everything manual (i.e. Ops Manager UI)
+b) doing everything automated (i.e. [PCF Pipelines](https://github.com/pivotal-cf/pcf-pipelines))
+
+As per PCF Pipelines, these scripts use both [Om](https://github.com/pivotal-cf/om) and [PivNet](https://github.com/pivotal-cf/pivnet-cli) CLIs.  The difference is we don't encase all that logic behind [Concourse](https://concourse-ci.org/), which makes these scripts a great educational tool with added transparency and flexibility.
+
+# How?
+
+Let's go ...
+
 ## Prerequisites
 
 On GCP:
