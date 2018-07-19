@@ -2,7 +2,7 @@
   "icmp_checks_enabled": false,
   "networks": [
     {
-      "name": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pas-subnet",
+      "name": "pas",
       "subnets": [{
         "iaas_identifier": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pcf-network/<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pas-subnet/<%= ENV.fetch('PCF_REGION') %>",
         "cidr": "10.0.4.0/22",
@@ -12,7 +12,7 @@
       }]
     },
     {
-      "name": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-management-subnet",
+      "name": "management",
       "subnets": [{
         "iaas_identifier": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pcf-network/<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-management-subnet/<%= ENV.fetch('PCF_REGION') %>",
         "cidr": "10.0.0.0/24",
@@ -23,7 +23,7 @@
       }]
     },
     {
-      "name": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-services-subnet",
+      "name": "services",
       "subnets": [{
         "iaas_identifier": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pcf-network/<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-services-subnet/<%= ENV.fetch('PCF_REGION') %>",
         "cidr": "10.0.8.0/22",
