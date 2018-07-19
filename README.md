@@ -20,7 +20,7 @@ Like this ...
 
 ## Prerequisites
 
-Stop!  You don't get something for nothing.  You need to do some important groundwork first so make sure you follow these steps.
+You need to do some important groundwork to get moving so make sure you follow these steps first.
 
 You will need:
 - A pristine GCP project
