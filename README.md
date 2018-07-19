@@ -293,7 +293,7 @@ IMPORTED_NAME="aws-services" PCF_AWS_ACCESS_KEY_ID="SOME_ID" PCF_AWS_SECRET_ACCE
 
 # install SCS
 PRODUCT_NAME="Spring Cloud Services for PCF" PRODUCT_VERSION="1.5.6" DOWNLOAD_REGEX="Spring Cloud Services Product Installer" ./scripts/import-product.sh
-IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.2" ./scripts/stage-product.sh
+IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/stage-product.sh
 IMPORTED_NAME="p-spring-cloud-services" ./scripts/configure-product.sh
 
 # apply changes for director first, then products
