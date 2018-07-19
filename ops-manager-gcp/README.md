@@ -139,6 +139,7 @@ opsman_image_url    = "https://storage.googleapis.com/${OPSMAN_IMAGE}"
 create_gcs_buckets  = "false"
 external_database   = "false"
 isolation_segment   = "false"
+pks                 = "true"
 ssl_cert            = <<SSL_CERT
 $(cat ../${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.crt)
 SSL_CERT
