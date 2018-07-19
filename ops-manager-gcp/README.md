@@ -136,7 +136,6 @@ region              = "${PCF_REGION}"
 zones               = ["${PCF_AZ_2}", "${PCF_AZ_1}", "${PCF_AZ_3}"]
 dns_suffix          = "${PCF_DOMAIN_NAME}"
 opsman_image_url    = "https://storage.googleapis.com/${OPSMAN_IMAGE}"
-buckets_location    = "US"
 create_gcs_buckets  = "false"
 external_database   = "false"
 isolation_segment   = "false"
