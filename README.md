@@ -24,7 +24,7 @@ You need to do some important groundwork to get moving so make sure you follow t
 
 You will need:
 - A registered domain name (e.g. pivotaledu.io)
-- A production-strength domain name registrar (e.g. Route 53 or Google Domains)
+- A production-strength domain name registrar (e.g. AWS Route 53 or Google Domains)
 - A pristine GCP project
 - An SSH session on a pristine Ubuntu jumpbox with `gcloud` logged in to the GCP project 
 ([click here](./jumpbox-gcp/README.md))
