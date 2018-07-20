@@ -1,0 +1,49 @@
+{
+  ".pivotal-container-service.pks_tls": {
+    "value": {
+      "private_key_pem": <%= ENV.fetch('PCF_DOMAIN_KEY').dump %>,
+      "cert_pem": <%= ENV.fetch('PCF_DOMAIN_CRT').dump %>
+    }
+  },
+  ".properties.pks_api_hostname": {
+    "value": "api.pks.<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>.<%= ENV.fetch('PCF_DOMAIN_NAME') %>"
+  },
+  ".properties.plan1_selector.active.master_az_placement": {
+    "value": [
+      "us-central1-a",
+      "us-central1-b",
+      "us-central1-c"
+    ]
+  },
+  ".properties.plan1_selector.active.worker_az_placement": {
+    "value": [
+      "us-central1-a",
+      "us-central1-b",
+      "us-central1-c"
+    ]
+  },
+  ".properties.plan2_selector": {
+    "value": "Plan Inactive"
+  },
+  ".properties.plan3_selector": {
+    "value": "Plan Inactive"
+  },
+  ".properties.cloud_provider": {
+    "value": "GCP"
+  },
+  ".properties.cloud_provider.gcp.project_id": {
+    "value": "<%= ENV.fetch('PCF_PROJECT_ID') %>"
+  },
+  ".properties.cloud_provider.gcp.network": {
+    "value": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pcf-network"
+  },
+  ".properties.cloud_provider.gcp.master_service_account": {
+    "value": "service-account@<%= ENV.fetch('PCF_PROJECT_ID') %>.iam.gserviceaccount.com"
+  },
+  ".properties.cloud_provider.gcp.worker_service_account": {
+    "value": "service-account@<%= ENV.fetch('PCF_PROJECT_ID') %>.iam.gserviceaccount.com"
+  },
+  ".properties.telemetry_selector": {
+    "value": "disabled"
+  }
+}
