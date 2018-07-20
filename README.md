@@ -28,37 +28,6 @@ You will need:
 ([click here](./jumpbox-gcp/README.md))
 - A fresh installation of Ops Manager hosted on GCP ([click here](./ops-manager-gcp/README.md))
 
-## SSH to your jumpbox (if necessary)
-
-From [Cloud Shell](https://cloud.google.com/shell/docs/) or an authenticated local install of [Google Cloud SDK](https://cloud.google.com/sdk) configured to use your project:
-
-```bash
-gcloud compute ssh ubuntu@jumpbox --zone us-central1-a
-```
-
-## Clone _this_ repo (if necessary)
-
-From the jumpbox:
-
-```bash
-git clone https://github.com/amcginlay/ops-manager-automation.git ~/ops-manager-automation
-
-# [Clone with SSH]
-git clone git@github.com:amcginlay/ops-manager-automation.git ~/ops-manager-automation
-```
-
-## Create a configuration file (if necessary)
-
-When we installed the Ops Manager from the jumpbox we created and 
-__customized__ a configuration file for your environment.  Review [those instructions](./ops-manager-gcp/README.md#create-a-configuration-file) 
-and inspect the contents of the `~/.env` file.
-
-The `scripts` in this repo will make use of the same configuration file 
-to provide context for the installation.
-
-Each task script will call `source scripts/shared.sh` to ensure that 
-these name value pairs are made available as environment variables.
-
 ## Task Scripts
 
 Let's change into the directory of our cloned repo to keep our task 
