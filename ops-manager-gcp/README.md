@@ -14,7 +14,7 @@ From Cloud Shell:
 gcloud compute ssh ubuntu@jumpbox --zone us-central1-a
 ```
 
-## Enable the gcloud services APIs in current project
+## Enable the GCP services APIs in current project
 
 ```bash
 gcloud services enable compute.googleapis.com && \
@@ -85,7 +85,7 @@ source ~/.env
 echo "source ~/.env" >> ~/.bashrc
 ```
 
-## Create a gcloud services account in current project
+## Create a GCP services account in current project
 
 ```bash
 gcloud iam service-accounts create service-account --display-name service-account
