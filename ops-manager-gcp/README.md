@@ -85,6 +85,12 @@ source ~/.env
 echo "source ~/.env" >> ~/.bashrc
 ```
 
+To review your currently active variable settings:
+
+```bash
+set | grep PCF
+```
+
 ## Create a GCP services account in current project
 
 ```bash
