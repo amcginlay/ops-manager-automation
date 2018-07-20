@@ -85,6 +85,19 @@ wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-4.0.1-linux-am
   sudo mv bosh /usr/local/bin/
 ```
 
+## Create a gcloud services account for Terraform
+
+```bash
+gcloud iam service-accounts create terraform-service-account --display-name terraform
+
+gcloud iam service-accounts keys create 'gcp_credentials.json' \
+  --iam-account "terraform-service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com"
+
+gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
+  --member "serviceAccount:terraform-service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com" \
+  --role 'roles/owner'
+```
+
 ## Download an Ops Manager image identifier from Pivotal Network
 
 ```bash
@@ -105,19 +118,6 @@ PRODUCT_VERSION=2.2.0 \
   ./scripts/download-product.sh
     
 unzip ./downloads/elastic-runtime*/terraforming-gcp-*.zip -d .
-```
-
-## Create a gcloud services account for Terraform
-
-```bash
-gcloud iam service-accounts create terraform-service-account --display-name terraform
-
-gcloud iam service-accounts keys create 'gcp_credentials.json' \
-  --iam-account "terraform-service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com"
-
-gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
-  --member "serviceAccount:terraform-service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com" \
-  --role 'roles/owner'
 ```
 
 ## Generate a wildcard SAN certificate
