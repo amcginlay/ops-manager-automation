@@ -26,8 +26,7 @@ You will need:
 - A production-strength domain name registrar (e.g. AWS Route 53 or Google Domains)
 - A registered domain name (e.g. pivotaledu.io)
 - A pristine GCP project
-- An SSH session on a pristine Ubuntu jumpbox with `gcloud` logged in to the GCP project 
-([click here](./jumpbox-gcp/README.md))
+- An SSH session on a pristine Ubuntu jumpbox, authenticated with `gcloud auth login` ([click here](./jumpbox-gcp/README.md))
 - A fresh installation of Ops Manager hosted on GCP ([click here](./ops-manager-gcp/README.md))
 
 ## Task Scripts
