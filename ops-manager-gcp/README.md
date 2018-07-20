@@ -88,7 +88,7 @@ echo "source ~/.env" >> ~/.bashrc
 ## Create a gcloud services account in current project
 
 ```bash
-gcloud iam service-accounts create service-account --display-name terraform
+gcloud iam service-accounts create service-account --display-name service-account
 
 gcloud iam service-accounts keys create 'gcp_credentials.json' \
   --iam-account "service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com"
