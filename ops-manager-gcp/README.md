@@ -176,6 +176,6 @@ Once `dig` can resolve the Ops Manager FQDN to an IP address, we're good to move
 watch dig ${PCF_OPSMAN_FQDN}
 ```
 
-Completion of this step is dependent on attaching a ${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME} NS record-set pointing to _every_ google domain server, for example:
+This step is dependent on attaching a ${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME} NS record-set to your registered domain.  This record-set must point to _every_ google domain server, for example:
 
 ![route_53_ns](route_53_ns.png)
