@@ -28,7 +28,7 @@ You will need:
 - A pristine GCP project
 - An avctive account with [Pivotal Network](https://network.pivotal.io/)
 - An SSH session on a pristine Ubuntu jumpbox, authenticated with `gcloud auth login` ([click here](./jumpbox-gcp/README.md))
-- A fresh installation of Ops Manager hosted on GCP ([click here](./ops-manager-gcp/README.md))
+- A fresh installation of Ops Manager ([click here](./ops-manager-gcp/README.md))
 
 ## Task Scripts
 
