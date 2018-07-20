@@ -85,16 +85,16 @@ source ~/.env
 echo "source ~/.env" >> ~/.bashrc
 ```
 
-## Create a gcloud services account for Terraform
+## Create a gcloud services account in current project
 
 ```bash
-gcloud iam service-accounts create terraform-service-account --display-name terraform
+gcloud iam service-accounts create service-account --display-name terraform
 
 gcloud iam service-accounts keys create 'gcp_credentials.json' \
-  --iam-account "terraform-service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com"
+  --iam-account "service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com"
 
 gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
-  --member "serviceAccount:terraform-service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com" \
+  --member "serviceAccount:service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com" \
   --role 'roles/owner'
 ```
 
