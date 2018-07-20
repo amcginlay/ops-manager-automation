@@ -14,6 +14,36 @@ From Cloud Shell:
 gcloud compute ssh ubuntu@jumpbox --zone us-central1-a
 ```
 
+## Enable the gcloud services APIs in current project
+
+```bash
+gcloud services enable compute.googleapis.com && \
+gcloud services enable iam.googleapis.com && \
+gcloud services enable cloudresourcemanager.googleapis.com && \
+gcloud services enable dns.googleapis.com && \
+gcloud services enable sqladmin.googleapis.com
+```
+
+## Install some essential tools
+
+```bash
+sudo apt-get update && sudo apt-get --yes install unzip jq build-essential ruby-dev
+
+sudo gem install --no-ri --no-rdoc cf-uaac
+
+wget -O terraform.zip https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip && \
+  unzip terraform.zip && \
+  sudo mv terraform /usr/local/bin
+  
+wget -O om https://github.com/pivotal-cf/om/releases/download/0.38.0/om-linux && \
+  chmod +x om && \
+  sudo mv om /usr/local/bin/
+  
+wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-4.0.1-linux-amd64 && \
+  chmod +x bosh && \
+  sudo mv bosh /usr/local/bin/
+```
+
 ## Clone _this_ repo
 
 From the jumpbox:
@@ -53,36 +83,6 @@ subsequent time the ubuntu user connects to the jumpbox.
 ```bash
 source ~/.env
 echo "source ~/.env" >> ~/.bashrc
-```
-
-## Enable the gcloud services APIs
-
-```bash
-gcloud services enable compute.googleapis.com && \
-gcloud services enable iam.googleapis.com && \
-gcloud services enable cloudresourcemanager.googleapis.com && \
-gcloud services enable dns.googleapis.com && \
-gcloud services enable sqladmin.googleapis.com
-```
-
-## Install some essential tools
-
-```bash
-sudo apt-get update && sudo apt-get --yes install unzip jq build-essential ruby-dev
-
-sudo gem install --no-ri --no-rdoc cf-uaac
-
-wget -O terraform.zip https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip && \
-  unzip terraform.zip && \
-  sudo mv terraform /usr/local/bin
-  
-wget -O om https://github.com/pivotal-cf/om/releases/download/0.38.0/om-linux && \
-  chmod +x om && \
-  sudo mv om /usr/local/bin/
-  
-wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-4.0.1-linux-amd64 && \
-  chmod +x bosh && \
-  sudo mv bosh /usr/local/bin/
 ```
 
 ## Create a gcloud services account for Terraform
