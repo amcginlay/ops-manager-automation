@@ -2,7 +2,7 @@
 
 ## What?
 
-A set of scripts for deploying PCF on GCP with automation tools at its heart.
+A set of scripts for deploying PCF (including PAS & PKS) on GCP with automation tools at its heart.
 
 ## Why?
 
