@@ -37,15 +37,12 @@ script commands short:
 cd ~/ops-manager-automation
 ```
 
-### `create-env.sh`
+### `create-env.sh` (covered in Prerequisites)
 
 We always start here.  This is the script we used from the jumpbox when 
 installing the Ops Manager.  It creates a template for our configuration 
 at `~/.env` which we must customize before installing the Ops Manager 
 or running any of the other task scripts.
-
-_Note_ if you followed the Prerequisite instructions to create the Ops 
-Manager, the `~/.env` file is likely already configured. 
 
 Example usage:
 
@@ -159,7 +156,7 @@ Example usage:
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.0" ./scripts/stage-product.sh
 ```
 
-### `mk-ssl-cert-key.sh`
+### `mk-ssl-cert-key.sh` (covered in Prerequisites)
 
 Customized from the Pivotal Toolsmiths original, this script uses the 
 `openssl` CLI tool to generate self-signed certificate and key files for 
