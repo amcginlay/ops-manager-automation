@@ -25,8 +25,9 @@ You need to do some important groundwork to get moving so make sure you follow t
 You will need:
 - A production-strength domain name registrar (e.g. AWS Route 53 or Google Domains)
 - A registered domain name (e.g. pivotaledu.io)
-- A pristine GCP project
 - An active [Pivotal Network](https://network.pivotal.io/) account
+- An active [GCP](https://cloud.google.com/) account
+- A pristine GCP project
 - An SSH session on a pristine Ubuntu jumpbox, authenticated with `gcloud auth login` ([click here](./jumpbox-gcp/README.md))
 - A fresh installation of Ops Manager ([click here](./ops-manager-gcp/README.md))
 
