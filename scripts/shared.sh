@@ -24,7 +24,7 @@ while read LINE; do
 done < ${VARS}
 
 export API="https://network.pivotal.io/api/v2"
-export PCF_SERVICE_ACCOUNT_JSON=$(cat ./gcp_credentials.json)
+export PCF_SERVICE_ACCOUNT_JSON=$(cat ${SCRIPTDIR}/../gcp_credentials.json)
 export PCF_PROJECT_ID=$(gcloud config get-value core/project)
 
 # calculated vars
