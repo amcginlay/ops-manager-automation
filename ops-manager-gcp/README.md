@@ -94,7 +94,7 @@ set | grep PCF
 ## Create a GCP services account for terraform in current project
 
 ```bash
-gcloud iam service-accounts create service-account --display-name terraform
+gcloud iam service-accounts create terraform --display-name terraform
 
 gcloud iam service-accounts keys create 'terraform_gcp_credentials.json' \
   --iam-account "terraform@$(gcloud config get-value core/project).iam.gserviceaccount.com"
