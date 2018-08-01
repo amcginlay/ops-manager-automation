@@ -91,16 +91,16 @@ To review your currently active variable settings:
 set | grep PCF
 ```
 
-## Create a GCP services account in current project
+## Create a GCP services account for terraform in current project
 
 ```bash
-gcloud iam service-accounts create service-account --display-name service-account
+gcloud iam service-accounts create service-account --display-name terraform
 
-gcloud iam service-accounts keys create 'gcp_credentials.json' \
-  --iam-account "service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com"
+gcloud iam service-accounts keys create 'terraform_gcp_credentials.json' \
+  --iam-account "terraform@$(gcloud config get-value core/project).iam.gserviceaccount.com"
 
 gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
-  --member "serviceAccount:service-account@$(gcloud config get-value core/project).iam.gserviceaccount.com" \
+  --member "serviceAccount:terraform@$(gcloud config get-value core/project).iam.gserviceaccount.com" \
   --role 'roles/owner'
 ```
 
@@ -155,7 +155,7 @@ ssl_private_key     = <<SSL_KEY
 $(cat ../${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.key)
 SSL_KEY
 service_account_key = <<SERVICE_ACCOUNT_KEY
-$(cat ../gcp_credentials.json)
+$(cat ../terraform_gcp_credentials.json)
 SERVICE_ACCOUNT_KEY
 EOF
 ```
