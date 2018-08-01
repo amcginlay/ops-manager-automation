@@ -109,7 +109,7 @@ gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
 ```bash
 PRODUCT_NAME="Pivotal Cloud Foundry Operations Manager" \
 DOWNLOAD_REGEX="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
-PRODUCT_VERSION=2.2.0 \
+PRODUCT_VERSION=2.2.1 \
   ./scripts/download-product.sh
 
 OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --path /us)
@@ -120,7 +120,7 @@ OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --
 ```bash
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
 DOWNLOAD_REGEX="GCP Terraform Templates" \
-PRODUCT_VERSION=2.2.0 \
+PRODUCT_VERSION=2.2.1 \
   ./scripts/download-product.sh
     
 unzip ./downloads/elastic-runtime*/terraforming-gcp-*.zip -d .
