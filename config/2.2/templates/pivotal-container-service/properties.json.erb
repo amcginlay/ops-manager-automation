@@ -38,10 +38,10 @@
     "value": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pcf-network"
   },
   ".properties.cloud_provider.gcp.master_service_account": {
-    "value": "service-account@<%= ENV.fetch('PCF_PROJECT_ID') %>.iam.gserviceaccount.com"
+    "value": "<%= ENV.fetch('PCF_PROJECT_ID') %>-pks-master-node@<%= ENV.fetch('PCF_PROJECT_ID') %>.iam.gserviceaccount.com"
   },
   ".properties.cloud_provider.gcp.worker_service_account": {
-    "value": "service-account@<%= ENV.fetch('PCF_PROJECT_ID') %>.iam.gserviceaccount.com"
+    "value": "<%= ENV.fetch('PCF_PROJECT_ID') %>-pks-worker-node@<%= ENV.fetch('PCF_PROJECT_ID') %>.iam.gserviceaccount.com"
   },
   ".properties.telemetry_selector": {
     "value": "disabled"
