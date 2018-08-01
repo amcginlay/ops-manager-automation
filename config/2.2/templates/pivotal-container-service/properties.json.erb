@@ -43,6 +43,11 @@
   ".properties.cloud_provider.gcp.worker_service_account": {
     "value": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pks-worker-node@<%= ENV.fetch('PCF_PROJECT_ID') %>.iam.gserviceaccount.com"
   },
+  ".properties.vm_extensions": {
+    "value": [
+      "public_ip"
+    ]
+  },
   ".properties.telemetry_selector": {
     "value": "disabled"
   }
