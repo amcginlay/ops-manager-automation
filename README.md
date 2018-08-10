@@ -28,6 +28,8 @@ You will need:
 - An active Pivotal Network account.  Sign up [here](https://account.run.pivotal.io/z/uaa/sign-up)
 - An active GCP account.  Sign up [here](https://console.cloud.google.com/freetrial)
 - A pristine GCP project
+
+Then you __must__ follow these steps:
 - An SSH session on a pristine Ubuntu jumpbox, authenticated with `gcloud auth login` ([click here](./jumpbox-gcp/README.md))
 - A fresh installation of Ops Manager ([click here](./ops-manager-gcp/README.md))
 
