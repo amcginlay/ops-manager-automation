@@ -16,8 +16,8 @@ jumpbox:
 
 ```bash
 gcloud compute instances create "jumpbox" \
-  --image-family "ubuntu-1804-lts" \
   --image-project "ubuntu-os-cloud" \
+  --image-family "ubuntu-1804-lts" \
   --boot-disk-size "200" \
   --machine-type=f1-micro \
   --zone us-central1-a
