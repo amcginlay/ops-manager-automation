@@ -25,7 +25,7 @@ gcloud services enable sqladmin.googleapis.com
 ## Install some essential tools
 
 ```bash
-sudo apt-get update && sudo apt-get --yes install unzip jq build-essential ruby-dev
+sudo apt update && sudo apt --yes install unzip jq build-essential ruby-dev
 
 sudo gem install --no-ri --no-rdoc cf-uaac
 
