@@ -30,8 +30,8 @@ You will need:
 - A pristine GCP project
 
 Then you __must__ follow these steps:
-- An SSH session on a pristine Ubuntu jumpbox, authenticated with `gcloud auth login` ([click here](./jumpbox-gcp/README.md))
-- A fresh installation of Ops Manager ([click here](./ops-manager-gcp/README.md))
+- [Step 1](./jumpbox-gcp/README.md) - An SSH session on a pristine Ubuntu jumpbox, authenticated with `gcloud auth login`
+- [Step 2](./ops-manager-gcp/README.md) - A fresh installation of Ops Manager 
 
 ## Task Scripts
 
