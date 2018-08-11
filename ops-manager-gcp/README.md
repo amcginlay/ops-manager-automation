@@ -8,8 +8,6 @@ On GCP:
 
 ## SSH to your jumpbox (if necessary)
 
-From Cloud Shell:
-
 ```bash
 gcloud compute ssh ubuntu@jumpbox --zone us-central1-a
 ```
