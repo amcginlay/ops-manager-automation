@@ -55,6 +55,20 @@ Example usage:
 ./scripts/create-env.sh
 ```
 
+### `mk-ssl-cert-key.sh` (covered in Prerequisites)
+
+Customized from the Pivotal Toolsmiths original, this script uses the 
+`openssl` CLI tool to generate self-signed certificate and key files for 
+use with this installation.  Generated files are deposited in the current 
+working directory where they remain available for use by subsequent tile 
+configuration scripts.
+
+Example usage:
+
+```no-highlight
+./scripts/mk-ssl-cert-key.sh
+```
+
 ### `configure-authentication.sh`
 
 This script is designed to be used against a **freshly installed** Ops 
@@ -159,20 +173,6 @@ Example usage:
 
 ```no-highlight
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.0" ./scripts/stage-product.sh
-```
-
-### `mk-ssl-cert-key.sh` (covered in Prerequisites)
-
-Customized from the Pivotal Toolsmiths original, this script uses the 
-`openssl` CLI tool to generate self-signed certificate and key files for 
-use with this installation.  Generated files are deposited in the current 
-working directory where they remain available for use by subsequent tile 
-configuration scripts.
-
-Example usage:
-
-```no-highlight
-./scripts/mk-ssl-cert-key.sh
 ```
 
 ### `configure-product.sh`
