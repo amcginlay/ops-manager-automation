@@ -232,9 +232,9 @@ IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.2" ./scripts/stage-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.2" ./scripts/configure-product.sh
 
 # install PKS
-PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.1.3" DOWNLOAD_REGEX="pivotal-container-service" ./scripts/import-product.sh
-IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.1.3-build.11" ./scripts/stage-product.sh
-IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.1.3-build.11" ./scripts/configure-product.sh
+PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.1.4" DOWNLOAD_REGEX="pivotal-container-service" ./scripts/import-product.sh
+IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.1.4-build.5" ./scripts/stage-product.sh
+IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.1.4-build.5" ./scripts/configure-product.sh
 
 # install MySQL
 PRODUCT_NAME="MySQL for PCF v2" PRODUCT_VERSION="2.3.1" DOWNLOAD_REGEX="MySQL for PCF v2" ./scripts/import-product.sh
