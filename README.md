@@ -95,7 +95,7 @@ technical appreciation for how this is achieved.
 Example usage:
 
 ```no-highlight
-./scripts/configure-director-gcp.sh
+DIRECTOR_CONFIG_VERSION=2.2 ./scripts/configure-director-gcp.sh
 ```
 
 ### `apply-changes-director.sh` and `apply-changes.sh`
