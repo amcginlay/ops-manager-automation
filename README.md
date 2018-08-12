@@ -95,7 +95,7 @@ technical appreciation for how this is achieved.
 Example usage:
 
 ```no-highlight
-DIRECTOR_CONFIG_VERSION=2.2 ./scripts/configure-director-gcp.sh
+IMPORTED_VERSION=2.2.1 ./scripts/configure-director-gcp.sh
 ```
 
 ### `apply-changes-director.sh` and `apply-changes.sh`
