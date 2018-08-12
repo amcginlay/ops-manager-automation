@@ -29,7 +29,6 @@ export PCF_PROJECT_ID=$(gcloud config get-value core/project)
 
 # calculated vars
 export PCF_DOMAIN=${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}
-export TEMPLATES=${SCRIPTDIR}/../config/${PCF_VERSION_PATH}/templates
 if [ -f ./${PCF_DOMAIN}.key ]; then
 	export PCF_DOMAIN_KEY=$(cat ./${PCF_DOMAIN}.key)
 fi
