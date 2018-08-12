@@ -184,9 +184,7 @@ directories to gain a technical appreciation for how this is achieved.
 Example usage:
 
 ```no-highlight
-IMPORTED_NAME="cf" ./scripts/configure-product.sh
-# or 
-IMPORTED_NAME="p-metrics" ./scripts/configure-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.0" ./scripts/configure-product.sh
 ```
 
 _Note_ you may choose to run `apply-changes.sh` once after each call to 
@@ -231,47 +229,47 @@ PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3468.51" DOWNLOAD_REGEX="Ubunt
 # install Small Footprint PAS
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.2.2" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/import-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.2" ./scripts/stage-product.sh
-IMPORTED_NAME="cf" ./scripts/configure-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.2" ./scripts/configure-product.sh
 
 # install PKS
 PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.1.3" DOWNLOAD_REGEX="pivotal-container-service" ./scripts/import-product.sh
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.1.3-build.11" ./scripts/stage-product.sh
-IMPORTED_NAME="pivotal-container-service" ./scripts/configure-product.sh
+IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.1.3-build.11" ./scripts/configure-product.sh
 
 # install MySQL
 PRODUCT_NAME="MySQL for PCF v2" PRODUCT_VERSION="2.3.1" DOWNLOAD_REGEX="MySQL for PCF v2" ./scripts/import-product.sh
 IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.3.1-build.11" ./scripts/stage-product.sh
-IMPORTED_NAME="pivotal-mysql" ./scripts/configure-product.sh
+IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.3.1-build.11" ./scripts/configure-product.sh
 
 # install Healthwatch
 PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.2.3" DOWNLOAD_REGEX="PCF Healthwatch$" ./scripts/import-product.sh
 IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.2.3-build.19" ./scripts/stage-product.sh
-IMPORTED_NAME="p-healthwatch" ./scripts/configure-product.sh
+IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.2.3-build.19" ./scripts/configure-product.sh
 
 # install RabbitMQ
 PRODUCT_NAME="RabbitMQ for PCF" PRODUCT_VERSION="1.12.7" DOWNLOAD_REGEX="RabbitMQ for PCF$" ./scripts/import-product.sh
 IMPORTED_NAME="p-rabbitmq" IMPORTED_VERSION="1.12.7" ./scripts/stage-product.sh
-IMPORTED_NAME="p-rabbitmq" ./scripts/configure-product.sh
+IMPORTED_NAME="p-rabbitmq" IMPORTED_VERSION="1.12.7" ./scripts/configure-product.sh
 
 # install Redis
 PRODUCT_NAME="Redis for PCF" PRODUCT_VERSION="1.12.1" DOWNLOAD_REGEX="Redis for PCF$" ./scripts/import-product.sh
 IMPORTED_NAME="p-redis" IMPORTED_VERSION="1.12.1" ./scripts/stage-product.sh
-IMPORTED_NAME="p-redis" ./scripts/configure-product.sh
+IMPORTED_NAME="p-redis" IMPORTED_VERSION="1.12.1" ./scripts/configure-product.sh
 
 # install SSO
 PRODUCT_NAME="Single Sign-On for PCF" PRODUCT_VERSION="1.6.0" DOWNLOAD_REGEX="Pivotal_Single_Sign-On_Service" ./scripts/import-product.sh
 IMPORTED_NAME="Pivotal_Single_Sign-On_Service" IMPORTED_VERSION="1.6.0" ./scripts/stage-product.sh
-IMPORTED_NAME="Pivotal_Single_Sign-On_Service" ./scripts/configure-product.sh
+IMPORTED_NAME="Pivotal_Single_Sign-On_Service" IMPORTED_VERSION="1.6.0" ./scripts/configure-product.sh
 
 # install AWS Broker
 PRODUCT_NAME="Pivotal Cloud Foundry Service Broker for AWS" PRODUCT_VERSION="1.4.8" DOWNLOAD_REGEX="Service Broker for AWS" ./scripts/import-product.sh
 IMPORTED_NAME="aws-services" IMPORTED_VERSION="1.4.8" ./scripts/stage-product.sh
-IMPORTED_NAME="aws-services" PCF_AWS_ACCESS_KEY_ID="SOME_ID" PCF_AWS_SECRET_ACCESS_KEY="SOME_SECRET" ./scripts/configure-product.sh
+IMPORTED_NAME="aws-services" IMPORTED_VERSION="1.4.8" PCF_AWS_ACCESS_KEY_ID="SOME_ID" PCF_AWS_SECRET_ACCESS_KEY="SOME_SECRET" ./scripts/configure-product.sh
 
 # install SCS
 PRODUCT_NAME="Spring Cloud Services for PCF" PRODUCT_VERSION="1.5.6" DOWNLOAD_REGEX="Spring Cloud Services Product Installer" ./scripts/import-product.sh
 IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/stage-product.sh
-IMPORTED_NAME="p-spring-cloud-services" ./scripts/configure-product.sh
+IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/configure-product.sh
 
 # apply changes for director first, then products
 ./scripts/apply-changes-director.sh
