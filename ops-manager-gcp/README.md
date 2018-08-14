@@ -9,7 +9,7 @@ On GCP:
 ## SSH to your jumpbox (if necessary)
 
 ```bash
-gcloud compute ssh ubuntu@jumpbox --zone us-central1-a
+gcloud compute ssh ubuntu@jbox-pcf --zone us-central1-a
 ```
 
 ## Enable the GCP services APIs in current project
