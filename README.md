@@ -238,7 +238,7 @@ IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.1.4-build.5" ./scr
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.1.4-build.5" ./scripts/configure-product.sh
 
 # install MySQL
-PRODUCT_NAME="MySQL for PCF v2" PRODUCT_VERSION="2.3.1" DOWNLOAD_REGEX="MySQL for PCF v2" ./scripts/import-product.sh
+PRODUCT_NAME="MySQL for PCF" PRODUCT_VERSION="2.3.1" DOWNLOAD_REGEX="MySQL for PCF" ./scripts/import-product.sh
 IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.3.1-build.11" ./scripts/stage-product.sh
 IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.3.1-build.11" ./scripts/configure-product.sh
 
