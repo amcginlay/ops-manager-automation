@@ -24,22 +24,36 @@ gcloud services enable sqladmin.googleapis.com
 
 ## Install some essential tools
 
-```bash
-sudo apt update && sudo apt --yes install unzip jq build-essential ruby-dev
+Elevate privileges:
 
-sudo gem install --no-ri --no-rdoc cf-uaac
+```bash
+sudo su -
+```
+
+Install tools:
+
+```bash
+apt update && sudo apt --yes install unzip jq build-essential ruby-dev
+
+gem install --no-ri --no-rdoc cf-uaac
 
 wget -O terraform.zip https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip && \
   unzip terraform.zip && \
-  sudo mv terraform /usr/local/bin
+  mv terraform /usr/local/bin
   
 wget -O om https://github.com/pivotal-cf/om/releases/download/0.38.0/om-linux && \
   chmod +x om && \
-  sudo mv om /usr/local/bin/
+  mv om /usr/local/bin/
   
 wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-4.0.1-linux-amd64 && \
   chmod +x bosh && \
-  sudo mv bosh /usr/local/bin/
+  mv bosh /usr/local/bin/
+```
+
+Remember to return to your previous shell:
+
+```bash
+exit
 ```
 
 ## Clone _this_ repo
