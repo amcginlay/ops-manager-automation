@@ -213,7 +213,7 @@ IMPORTED_VERSION=2.2.1 ./scripts/configure-director-gcp.sh
 
 # download stemcells and products - 25GB of downloads will take time!
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.2.0" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/download-product.sh
-PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.1.2" DOWNLOAD_REGEX="Pivotal Container Service" ./scripts/download-product.sh
+PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.1.4" DOWNLOAD_REGEX="Pivotal Container Service" ./scripts/download-product.sh
 PRODUCT_NAME="MySQL for PCF v2" PRODUCT_VERSION="2.3.1" DOWNLOAD_REGEX="MySQL for PCF v2" ./scripts/download-product.sh
 PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.2.3" DOWNLOAD_REGEX="PCF Healthwatch$" ./scripts/download-product.sh
 PRODUCT_NAME="RabbitMQ for PCF" PRODUCT_VERSION="1.12.7" DOWNLOAD_REGEX="RabbitMQ for PCF$" ./scripts/download-product.sh
