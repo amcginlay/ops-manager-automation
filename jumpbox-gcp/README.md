@@ -11,11 +11,16 @@ From within your _pristine_ GCP project, open the Cloud Shell.
 
 ![gcp_cli_launch](gcp_cli_launch.png)
 
-From your Cloud Shell session, execute the following to create your 
-jumpbox:
+From your Cloud Shell session, execute the following `gcloud` command 
+to create your jumpbox.
+
+If you would prefer to create and/or connect to your jumpbox from your 
+local machine, you must first use `gcloud auth login` and you should 
+add the `--project [GCP_PROJECT_ID]` switch to the `gcloud compute` 
+commands in this section.
 
 ```bash
-gcloud compute instances create "jumpbox" \
+gcloud compute instances create "jbox-pcf" \
   --image-project "ubuntu-os-cloud" \
   --image-family "ubuntu-1804-lts" \
   --boot-disk-size "200" \
@@ -26,7 +31,7 @@ gcloud compute instances create "jumpbox" \
 SSH to your new jumpbox
 
 ```bash
-gcloud compute ssh ubuntu@jumpbox --zone us-central1-a
+gcloud compute ssh ubuntu@jbox-pcf --zone us-central1-a
 ```
 
 Initialize the `gcloud` CLI on the jumpbox:
