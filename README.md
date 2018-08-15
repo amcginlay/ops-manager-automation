@@ -198,7 +198,7 @@ configuration/deployment of the Ops Manager Director, Pivotal Application
 Service (PAS - Small Footprint) and a handful of common products.  This 
 assumes a valid `~/.env` file and a fresh install of the Ops Manager, 
 the version of which is compatible with the target PAS - in this case 
-v2.2.0.  These steps incorporate both a PivNet download and an Ops 
+v2.2.x.  These steps incorporate both a PivNet download and an Ops 
 Manager import which could take a long time to complete.  As the script 
 incorporates large downloads/imports, we recommend you only run this 
 script from a Jumpbox VM alongside your targeted Ops Manager.
@@ -210,17 +210,6 @@ IMPORTED_VERSION=2.2.1 ./scripts/configure-director-gcp.sh
 
 # create certificate and key (if necessary)
 ./scripts/mk-ssl-cert-key.sh
-
-# download stemcells and products - 25GB of downloads will take time!
-PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.2.0" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/download-product.sh
-PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.1.4" DOWNLOAD_REGEX="Pivotal Container Service" ./scripts/download-product.sh
-PRODUCT_NAME="MySQL for PCF v2" PRODUCT_VERSION="2.3.1" DOWNLOAD_REGEX="MySQL for PCF v2" ./scripts/download-product.sh
-PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.2.3" DOWNLOAD_REGEX="PCF Healthwatch$" ./scripts/download-product.sh
-PRODUCT_NAME="RabbitMQ for PCF" PRODUCT_VERSION="1.12.7" DOWNLOAD_REGEX="RabbitMQ for PCF$" ./scripts/download-product.sh
-PRODUCT_NAME="Redis for PCF" PRODUCT_VERSION="1.12.1" DOWNLOAD_REGEX="Redis for PCF$" ./scripts/download-product.sh
-PRODUCT_NAME="Single Sign-On for PCF" PRODUCT_VERSION="1.6.0" DOWNLOAD_REGEX="Pivotal_Single_Sign-On_Service" ./scripts/download-product.sh
-PRODUCT_NAME="Pivotal Cloud Foundry Service Broker for AWS" PRODUCT_VERSION="1.4.8" DOWNLOAD_REGEX="Service Broker for AWS" ./scripts/download-product.sh
-PRODUCT_NAME="Spring Cloud Services for PCF" PRODUCT_VERSION="1.5.6" DOWNLOAD_REGEX="Spring Cloud Services Product Installer" ./scripts/download-product.sh
 
 # import required stemcells
 PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3541.34" DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" ./scripts/import-product.sh
