@@ -132,7 +132,7 @@ OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --
 ```bash
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
 DOWNLOAD_REGEX="GCP Terraform Templates" \
-PRODUCT_VERSION=2.2.1 \
+PRODUCT_VERSION=2.2.2 \
   ./scripts/download-product.sh
     
 unzip ./downloads/elastic-runtime*/terraforming-gcp-*.zip -d .
