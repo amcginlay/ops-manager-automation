@@ -121,7 +121,7 @@ gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
 ```bash
 PRODUCT_NAME="Pivotal Cloud Foundry Operations Manager" \
 DOWNLOAD_REGEX="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
-PRODUCT_VERSION=2.2.1 \
+PRODUCT_VERSION=2.2.2 \
   ./scripts/download-product.sh
 
 OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --path /us)
