@@ -144,7 +144,7 @@ Example usage:
 
 ```no-highlight
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
-PRODUCT_VERSION="2.2.0" \
+PRODUCT_VERSION="2.2.2" \
 DOWNLOAD_REGEX="Small Footprint PAS" \
   ./scripts/import-product.sh
 ```
@@ -172,7 +172,7 @@ click.
 Example usage:
 
 ```no-highlight
-IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.0" ./scripts/stage-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.2" ./scripts/stage-product.sh
 ```
 
 ### `configure-product.sh`
@@ -184,7 +184,7 @@ directories to gain a technical appreciation for how this is achieved.
 Example usage:
 
 ```no-highlight
-IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.0" ./scripts/configure-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.2.2" ./scripts/configure-product.sh
 ```
 
 _Note_ you may choose to run `apply-changes.sh` once after each call to 
@@ -206,7 +206,7 @@ script from a Jumpbox VM alongside your targeted Ops Manager.
 ```no-highlight
 # prepare director
 ./scripts/configure-authentication.sh
-IMPORTED_VERSION=2.2.1 ./scripts/configure-director-gcp.sh
+IMPORTED_VERSION=2.2.2 ./scripts/configure-director-gcp.sh
 
 # create certificate and key (if necessary)
 ./scripts/mk-ssl-cert-key.sh
