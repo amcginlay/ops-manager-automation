@@ -19,7 +19,7 @@ PRODUCT_FILE_ID=$(curl \
   --fail \
   --silent \
   ${API}/products/${PRODUCT_SLUG}/releases/${RELEASE_ID} | \
-  jq -r --arg DOWNLOAD_REGEX "${DOWNLOAD_REGEX}" '.product_files[] | select(.sha256 | length>0) | select(.name | match($DOWNLOAD_REGEX)) | .id')
+    jq -r --arg DOWNLOAD_REGEX "${DOWNLOAD_REGEX}" '.product_files[] | select(.sha256 | length>0) | select(.name | match($DOWNLOAD_REGEX)) | .id')
 
 TARGETDIR=${SCRIPTDIR}/../downloads/${PRODUCT_SLUG}_${PRODUCT_VERSION}_${PRODUCT_FILE_ID}
 
@@ -36,7 +36,7 @@ for FILENAME in $(ls ${TARGETDIR}); do
     OM_CMD="upload-stemcell -f -s"
   fi
   
-  ${OM} -k -t ${PCF_OPSMAN_FQDN} -u "admin" -p ${PCF_OPSMAN_ADMIN_PASSWD} \
+  om -k -t ${PCF_OPSMAN_FQDN} -u "admin" -p ${PCF_OPSMAN_ADMIN_PASSWD} \
     ${OM_CMD} ${TARGETDIR}/${FILENAME}
 
   echo "Imported ${PRODUCT_SLUG}_${PRODUCT_VERSION}_${PRODUCT_FILE_ID}/${FILENAME}"

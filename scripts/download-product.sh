@@ -26,8 +26,8 @@ if [ ! -d ${TARGETDIR} ]; then
   mkdir -p ${TARGETDIR}
 fi
 
-if ${PIVNET} login --api-token=${PCF_PIVNET_UAA_TOKEN}; then
-  ${PIVNET} download-product-files \
+if pivnet login --api-token=${PCF_PIVNET_UAA_TOKEN}; then
+  pivnet download-product-files \
     -p ${PRODUCT_SLUG} \
     -r ${PRODUCT_VERSION} \
     -i ${PRODUCT_FILE_ID} \

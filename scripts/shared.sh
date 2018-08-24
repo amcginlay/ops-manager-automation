@@ -10,8 +10,23 @@ SCRIPTDIR=$(cd $(dirname "$0") && pwd -P)
 VARS=${HOME}/.env
 
 if ! which erb > /dev/null; then
-	echo "Embedded Ruby (erb) not installed on host machine.  (https://www.ruby-lang.org/en/documentation/installation)"
-	exit 1
+  echo "error: scripts required 'erb' (Embedded Ruby) to be installed (https://www.ruby-lang.org/en/documentation/installation)"
+  exit 1
+fi
+
+if ! which om > /dev/null; then
+  echo "error: scripts require 'om' to be installed (https://github.com/pivotal-cf/om/releases)"
+  exit 1
+fi
+
+if ! which pivnet > /dev/null; then
+  echo "error: scripts require 'pivnet' to be installed (https://github.com/pivotal-cf/pivnet-cli/releases)"
+  exit 1
+fi
+
+if ! which jq > /dev/null; then
+  echo "error: scripts require 'jq' to be installed (https://github.com/stedolan/jq/releases)"
+  exit 1
 fi
 
 if [ ! -f ${VARS} ]; then
@@ -35,19 +50,6 @@ fi
 if [ -f ./${PCF_DOMAIN}.crt ]; then
 	export PCF_DOMAIN_CRT=$(cat ./${PCF_DOMAIN}.crt)
 fi
-
-# for platform independence
-OM_BIN=om-linux
-PIVNET_BIN=pivnet-linux
-JQ_BIN=jq-linux
-if [ "$(uname -s)" == "Darwin" ]; then
-  OM_BIN=om-darwin
-  PIVNET_BIN=pivnet-darwin
-  JQ_BIN=jq-darwin
-fi
-OM=${SCRIPTDIR}/../bin/${OM_BIN}
-PIVNET=${SCRIPTDIR}/../bin/${PIVNET_BIN}
-JQ=${SCRIPTDIR}/../bin/${JQ_BIN}
 
 if [ -z "${TMPDIR:-}" ]; then 
   TMPDIR=/tmp

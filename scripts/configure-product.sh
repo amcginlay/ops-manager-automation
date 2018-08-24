@@ -27,12 +27,12 @@ erb -T - ${TEMPLATES}/resources.json.erb > ${TMPDIR}/resources.json
   erb -T - ${TEMPLATES}/errands.json.erb > ${TMPDIR}/errands.json
 
 # some products need network configured in isolation so configure in two steps
-${OM} -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
+om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
   configure-product \
     --product-name "${IMPORTED_NAME}" \
     --product-network "$(cat ${TMPDIR}/network.json)"
 
-${OM} -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
+om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
   configure-product \
     --product-name "${IMPORTED_NAME}" \
     --product-properties "$(cat ${TMPDIR}/properties.json)" \
@@ -40,7 +40,7 @@ ${OM} -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
 
 # if file present, configure errands (via Om curl)
 if [ -s ${TEMPLATES}/${IMPORTED_NAME}/errands.json.erb ]; then
-  ${OM} -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
+  om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
     curl --silent \
       --path /api/v0/staged/products/${PRODUCT_GUID}/errands \
       --request "PUT" \
