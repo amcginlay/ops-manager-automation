@@ -34,7 +34,7 @@ You will need:
 - [Step 1](./jumpbox-gcp/README.md) - Establish an SSH session on a pristine Ubuntu jumpbox, authenticated with `gcloud auth login`
 - [Step 2](./ops-manager-gcp/README.md) - Install a fresh instance of Ops Manager
 
-Now you can continue to learn about the scripts or jump right in with [some examples](#x) ...
+Now you can continue to learn about the scripts or jump right in with [some examples](#putting-it-all-together) ...
 
 ## Task Scripts
 
