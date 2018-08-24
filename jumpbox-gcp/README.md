@@ -45,3 +45,7 @@ our `gcloud` CLI jumpbox session into a local browser in order to select
 the account you have registered for use with Google Cloud. Additionally, 
 you'll need copy-paste the verification code back into your jumpbox 
 session to complete the login sequence.
+
+# Next Step
+
+- [Step 2](../ops-manager-gcp/README.md) - Install a fresh instance of Ops Manager
