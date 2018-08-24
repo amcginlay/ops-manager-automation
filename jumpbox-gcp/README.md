@@ -1,4 +1,4 @@
-# [ops-manager-automation](../README.md) / jumpbox-gcp
+# Step 1 - [ops-manager-automation](../README.md) / jumpbox-gcp
 
 ## Prerequisites
 
