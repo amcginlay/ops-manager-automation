@@ -28,6 +28,11 @@ You will need:
 - An active Pivotal Network account.  Sign up [here](https://account.run.pivotal.io/z/uaa/sign-up)
 - An active GCP account.  Sign up [here](https://console.cloud.google.com/freetrial)
 - A pristine GCP project
+- The following CLI tools installed:
+  - [Embedded Ruby (erb)](https://www.ruby-lang.org/en/documentation/installation)
+  - [om](https://github.com/pivotal-cf/om/releases)
+  - [pivnet](https://github.com/pivotal-cf/pivnet-cli/releases)
+  - [jq](https://github.com/stedolan/jq/releases)
 
 ## First Steps
 
