@@ -196,4 +196,4 @@ The above step is fully dependent on having a ${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN
 
 # Next Step
 
-- [Return to the main document](../blob/master/README.md#first-steps)
+- [Return to the main document](../README.md#first-steps)
