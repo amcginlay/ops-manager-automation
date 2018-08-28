@@ -15,9 +15,10 @@ if [ -z ${PCF_DOMAIN_KEY+x} ]; then
 fi
 
 PRODUCT_GUID=$(
-  ${OM} -k -t ${PCF_OPSMAN_FQDN} -u "admin" -p ${PCF_OPSMAN_ADMIN_PASSWD} \
+  om -k -t ${PCF_OPSMAN_FQDN} -u "admin" -p ${PCF_OPSMAN_ADMIN_PASSWD} \
     curl --silent \
-      --path "/api/v0/staged/products" | ${JQ} -r '.[] | select(.type == "'${IMPORTED_NAME}'") | .guid'
+      --path "/api/v0/staged/products" | 
+        jq -r '.[] | select(.type == "'${IMPORTED_NAME}'") | .guid'
 )
 
 erb -T - ${TEMPLATES}/network.json.erb > ${TMPDIR}/network.json
