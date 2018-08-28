@@ -17,7 +17,7 @@ fi
 PRODUCT_GUID=$(
   om -k -t ${PCF_OPSMAN_FQDN} -u "admin" -p ${PCF_OPSMAN_ADMIN_PASSWD} \
     curl --silent \
-      --path "/api/v0/staged/products" | 
+      --path "/api/v0/staged/products" | \
         jq -r '.[] | select(.type == "'${IMPORTED_NAME}'") | .guid'
 )
 
