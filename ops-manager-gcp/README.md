@@ -45,6 +45,10 @@ wget -O om https://github.com/pivotal-cf/om/releases/download/0.38.0/om-linux &&
   chmod +x om && \
   mv om /usr/local/bin/
   
+wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.53/pivnet-linux-amd64-0.0.53 && \
+  chmod +x pivnet && \
+  mv pivnet /usr/local/bin/
+  
 wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-5.1.1-linux-amd64 && \
   chmod +x bosh && \
   mv bosh /usr/local/bin/
