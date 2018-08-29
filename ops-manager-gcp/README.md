@@ -53,7 +53,7 @@ wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-5.1.1-linux-am
 Verify that these tools were installed:
 
 ```bash
-which uuac terraform om bosh
+which uuac && which terraform && which om && which bosh
 ```
 
 Remember to return to the shell with regular privileges:
