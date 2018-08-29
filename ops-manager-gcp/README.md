@@ -50,7 +50,7 @@ wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-5.1.1-linux-am
   mv bosh /usr/local/bin/
 ```
 
-Remember to return to your previous shell:
+Remember to return to the shell with regular privileges:
 
 ```bash
 exit
