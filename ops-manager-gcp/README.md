@@ -50,6 +50,12 @@ wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-5.1.1-linux-am
   mv bosh /usr/local/bin/
 ```
 
+Verify that these tools were installed:
+
+```bash
+which uuac terraform om bosh
+```
+
 Remember to return to the shell with regular privileges:
 
 ```bash
