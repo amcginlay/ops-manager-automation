@@ -37,19 +37,19 @@ apt update && sudo apt --yes install unzip jq build-essential ruby-dev
 
 gem install --no-ri --no-rdoc cf-uaac
 
-wget -O terraform.zip https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip && \
+wget -O terraform.zip https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip && \
   unzip terraform.zip && \
   mv terraform /usr/local/bin
   
-wget -O om https://github.com/pivotal-cf/om/releases/download/0.38.0/om-linux && \
+wget -O om https://github.com/pivotal-cf/om/releases/download/0.41.0/om-linux && \
   chmod +x om && \
   mv om /usr/local/bin/
   
-wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.53/pivnet-linux-amd64-0.0.53 && \
+wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.54/pivnet-linux-amd64-0.0.54 && \
   chmod +x pivnet && \
   mv pivnet /usr/local/bin/
   
-wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-5.1.1-linux-amd64 && \
+wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-5.3.1-linux-amd64 && \
   chmod +x bosh && \
   mv bosh /usr/local/bin/
 ```
@@ -131,7 +131,7 @@ gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
 ```bash
 PRODUCT_NAME="Pivotal Cloud Foundry Operations Manager" \
 DOWNLOAD_REGEX="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
-PRODUCT_VERSION=2.2.2 \
+PRODUCT_VERSION=2.3.0 \
   ./scripts/download-product.sh
 
 OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --path /us)
@@ -142,7 +142,7 @@ OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --
 ```bash
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
 DOWNLOAD_REGEX="GCP Terraform Templates" \
-PRODUCT_VERSION=2.2.2 \
+PRODUCT_VERSION=2.3.0 \
   ./scripts/download-product.sh
     
 unzip ./downloads/elastic-runtime*/terraforming-gcp-*.zip -d .
