@@ -1,0 +1,52 @@
+{
+  ".cloud_controller.system_domain": {
+    "value": "sys.<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>.<%= ENV.fetch('PCF_DOMAIN_NAME') %>"
+  },
+  ".cloud_controller.apps_domain": {
+    "value": "apps.<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>.<%= ENV.fetch('PCF_DOMAIN_NAME') %>"
+  },
+  ".properties.networking_poe_ssl_certs": {
+    "value": [
+      {
+        "name": "certificate",
+        "certificate": {
+          "private_key_pem": <%= ENV.fetch('PCF_DOMAIN_KEY').dump %>,
+          "cert_pem": <%= ENV.fetch('PCF_DOMAIN_CRT').dump %>
+        }
+      }
+    ]
+  },
+  ".properties.gorouter_ssl_ciphers": {
+    "value": "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384"
+  },
+  ".properties.haproxy_ssl_ciphers": {
+    "value": "DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384"
+  },
+  ".properties.haproxy_forward_tls": {
+    "value": "disable"
+  },
+  ".ha_proxy.skip_cert_verify": {
+    "value": true
+  },
+  ".properties.security_acknowledgement": {
+    "value": "X"
+  },
+  ".uaa.service_provider_key_credentials": {
+    "value": {
+      "cert_pem": <%= ENV.fetch('PCF_DOMAIN_CRT').dump %>,
+      "private_key_pem": <%= ENV.fetch('PCF_DOMAIN_KEY').dump %>
+    }
+  },
+  ".properties.credhub_key_encryption_passwords": {
+    "value": [
+      {
+        "name": "default",
+        "key": { "secret": <%= (ENV.fetch('PCF_OPSMAN_ADMIN_PASSWD') * 3)[0..25].dump %> },
+        "primary": true
+      }
+    ]
+  },
+  ".mysql_monitor.recipient_email": {
+    "value": "fbloggs@gmail.com"
+  }
+}
