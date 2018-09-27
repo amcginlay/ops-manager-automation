@@ -221,6 +221,7 @@ IMPORTED_VERSION=2.3.0 ./scripts/configure-director-gcp.sh
 ./scripts/mk-ssl-cert-key.sh
 
 # import required stemcells
+PRODUCT_NAME="Stemcells for PCF (Ubuntu Xenial)" PRODUCT_VERSION="97.18" DOWNLOAD_REGEX="Google Cloud Platform" ./scripts/import-product.sh
 PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3541.34" DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" ./scripts/import-product.sh
 PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3468.51" DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" ./scripts/import-product.sh
 PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3586.27" DOWNLOAD_REGEX="google" ./scripts/import-product.sh
