@@ -32,7 +32,7 @@ fi
 # just cycle contents of the target directory because we don't know the name of the file
 for FILENAME in $(ls ${TARGETDIR}); do
   OM_CMD="upload-product -p"
-  if [ "${PRODUCT_SLUG}" == "stemcells" ] ; then
+  if [[ "${PRODUCT_SLUG}" == stemcells* ]] ; then
     OM_CMD="upload-stemcell -f -s"
   fi
   
