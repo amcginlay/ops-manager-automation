@@ -1,0 +1,5 @@
+{
+  "project": "<%= ENV.fetch('PCF_PROJECT_ID') %>",
+  "associated_service_account": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-opsman@<%= ENV.fetch('PCF_PROJECT_ID') %>.iam.gserviceaccount.com",
+  "default_deployment_tag": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>"
+}
