@@ -33,7 +33,7 @@ sudo su -
 Install tools:
 
 ```bash
-apt update && sudo apt --yes install unzip jq build-essential ruby-dev
+apt update && apt --yes install unzip jq build-essential ruby-dev
 
 gem install --no-ri --no-rdoc cf-uaac
 
