@@ -227,9 +227,9 @@ PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3468.51" DOWNLOAD_REGEX="Ubunt
 PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3586.27" DOWNLOAD_REGEX="google" ./scripts/import-product.sh
 
 # install Small Footprint PAS
-PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.2.2" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/import-product.sh
-IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.0" ./scripts/stage-product.sh
-IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.0" ./scripts/configure-product.sh
+PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.3.3" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/import-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/stage-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/configure-product.sh
 
 # install PKS
 PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.1.4" DOWNLOAD_REGEX="pivotal-container-service" ./scripts/import-product.sh
