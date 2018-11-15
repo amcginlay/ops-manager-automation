@@ -104,7 +104,7 @@ technical appreciation for how this is achieved.
 Example usage:
 
 ```no-highlight
-IMPORTED_VERSION=2.3.0 ./scripts/configure-director-gcp.sh
+IMPORTED_VERSION=2.3.5 ./scripts/configure-director-gcp.sh
 ```
 
 ### `apply-changes-director.sh` and `apply-changes.sh`
@@ -134,7 +134,7 @@ Example usage:
 
 ```no-highlight
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
-PRODUCT_VERSION="2.3.0" \
+PRODUCT_VERSION="2.3.3" \
 DOWNLOAD_REGEX="Small Footprint PAS" \
   ./scripts/download-product.sh
 ```
@@ -153,7 +153,7 @@ Example usage:
 
 ```no-highlight
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
-PRODUCT_VERSION="2.3.0" \
+PRODUCT_VERSION="2.3.3" \
 DOWNLOAD_REGEX="Small Footprint PAS" \
   ./scripts/import-product.sh
 ```
@@ -181,7 +181,7 @@ click.
 Example usage:
 
 ```no-highlight
-IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.0" ./scripts/stage-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/stage-product.sh
 ```
 
 ### `configure-product.sh`
@@ -193,7 +193,7 @@ directories to gain a technical appreciation for how this is achieved.
 Example usage:
 
 ```no-highlight
-IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.0" ./scripts/configure-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/configure-product.sh
 ```
 
 _Note_ you may choose to run `apply-changes.sh` once after each call to 
@@ -215,7 +215,7 @@ script from a Jumpbox VM alongside your targeted Ops Manager.
 ```no-highlight
 # prepare director
 ./scripts/configure-authentication.sh
-IMPORTED_VERSION=2.3.0 ./scripts/configure-director-gcp.sh
+IMPORTED_VERSION=2.3.3 ./scripts/configure-director-gcp.sh
 
 # create certificate and key (if necessary)
 ./scripts/mk-ssl-cert-key.sh
@@ -232,9 +232,9 @@ IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/stage-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/configure-product.sh
 
 # install PKS
-PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.1.4" DOWNLOAD_REGEX="pivotal-container-service" ./scripts/import-product.sh
-IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.1.4-build.5" ./scripts/stage-product.sh
-IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.1.4-build.5" ./scripts/configure-product.sh
+PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.2.1" DOWNLOAD_REGEX="pivotal-container-service" ./scripts/import-product.sh
+IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.1-build.9" ./scripts/stage-product.sh
+IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.1-build.9" ./scripts/configure-product.sh
 
 # install MySQL
 PRODUCT_NAME="MySQL for PCF" PRODUCT_VERSION="2.3.1" DOWNLOAD_REGEX="^MySQL for PCF" ./scripts/import-product.sh
