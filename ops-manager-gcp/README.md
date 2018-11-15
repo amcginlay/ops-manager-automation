@@ -167,13 +167,13 @@ zones               = ["${PCF_AZ_2}", "${PCF_AZ_1}", "${PCF_AZ_3}"]
 dns_suffix          = "${PCF_DOMAIN_NAME}"
 opsman_image_url    = "https://storage.googleapis.com/${OPSMAN_IMAGE}"
 ssl_cert            = <<SSL_CERT
-$(cat ../${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.crt)
+$(cat ../../${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.crt)
 SSL_CERT
 ssl_private_key     = <<SSL_KEY
-$(cat ../${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.key)
+$(cat ../../${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.key)
 SSL_KEY
 service_account_key = <<SERVICE_ACCOUNT_KEY
-$(cat ../gcp_credentials.json)
+$(cat ../../gcp_credentials.json)
 SERVICE_ACCOUNT_KEY
 EOF
 ```
