@@ -157,7 +157,7 @@ unzip ./downloads/elastic-runtime*/terraforming-gcp-*.zip -d .
 ## Create the `terraform.tfvars` file
 
 ```bash
-cd ./pivotal-cf-terraforming-gcp-*
+cd ./pivotal-cf-terraforming-gcp-*/terraforming-control-plane
 
 cat > ./terraform.tfvars <<-EOF
 env_name            = "${PCF_SUBDOMAIN_NAME}"
@@ -166,10 +166,6 @@ region              = "${PCF_REGION}"
 zones               = ["${PCF_AZ_2}", "${PCF_AZ_1}", "${PCF_AZ_3}"]
 dns_suffix          = "${PCF_DOMAIN_NAME}"
 opsman_image_url    = "https://storage.googleapis.com/${OPSMAN_IMAGE}"
-create_gcs_buckets  = "false"
-external_database   = "false"
-isolation_segment   = "false"
-pks                 = "true"
 ssl_cert            = <<SSL_CERT
 $(cat ../${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}.crt)
 SSL_CERT
