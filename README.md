@@ -215,7 +215,7 @@ script from a Jumpbox VM alongside your targeted Ops Manager.
 ```no-highlight
 # prepare director
 ./scripts/configure-authentication.sh
-IMPORTED_VERSION=2.3.3 ./scripts/configure-director-gcp.sh
+IMPORTED_VERSION=2.3.5 ./scripts/configure-director-gcp.sh
 
 # create certificate and key (if necessary)
 ./scripts/mk-ssl-cert-key.sh
