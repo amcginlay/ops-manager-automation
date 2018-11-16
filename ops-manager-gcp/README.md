@@ -164,9 +164,7 @@ unzip ./downloads/elastic-runtime_${PAS_VERSION}_*/terraforming-gcp-*.zip -d .
 ## Create the `terraform.tfvars` file
 
 ```bash
-cd ./pivotal-cf-terraforming-gcp-*/
-
-cat > ./terraform.tfvars <<-EOF
+cat > ~/ops-manager-automation/pivotal-cf-terraforming-gcp-*/terraform.tfvars <<-EOF
 env_name            = "${PCF_SUBDOMAIN_NAME}"
 project             = "$(gcloud config get-value core/project)"
 region              = "${PCF_REGION}"
@@ -188,8 +186,8 @@ EOF
 ## Run terraform to deploy your Ops Manager VM
 
 ```bash
-cd ./terraforming-control-plane/
-ln -s ../terraform.tfvars .
+cd ~/ops-manager-automation/pivotal-cf-terraforming-gcp-*/terraforming-control-plane/
+ln -s ~/ops-manager-automation/pivotal-cf-terraforming-gcp-*/terraform.tfvars .
 terraform init
 terraform apply --auto-approve
 ```
