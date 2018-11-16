@@ -31,19 +31,23 @@ sudo apt update && sudo apt --yes install unzip jq build-essential ruby-dev
 
 sudo gem install --no-ri --no-rdoc cf-uaac
 
-wget -O terraform.zip https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip && \
+VERSION=0.11.10
+wget -O terraform.zip https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip && \
   unzip terraform.zip && \
   sudo mv terraform /usr/local/bin
-  
-wget -O om https://github.com/pivotal-cf/om/releases/download/0.44.0/om-linux && \
+
+VERSION=0.44.0
+wget -O om https://github.com/pivotal-cf/om/releases/download/${VERSION}/om-linux && \
   chmod +x om && \
   sudo mv om /usr/local/bin/
-  
-wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55 && \
+
+VERSION=0.0.55
+wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${VERSION}/pivnet-linux-amd64-${VERSION} && \
   chmod +x pivnet && \
   sudo mv pivnet /usr/local/bin/
   
-wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-5.4.0-linux-amd64 && \
+VERSION=5.4.0
+wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${VERSION}-linux-amd64 && \
   chmod +x bosh && \
   sudo mv bosh /usr/local/bin/
 ```
