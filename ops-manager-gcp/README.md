@@ -55,7 +55,7 @@ wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${VERSION}-lin
 Verify that these tools were installed:
 
 ```bash
-which uaac; which terraform; which om; which pivnet; which bosh
+which unzip; which jq; which uaac; which terraform; which om; which pivnet; which bosh
 ```
 
 ## Clone _this_ repo
