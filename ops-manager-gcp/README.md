@@ -54,12 +54,6 @@ Verify that these tools were installed:
 which uaac; which terraform; which om; which pivnet; which bosh
 ```
 
-Remember to return to the shell with regular privileges:
-
-```bash
-exit
-```
-
 ## Clone _this_ repo
 
 From the jumpbox:
