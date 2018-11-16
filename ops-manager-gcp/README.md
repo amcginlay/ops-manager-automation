@@ -141,7 +141,8 @@ OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --
 The Terraform scripts which deploy the Ops Manager are also responsible for building the
 IaaS plumbing to support PAS & PKS.
 That is why we turn our attention to the PAS product when sourcing the Terraform scripts.
-Ops Manager and PAS versions are often in-sync but this is not enforced.
+
+Be aware that Ops Manager and PAS versions are often in-sync but this is not enforced.
 
 ```bash
 PAS_VERSION=2.3.3
