@@ -127,6 +127,7 @@ gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
 
 ```bash
 OPSMAN_VERSION=2.3.5
+
 PRODUCT_NAME="Pivotal Cloud Foundry Operations Manager" \
 DOWNLOAD_REGEX="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
 PRODUCT_VERSION=${OPSMAN_VERSION} \
@@ -137,8 +138,14 @@ OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --
 
 ## Download and unzip the Terraform scripts from Pivotal Network
 
+The Terraform scripts which deploy the Ops Manager are also responsible for building the
+IaaS plumbing to support PAS & PKS.
+That is why we turn our attention to the PAS product when sourcing the Terraform scripts.
+Ops Manager and PAS versions are often in-sync but this is not enforced.
+
 ```bash
 PAS_VERSION=2.3.3
+
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
 DOWNLOAD_REGEX="GCP Terraform Templates" \
 PRODUCT_VERSION=${PAS_VERSION} \
