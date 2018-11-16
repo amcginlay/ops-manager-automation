@@ -152,7 +152,7 @@ DOWNLOAD_REGEX="GCP Terraform Templates" \
 PRODUCT_VERSION=${PAS_VERSION} \
   ./scripts/download-product.sh
     
-unzip ./downloads/elastic-runtime*/terraforming-gcp-*.zip -d .
+unzip ./downloads/elastic-runtime_${PAS_VERSION}*/terraforming-gcp-*.zip -d .
 ```
 
 ## Generate a wildcard SAN certificate
