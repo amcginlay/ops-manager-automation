@@ -133,7 +133,7 @@ DOWNLOAD_REGEX="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
 PRODUCT_VERSION=${OPSMAN_VERSION} \
   ./scripts/download-product.sh
 
-OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --path /us)
+OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager_${OPSMAN_VERSION}_*/OpsManager*onGCP.yml --path /us)
 ```
 
 ## Download and unzip the Terraform scripts from Pivotal Network
@@ -152,7 +152,7 @@ DOWNLOAD_REGEX="GCP Terraform Templates" \
 PRODUCT_VERSION=${PAS_VERSION} \
   ./scripts/download-product.sh
     
-unzip ./downloads/elastic-runtime_${PAS_VERSION}*/terraforming-gcp-*.zip -d .
+unzip ./downloads/elastic-runtime_${PAS_VERSION}_*/terraforming-gcp-*.zip -d .
 ```
 
 ## Generate a wildcard SAN certificate
