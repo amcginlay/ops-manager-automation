@@ -126,9 +126,10 @@ gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
 ## Download an Ops Manager image identifier from Pivotal Network
 
 ```bash
+OPSMAN_VERSION=2.3.5
 PRODUCT_NAME="Pivotal Cloud Foundry Operations Manager" \
 DOWNLOAD_REGEX="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
-PRODUCT_VERSION=2.3.5 \
+PRODUCT_VERSION=${OPSMAN_VERSION} \
   ./scripts/download-product.sh
 
 OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --path /us)
@@ -137,9 +138,10 @@ OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager*/OpsManager*onGCP.yml --
 ## Download and unzip the Terraform scripts from Pivotal Network
 
 ```bash
+PAS_VERSION=2.3.3
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
 DOWNLOAD_REGEX="GCP Terraform Templates" \
-PRODUCT_VERSION=2.3.3 \
+PRODUCT_VERSION=${PAS_VERSION} \
   ./scripts/download-product.sh
     
 unzip ./downloads/elastic-runtime*/terraforming-gcp-*.zip -d .
