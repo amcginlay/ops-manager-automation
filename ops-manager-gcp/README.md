@@ -27,14 +27,15 @@ gcloud services enable sqladmin.googleapis.com
 Install tools:
 
 ```bash
-sudo apt update
+sudo apt update --yes && \
+sudo apt install --yes unzip && \
+sudo apt install --yes jq && \
+sudo apt install --yes build-essential && \
+sudo apt install --yes ruby-dev && \
+sudo gem install --no-ri --no-rdoc cf-uaac
 ```
 
 ```bash
-sudo apt --yes install unzip jq build-essential ruby-dev
-
-sudo gem install --no-ri --no-rdoc cf-uaac
-
 VERSION=0.11.10
 wget -O terraform.zip https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip && \
   unzip terraform.zip && \
