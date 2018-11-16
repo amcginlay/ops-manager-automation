@@ -24,34 +24,28 @@ gcloud services enable sqladmin.googleapis.com
 
 ## Install some essential tools
 
-Elevate privileges:
-
-```bash
-sudo su -
-```
-
 Install tools:
 
 ```bash
-apt update && apt --yes install unzip jq build-essential ruby-dev
+sudo apt update && sudo apt --yes install unzip jq build-essential ruby-dev
 
-gem install --no-ri --no-rdoc cf-uaac
+sudo gem install --no-ri --no-rdoc cf-uaac
 
-wget -O terraform.zip https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip && \
+wget -O terraform.zip https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip && \
   unzip terraform.zip && \
-  mv terraform /usr/local/bin
+  sudo mv terraform /usr/local/bin
   
-wget -O om https://github.com/pivotal-cf/om/releases/download/0.41.0/om-linux && \
+wget -O om https://github.com/pivotal-cf/om/releases/download/0.44.0/om-linux && \
   chmod +x om && \
-  mv om /usr/local/bin/
+  sudo mv om /usr/local/bin/
   
-wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.54/pivnet-linux-amd64-0.0.54 && \
+wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55 && \
   chmod +x pivnet && \
-  mv pivnet /usr/local/bin/
+  sudo mv pivnet /usr/local/bin/
   
-wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-5.3.1-linux-amd64 && \
+wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-5.4.0-linux-amd64 && \
   chmod +x bosh && \
-  mv bosh /usr/local/bin/
+  sudo mv bosh /usr/local/bin/
 ```
 
 Verify that these tools were installed:
