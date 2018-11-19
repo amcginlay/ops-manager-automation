@@ -7,6 +7,8 @@ source ${SCRIPTDIR}/shared.sh
 set $(echo ${IMPORTED_VERSION} | tr '.' ' ')
 CONFIG_VERSION=${1}.${2}
 
+[ -z ${TARGET_PLATFORM} ]
+
 TEMPLATES=${SCRIPTDIR}/../config/director/${CONFIG_VERSION}/gcp
 
 erb -T - ${TEMPLATES}/iaas.json.erb > ${TMPDIR}/iaas.json
@@ -21,7 +23,11 @@ erb -T - ${TEMPLATES}/azs.json.erb > ${TMPDIR}/azs.json
 om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
    configure-director --az-configuration "$(cat ${TMPDIR}/azs.json)"
 
-erb -T - ${TEMPLATES}/networks.json.erb > ${TMPDIR}/networks.json
+if [ "${TARGET_PLATFORM}" == "pks" ]; then
+  erb -T - ${TEMPLATES}/networks.pks.json.erb > ${TMPDIR}/networks.json
+else
+  erb -T - ${TEMPLATES}/networks.pas.json.erb > ${TMPDIR}/networks.json
+fi
 om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
   configure-director --networks-configuration "$(cat ${TMPDIR}/networks.json)"
 
