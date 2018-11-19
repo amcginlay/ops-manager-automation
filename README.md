@@ -99,12 +99,14 @@ Example usage:
 This script should be used against an **freshly authenticated** Ops 
 Manager installation to turn the Ops Manager Director tile from "orange" 
 to "green".  Please inspect the `templates/director` directory to gain a 
-technical appreciation for how this is achieved.
+technical appreciation for how this is achieved.  Change `TARGET_PLATFORM=pas`
+to `TARGET_PLATFORM=pks` to switch between the target infrastructure of
+the two main platforms.
 
 Example usage:
 
 ```no-highlight
-IMPORTED_VERSION=2.3.5 ./scripts/configure-director-gcp.sh
+IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pas ./scripts/configure-director-gcp.sh
 ```
 
 ### `apply-changes-director.sh` and `apply-changes.sh`
@@ -213,9 +215,9 @@ incorporates large downloads/imports, we recommend you only run this
 script from a Jumpbox VM alongside your targeted Ops Manager.
 
 ```no-highlight
-# prepare director
+# prepare director (switch TARGET_PLATFORM to pks as appropriate)
 ./scripts/configure-authentication.sh
-IMPORTED_VERSION=2.3.5 ./scripts/configure-director-gcp.sh
+IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pas ./scripts/configure-director-gcp.sh
 
 # create certificate and key (if necessary)
 ./scripts/mk-ssl-cert-key.sh
