@@ -185,10 +185,20 @@ SERVICE_ACCOUNT_KEY
 EOF
 ```
 
+## Choose between PAS or PKS infrastructure
+
+When we run terraform it will lay down an Ops Manager instance alongside the infrastructure to support either PAS or PKS.
+Move to the appropriate directory now.
+
+```bash
+cd ~/ops-manager-automation/pivotal-cf-terraforming-gcp-*/terraforming-pas/
+# or
+cd ~/ops-manager-automation/pivotal-cf-terraforming-gcp-*/terraforming-pks/
+```
+
 ## Run terraform to deploy your Ops Manager VM
 
 ```bash
-cd ~/ops-manager-automation/pivotal-cf-terraforming-gcp-*/terraforming-control-plane/
 ln -s ~/ops-manager-automation/pivotal-cf-terraforming-gcp-*/terraform.tfvars .
 terraform init
 terraform apply --auto-approve
