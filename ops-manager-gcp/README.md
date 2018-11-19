@@ -164,7 +164,9 @@ unzip ./downloads/elastic-runtime_${PAS_VERSION}_*/terraforming-gcp-*.zip -d .
 ## Create the `terraform.tfvars` file
 
 ```bash
-cat > ~/ops-manager-automation/pivotal-cf-terraforming-gcp-*/terraform.tfvars <<-EOF
+cd ~/ops-manager-automation/pivotal-cf-terraforming-gcp-*/
+
+cat > terraform.tfvars <<-EOF
 env_name            = "${PCF_SUBDOMAIN_NAME}"
 project             = "$(gcloud config get-value core/project)"
 region              = "${PCF_REGION}"
