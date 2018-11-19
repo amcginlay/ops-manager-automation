@@ -2,9 +2,9 @@
   "icmp_checks_enabled": false,
   "networks": [
     {
-      "name": "management",
+      "name": "infrastructure",
       "subnets": [{
-        "iaas_identifier": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pcf-network/<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-management-subnet/<%= ENV.fetch('PCF_REGION') %>",
+        "iaas_identifier": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pcf-network/<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-infrastructure-subnet/<%= ENV.fetch('PCF_REGION') %>",
         "cidr": "10.0.0.0/26",
         "reserved_ip_ranges": "10.0.0.1-10.0.0.9",
         "dns": "169.254.169.254",
