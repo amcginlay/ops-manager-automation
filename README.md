@@ -215,28 +215,31 @@ incorporates large downloads/imports, we recommend you only run this
 script from a Jumpbox VM alongside your targeted Ops Manager.
 
 ```no-highlight
-# prepare director (switch TARGET_PLATFORM to pks as appropriate)
+# indicate target platform (PAS or PKS)
+
+# setup authentication
 ./scripts/configure-authentication.sh
-IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pas ./scripts/configure-director-gcp.sh
 
 # create certificate and key (if necessary)
 ./scripts/mk-ssl-cert-key.sh
+
+# install Small Footprint PAS (pre-provision appropriate TARGET_PLATFORM)
+IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pas ./scripts/configure-director-gcp.sh
+PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.3.3" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/import-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/stage-product.sh
+IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/configure-product.sh
+
+# install PKS (pre-provision appropriate TARGET_PLATFORM)
+#IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
+#PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.2.2" DOWNLOAD_REGEX="Pivotal Container Service" ./scripts/import-product.sh
+#IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/stage-product.sh
+#IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/configure-product.sh
 
 # import required stemcells
 PRODUCT_NAME="Stemcells for PCF (Ubuntu Xenial)" PRODUCT_VERSION="97.18" DOWNLOAD_REGEX="Google Cloud Platform" ./scripts/import-product.sh
 PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3541.34" DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" ./scripts/import-product.sh
 PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3468.51" DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" ./scripts/import-product.sh
 PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3586.27" DOWNLOAD_REGEX="google" ./scripts/import-product.sh
-
-# install Small Footprint PAS
-PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.3.3" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/import-product.sh
-IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/stage-product.sh
-IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/configure-product.sh
-
-# install PKS
-PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.2.2" DOWNLOAD_REGEX="Pivotal Container Service" ./scripts/import-product.sh
-IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/stage-product.sh
-IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/configure-product.sh
 
 # install MySQL
 PRODUCT_NAME="MySQL for PCF" PRODUCT_VERSION="2.3.1" DOWNLOAD_REGEX="^MySQL for PCF" ./scripts/import-product.sh
