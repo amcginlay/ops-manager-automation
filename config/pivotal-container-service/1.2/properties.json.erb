@@ -41,10 +41,10 @@
     "value": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pcf-network"
   },
   ".properties.cloud_provider.gcp.master_service_account": {
-    "value": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pks-master-node@<%= ENV.fetch('PCF_PROJECT_ID') %>.iam.gserviceaccount.com"
+    "value": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pks-master@<%= ENV.fetch('PCF_PROJECT_ID') %>.iam.gserviceaccount.com"
   },
   ".properties.cloud_provider.gcp.worker_service_account": {
-    "value": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pks-worker-node@<%= ENV.fetch('PCF_PROJECT_ID') %>.iam.gserviceaccount.com"
+    "value": "<%= ENV.fetch('PCF_SUBDOMAIN_NAME') %>-pks-worker@<%= ENV.fetch('PCF_PROJECT_ID') %>.iam.gserviceaccount.com"
   },
   ".properties.vm_extensions": {
     "value": [
