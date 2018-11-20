@@ -234,7 +234,7 @@ IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/stage-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/configure-product.sh
 
 # install PKS
-PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.2.2" DOWNLOAD_REGEX="pivotal-container-service" ./scripts/import-product.sh
+PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.2.2" DOWNLOAD_REGEX="Pivotal Container Service" ./scripts/import-product.sh
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/stage-product.sh
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/configure-product.sh
 
