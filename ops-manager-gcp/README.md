@@ -139,10 +139,12 @@ OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager_${OPSMAN_VERSION}_*/OpsM
 ## Download and unzip the Terraform scripts from Pivotal Network
 
 The Terraform scripts which deploy the Ops Manager are also responsible for building the
-IaaS plumbing to support PAS & PKS.
+IaaS plumbing to support PAS.
 That is why we turn our attention to the PAS product when sourcing the Terraform scripts.
 
-Be aware that Ops Manager and PAS versions are often in-sync but this is not enforced.
+Ops Manager and PAS versions are often in-sync but this is not enforced.
+
+These Terraform scripts can support the infrastructure for PAS _or_ PKS.
 
 ```bash
 PAS_VERSION=2.3.3
