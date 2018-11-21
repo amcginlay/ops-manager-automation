@@ -214,9 +214,27 @@ Manager import which could take a long time to complete.  As the script
 incorporates large downloads/imports, we recommend you only run this 
 script from a Jumpbox VM alongside your targeted Ops Manager.
 
-```no-highlight
-# indicate target platform (PAS or PKS)
+## PKS
 
+```no-highlight
+# setup authentication
+./scripts/configure-authentication.sh
+
+# create certificate and key (if necessary)
+./scripts/mk-ssl-cert-key.sh
+
+IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
+PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.2.2" DOWNLOAD_REGEX="Pivotal Container Service" ./scripts/import-product.sh
+IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/stage-product.sh
+IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/configure-product.sh
+
+# apply changes for director first, then products
+./scripts/apply-changes-director.sh
+./scripts/apply-changes.sh
+```
+
+## PAS
+```no-highlight
 # setup authentication
 ./scripts/configure-authentication.sh
 
@@ -228,12 +246,6 @@ IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pas ./scripts/configure-director-gcp.sh
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.3.3" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/import-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/stage-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/configure-product.sh
-
-# install PKS (pre-provision appropriate TARGET_PLATFORM)
-#IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
-#PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.2.2" DOWNLOAD_REGEX="Pivotal Container Service" ./scripts/import-product.sh
-#IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/stage-product.sh
-#IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/configure-product.sh
 
 # import required stemcells
 PRODUCT_NAME="Stemcells for PCF (Ubuntu Xenial)" PRODUCT_VERSION="97.18" DOWNLOAD_REGEX="Google Cloud Platform" ./scripts/import-product.sh
