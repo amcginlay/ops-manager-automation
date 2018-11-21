@@ -31,7 +31,7 @@ You will need:
 - The following CLI tools installed locally:
   - [Google Cloud SDK](https://cloud.google.com/sdk/)
 
-## First Steps
+## Prerequisites
 
 - [Step 1](./jumpbox-gcp/README.md) - Establish an SSH session on a pristine Ubuntu jumpbox, authenticated with `gcloud auth login`
 - [Step 2](./ops-manager-gcp/README.md) - Install a fresh instance of Ops Manager with infrastructure for either PAS or PKS
