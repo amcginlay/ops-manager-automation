@@ -223,7 +223,10 @@ script from a Jumpbox VM alongside your targeted Ops Manager.
 # create certificate and key (if necessary)
 ./scripts/mk-ssl-cert-key.sh
 
+# configure director for PKS
 IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
+
+# install PKS
 PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.2.2" DOWNLOAD_REGEX="Pivotal Container Service" ./scripts/import-product.sh
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/stage-product.sh
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/configure-product.sh
@@ -241,8 +244,10 @@ IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scr
 # create certificate and key (if necessary)
 ./scripts/mk-ssl-cert-key.sh
 
-# install Small Footprint PAS (pre-provision appropriate TARGET_PLATFORM)
+# configure director for PAS
 IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pas ./scripts/configure-director-gcp.sh
+
+# install PAS (Small Footprint)
 PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.3.3" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/import-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/stage-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/configure-product.sh
