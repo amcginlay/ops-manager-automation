@@ -231,9 +231,9 @@ PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.2.2" DOWNLOAD_
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/stage-product.sh
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/configure-product.sh
 
-# apply changes for director first, then products
-./scripts/apply-changes-director.sh
+# deploy director and products
 ./scripts/apply-changes.sh
+
 ```
 
 ## PAS
@@ -293,7 +293,6 @@ PRODUCT_NAME="Spring Cloud Services for PCF" PRODUCT_VERSION="1.5.6" DOWNLOAD_RE
 IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/stage-product.sh
 IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/configure-product.sh
 
-# apply changes for director first, then products
-./scripts/apply-changes-director.sh
+# deploy director and products
 ./scripts/apply-changes.sh
 ```
