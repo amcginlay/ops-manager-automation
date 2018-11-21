@@ -30,10 +30,6 @@ You will need:
 - A pristine GCP project
 - The following CLI tools installed locally:
   - [Google Cloud SDK](https://cloud.google.com/sdk/)
-  - [Embedded Ruby (erb)](https://www.ruby-lang.org/en/documentation/installation)
-  - [om](https://github.com/pivotal-cf/om/releases)
-  - [pivnet](https://github.com/pivotal-cf/pivnet-cli/releases)
-  - [jq](https://github.com/stedolan/jq/releases)
 
 ## First Steps
 
