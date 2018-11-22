@@ -136,6 +136,8 @@ PRODUCT_VERSION=${OPSMAN_VERSION} \
 OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager_${OPSMAN_VERSION}_*/OpsManager*onGCP.yml --path /us)
 ```
 
+Check the value of `OPSMAN_IMAGE` before continuing.
+
 ## Download and unzip the Terraform scripts from Pivotal Network
 
 The Terraform scripts which deploy the Ops Manager are also responsible for building the
