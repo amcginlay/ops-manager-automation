@@ -209,8 +209,8 @@ the version of which is [compatible](https://docs.pivotal.io/resources/product-c
 with the target platform.
 These steps incorporate both PivNet downloads and Ops 
 Manager imports which collectively take a long time to complete.
-As the script involves pushing around large files, we recommend you only 
-run this script from a Jumpbox VM alongside your targeted Ops Manager.
+As such, we recommend you only run this script from a Jumpbox VM 
+alongside your targeted Ops Manager.
 
 ## PKS
 
