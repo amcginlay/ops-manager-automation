@@ -202,7 +202,8 @@ multiple products and apply all changes as a single batch.
 
 There now follows the sequence of commands required to automate the 
 configuration/deployment of the Ops Manager Director with either PKS
-or PAS with a selection of common products.
+or PAS.
+It also covers a selection of common PAS products.
 This assumes a valid `~/.env` file and a fresh install of the Ops Manager, 
 the version of which is compatible with the target PAS - in this case 
 v2.3.x.
