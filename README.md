@@ -207,9 +207,9 @@ It also covers a selection of common PAS products.
 This assumes a valid `~/.env` file and a fresh install of the Ops Manager, 
 the version of which is [compatible](https://docs.pivotal.io/resources/product-compatibility-matrix.pdf)
 with the target platform.
-These steps incorporate both a PivNet download and an Ops 
-Manager import which could take a long time to complete.
-As the script incorporates large downloads/imports, we recommend you only 
+These steps incorporate both PivNet downloads and Ops 
+Manager imports which collectively take a long time to complete.
+As the script involves pushing around large files, we recommend you only 
 run this script from a Jumpbox VM alongside your targeted Ops Manager.
 
 ## PKS
