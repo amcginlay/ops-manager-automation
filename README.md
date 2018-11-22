@@ -205,7 +205,8 @@ configuration/deployment of the Ops Manager Director with either PKS
 or PAS.
 It also covers a selection of common PAS products.
 This assumes a valid `~/.env` file and a fresh install of the Ops Manager, 
-the version of which is compatible with the target platform.
+the version of which is [compatible](https://docs.pivotal.io/resources/product-compatibility-matrix.pdf)
+with the target platform.
 These steps incorporate both a PivNet download and an Ops 
 Manager import which could take a long time to complete.
 As the script incorporates large downloads/imports, we recommend you only 
