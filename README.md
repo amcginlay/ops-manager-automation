@@ -205,13 +205,11 @@ configuration/deployment of the Ops Manager Director with either PKS
 or PAS.
 It also covers a selection of common PAS products.
 This assumes a valid `~/.env` file and a fresh install of the Ops Manager, 
-the version of which is compatible with the target PAS - in this case 
-v2.3.x.
+the version of which is compatible with the target platform.
 These steps incorporate both a PivNet download and an Ops 
 Manager import which could take a long time to complete.
-As the script 
-incorporates large downloads/imports, we recommend you only run this 
-script from a Jumpbox VM alongside your targeted Ops Manager.
+As the script incorporates large downloads/imports, we recommend you only 
+run this script from a Jumpbox VM alongside your targeted Ops Manager.
 
 ## PKS
 
