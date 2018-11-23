@@ -103,6 +103,8 @@ Example usage:
 
 ```no-highlight
 IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pas ./scripts/configure-director-gcp.sh
+# or
+IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
 ```
 
 ### `apply-changes-director.sh` and `apply-changes.sh`
