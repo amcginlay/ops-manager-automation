@@ -128,7 +128,7 @@ This script fetches products and stemcells from PivNet and stores them
 in a directory structure beneath `downloads`.  As these files can be 
 quite large, we recommend you only run this script from a Jumpbox VM 
 alongside your targeted Ops Manager.  For a large products like PAS, you 
-can expect this to take ~5 mins.
+can expect this to take ~10 mins.
 
 Example usage:
 
