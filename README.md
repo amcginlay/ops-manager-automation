@@ -259,9 +259,9 @@ PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3468.51" DOWNLOAD_REGEX="Ubunt
 PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3586.27" DOWNLOAD_REGEX="google" ./scripts/import-product.sh
 
 # install MySQL
-PRODUCT_NAME="MySQL for PCF" PRODUCT_VERSION="2.3.1" DOWNLOAD_REGEX="^MySQL for PCF" ./scripts/import-product.sh
-IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.3.1-build.11" ./scripts/stage-product.sh
-IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.3.1-build.11" ./scripts/configure-product.sh
+PRODUCT_NAME="MySQL for PCF" PRODUCT_VERSION="2.4.1" DOWNLOAD_REGEX="^MySQL for PCF" ./scripts/import-product.sh
+IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.4.1-build.28" ./scripts/stage-product.sh
+IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.4.1-build.28" ./scripts/configure-product.sh
 
 # install Healthwatch
 PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.2.3" DOWNLOAD_REGEX="PCF Healthwatch$" ./scripts/import-product.sh
