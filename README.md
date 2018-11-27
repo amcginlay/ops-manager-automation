@@ -264,9 +264,9 @@ IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.4.1-build.28" ./scripts/stage-
 IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.4.1-build.28" ./scripts/configure-product.sh
 
 # install Healthwatch
-PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.2.3" DOWNLOAD_REGEX="PCF Healthwatch$" ./scripts/import-product.sh
-IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.2.3-build.19" ./scripts/stage-product.sh
-IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.2.3-build.19" ./scripts/configure-product.sh
+PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.4.4" DOWNLOAD_REGEX="PCF Healthwatch" ./scripts/import-product.sh
+IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.4.4-build.1" ./scripts/stage-product.sh
+IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.4.4-build.1" ./scripts/configure-product.sh
 
 # install RabbitMQ
 PRODUCT_NAME="RabbitMQ for PCF" PRODUCT_VERSION="1.12.7" DOWNLOAD_REGEX="RabbitMQ for PCF$" ./scripts/import-product.sh
