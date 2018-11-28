@@ -1,3 +1,4 @@
+cat <<EOF
 {
   "errands": [
     {
@@ -31,10 +32,7 @@
     {
       "name": "nfsbrokerpush",
       "post_deploy": false
-    },
-    {
-      "name": "delete-pivotal-account",
-      "post_deploy": false
     }
   ]
 }
+EOF

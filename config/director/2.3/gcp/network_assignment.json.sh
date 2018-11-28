@@ -1,10 +1,12 @@
+cat <<EOF
 {
   "singleton_availability_zone":
   {
-    "name": "<%= ENV.fetch('PCF_AZ_1') %>"
+    "name": "${PCF_AZ_1}"
   },
   "network":
   {
     "name": "infrastructure"
   }
 }
+EOF

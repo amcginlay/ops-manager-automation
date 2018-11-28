@@ -11,30 +11,20 @@ CONFIG_VERSION=${1}.${2}
 
 TEMPLATES=${SCRIPTDIR}/../config/director/${CONFIG_VERSION}/gcp
 
-erb -T - ${TEMPLATES}/iaas.json.erb > ${TMPDIR}/iaas.json
 om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
-  configure-director --iaas-configuration "$(cat ${TMPDIR}/iaas.json)"
+  configure-director --iaas-configuration "$(source ${TEMPLATES}/iaas.json.sh)"
 
-erb -T - ${TEMPLATES}/director.json.erb > ${TMPDIR}/director.json
 om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
-  configure-director --director-configuration "$(cat ${TMPDIR}/director.json)"
+  configure-director --director-configuration "$(source ${TEMPLATES}/director.json.sh)"
 
-erb -T - ${TEMPLATES}/azs.json.erb > ${TMPDIR}/azs.json
 om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
-   configure-director --az-configuration "$(cat ${TMPDIR}/azs.json)"
+   configure-director --az-configuration "$(source ${TEMPLATES}/azs.json.sh)"
 
-if [ "${TARGET_PLATFORM}" == "pks" ]; then
-  erb -T - ${TEMPLATES}/networks.pks.json.erb > ${TMPDIR}/networks.json
-else
-  erb -T - ${TEMPLATES}/networks.pas.json.erb > ${TMPDIR}/networks.json
-fi
 om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
-  configure-director --networks-configuration "$(cat ${TMPDIR}/networks.json)"
+  configure-director --networks-configuration "$(source ${TEMPLATES}/networks.${TARGET_PLATFORM}.json.sh)"
 
-erb -T - ${TEMPLATES}/network_assignment.json.erb > ${TMPDIR}/network_assignment.json
 om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
-  configure-director --network-assignment "$(cat ${TMPDIR}/network_assignment.json)"
+  configure-director --network-assignment "$(source ${TEMPLATES}/network_assignment.json.sh)"
 
-erb -T - ${TEMPLATES}/resources.json.erb > ${TMPDIR}/resources.json
 om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
-  configure-director --resource-configuration "$(cat ${TMPDIR}/resources.json)"
+  configure-director --resource-configuration "$(source ${TEMPLATES}/resources.json.sh)"

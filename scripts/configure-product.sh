@@ -21,29 +21,23 @@ PRODUCT_GUID=$(
         jq -r '.[] | select(.type == "'${IMPORTED_NAME}'") | .guid'
 )
 
-erb -T - ${TEMPLATES}/network.json.erb > ${TMPDIR}/network.json
-erb -T - ${TEMPLATES}/properties.json.erb > ${TMPDIR}/properties.json
-erb -T - ${TEMPLATES}/resources.json.erb > ${TMPDIR}/resources.json
-[ -s ${TEMPLATES}/errands.json.erb ]  && \
-  erb -T - ${TEMPLATES}/errands.json.erb > ${TMPDIR}/errands.json
-
 # some products need network configured in isolation so configure in two steps
 om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
   configure-product \
     --product-name "${IMPORTED_NAME}" \
-    --product-network "$(cat ${TMPDIR}/network.json)"
+    --product-network "$(source ${TEMPLATES}/network.json.sh)"
 
 om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
   configure-product \
     --product-name "${IMPORTED_NAME}" \
-    --product-properties "$(cat ${TMPDIR}/properties.json)" \
-    --product-resources "$(cat ${TMPDIR}/resources.json)"
+    --product-properties "$(source ${TEMPLATES}/properties.json.sh)" \
+    --product-resources "$(source ${TEMPLATES}/resources.json.sh)"
 
 # if file present, configure errands (via Om curl)
-if [ -s ${TEMPLATES}/${IMPORTED_NAME}/errands.json.erb ]; then
+if [ -s ${TEMPLATES}/errands.json.sh ]; then
   om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
     curl --silent \
       --path /api/v0/staged/products/${PRODUCT_GUID}/errands \
       --request "PUT" \
-      --data "$(cat ${TMPDIR}/errands.json)"
+      --data "$(source ${TEMPLATES}/errands.json.sh)"
 fi
