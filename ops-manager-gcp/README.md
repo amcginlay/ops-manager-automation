@@ -41,7 +41,7 @@ wget -O terraform.zip https://releases.hashicorp.com/terraform/${VERSION}/terraf
   unzip terraform.zip && \
   sudo mv terraform /usr/local/bin
 
-VERSION=0.44.0
+VERSION=0.44.0 # NOTE 0.45.0 onwards introduces breaking changes
 wget -O om https://github.com/pivotal-cf/om/releases/download/${VERSION}/om-linux && \
   chmod +x om && \
   sudo mv om /usr/local/bin/
