@@ -1,4 +1,4 @@
-cat <EOF
+cat <<EOF
 {
   "consul_server": {
     "instances": 1
