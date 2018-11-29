@@ -34,7 +34,7 @@ om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
     --product-resources "$(source ${TEMPLATES}/resources.json.sh)"
 
 # if file present, configure errands (via Om curl)
-if [ -s ${TEMPLATES}/errands.json.sh ]; then
+if [ -s "$(source ${TEMPLATES}/errands.json.sh)" ]; then
   om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
     curl --silent \
       --path /api/v0/staged/products/${PRODUCT_GUID}/errands \

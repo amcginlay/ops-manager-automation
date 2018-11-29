@@ -268,6 +268,11 @@ PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.4.4" DOWNLOA
 IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.4.4-build.1" ./scripts/stage-product.sh
 IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.4.4-build.1" ./scripts/configure-product.sh
 
+# install Event Alerts
+PRODUCT_NAME="Pivotal Cloud Foundry Event Alerts" PRODUCT_VERSION="1.2.5" DOWNLOAD_REGEX="PCF Event Alerts" ./scripts/import-product.sh
+IMPORTED_NAME="p-event-alerts" IMPORTED_VERSION="1.2.5" ./scripts/stage-product.sh
+IMPORTED_NAME="p-event-alerts" IMPORTED_VERSION="1.2.5" ./scripts/configure-product.sh
+
 # install RabbitMQ
 PRODUCT_NAME="RabbitMQ for PCF" PRODUCT_VERSION="1.12.7" DOWNLOAD_REGEX="RabbitMQ for PCF$" ./scripts/import-product.sh
 IMPORTED_NAME="p-rabbitmq" IMPORTED_VERSION="1.12.7" ./scripts/stage-product.sh
