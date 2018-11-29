@@ -5,7 +5,7 @@ cat <<EOF
     {
       "name": "infrastructure",
       "subnets": [{
-        "iaas_identifier": "${PCF_SUBDOMAIN_NAME}-pcf-network/${PCF_SUBDOMAIN_NAME}-infrastructure-subnet/<%= ${PCF_REGION}",
+        "iaas_identifier": "${PCF_SUBDOMAIN_NAME}-pcf-network/${PCF_SUBDOMAIN_NAME}-infrastructure-subnet/${PCF_REGION}",
         "cidr": "10.0.0.0/26",
         "reserved_ip_ranges": "10.0.0.1-10.0.0.9",
         "dns": "169.254.169.254",
