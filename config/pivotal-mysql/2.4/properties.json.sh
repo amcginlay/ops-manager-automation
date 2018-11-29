@@ -24,7 +24,7 @@ cat <<EOF
   },
   ".properties.backups_selector.gcs.service_account_json": {
     "value": {
-      "secret": ${PCF_SERVICE_ACCOUNT_JSON}
+      "secret": "$(echo ${PCF_SERVICE_ACCOUNT_JSON} | tr -d '\n' | sed 's/\"/\\\"/g')"
     }
   }
 }
