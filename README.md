@@ -251,17 +251,26 @@ IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/stage-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/configure-product.sh
 
 # install MySQL
-PRODUCT_NAME="MySQL for PCF" PRODUCT_VERSION="2.4.1" DOWNLOAD_REGEX="^MySQL for PCF" ./scripts/import-product.sh
+PRODUCT_NAME="MySQL for PCF" \
+PRODUCT_VERSION="2.4.1" \
+DOWNLOAD_REGEX="^MySQL for PCF" \
+  ./scripts/import-product.sh
 IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.4.1-build.28" ./scripts/stage-product.sh
 IMPORTED_NAME="pivotal-mysql" IMPORTED_VERSION="2.4.1-build.28" ./scripts/configure-product.sh
 
 # install Healthwatch
-PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" PRODUCT_VERSION="1.4.4" DOWNLOAD_REGEX="PCF Healthwatch" ./scripts/import-product.sh
+PRODUCT_NAME="Pivotal Cloud Foundry Healthwatch" \
+PRODUCT_VERSION="1.4.4" \
+DOWNLOAD_REGEX="PCF Healthwatch" \
+  ./scripts/import-product.sh
 IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.4.4-build.1" ./scripts/stage-product.sh
 IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.4.4-build.1" ./scripts/configure-product.sh
 
 # install Event Alerts
-PRODUCT_NAME="Pivotal Cloud Foundry Event Alerts" PRODUCT_VERSION="1.2.5" DOWNLOAD_REGEX="PCF Event Alerts" ./scripts/import-product.sh
+PRODUCT_NAME="Pivotal Cloud Foundry Event Alerts" \
+PRODUCT_VERSION="1.2.5" \
+DOWNLOAD_REGEX="PCF Event Alerts" \
+  ./scripts/import-product.sh
 IMPORTED_NAME="p-event-alerts" IMPORTED_VERSION="1.2.5" ./scripts/stage-product.sh
 IMPORTED_NAME="p-event-alerts" IMPORTED_VERSION="1.2.5" ./scripts/configure-product.sh
 ```
@@ -270,27 +279,43 @@ IMPORTED_NAME="p-event-alerts" IMPORTED_VERSION="1.2.5" ./scripts/configure-prod
 
 ```bash
 # install RabbitMQ
-PRODUCT_NAME="RabbitMQ for PCF" PRODUCT_VERSION="1.12.7" DOWNLOAD_REGEX="RabbitMQ for PCF$" ./scripts/import-product.sh
+PRODUCT_NAME="RabbitMQ for PCF" \
+PRODUCT_VERSION="1.12.7" \
+DOWNLOAD_REGEX="RabbitMQ for PCF$" \
+  ./scripts/import-product.sh
 IMPORTED_NAME="p-rabbitmq" IMPORTED_VERSION="1.12.7" ./scripts/stage-product.sh
 IMPORTED_NAME="p-rabbitmq" IMPORTED_VERSION="1.12.7" ./scripts/configure-product.sh
 
 # install Redis
-PRODUCT_NAME="Redis for PCF" PRODUCT_VERSION="1.12.1" DOWNLOAD_REGEX="Redis for PCF$" ./scripts/import-product.sh
+PRODUCT_NAME="Redis for PCF" \
+PRODUCT_VERSION="1.12.1" \
+DOWNLOAD_REGEX="Redis for PCF$" \
+  ./scripts/import-product.sh
 IMPORTED_NAME="p-redis" IMPORTED_VERSION="1.12.1" ./scripts/stage-product.sh
 IMPORTED_NAME="p-redis" IMPORTED_VERSION="1.12.1" ./scripts/configure-product.sh
 
 # install SSO
-PRODUCT_NAME="Single Sign-On for PCF" PRODUCT_VERSION="1.6.0" DOWNLOAD_REGEX="Pivotal_Single_Sign-On_Service" ./scripts/import-product.sh
+PRODUCT_NAME="Single Sign-On for PCF" \
+PRODUCT_VERSION="1.6.0" \
+DOWNLOAD_REGEX="Pivotal_Single_Sign-On_Service" \
+  ./scripts/import-product.sh
 IMPORTED_NAME="Pivotal_Single_Sign-On_Service" IMPORTED_VERSION="1.6.0" ./scripts/stage-product.sh
 IMPORTED_NAME="Pivotal_Single_Sign-On_Service" IMPORTED_VERSION="1.6.0" ./scripts/configure-product.sh
 
 # install AWS Broker
-PRODUCT_NAME="Pivotal Cloud Foundry Service Broker for AWS" PRODUCT_VERSION="1.4.8" DOWNLOAD_REGEX="Service Broker for AWS" ./scripts/import-product.sh
+PRODUCT_NAME="Pivotal Cloud Foundry Service Broker for AWS" \
+PRODUCT_VERSION="1.4.8" \
+DOWNLOAD_REGEX="Service Broker for AWS" \
+  ./scripts/import-product.sh
 IMPORTED_NAME="aws-services" IMPORTED_VERSION="1.4.8" ./scripts/stage-product.sh
-IMPORTED_NAME="aws-services" IMPORTED_VERSION="1.4.8" PCF_AWS_ACCESS_KEY_ID="SOME_ID" PCF_AWS_SECRET_ACCESS_KEY="SOME_SECRET" ./scripts/configure-product.sh
+PCF_AWS_ACCESS_KEY_ID="SOME_ID" PCF_AWS_SECRET_ACCESS_KEY="SOME_SECRET" IMPORTED_NAME="aws-services" IMPORTED_VERSION="1.4.8" \
+  ./scripts/configure-product.sh
 
 # install SCS
-PRODUCT_NAME="Spring Cloud Services for PCF" PRODUCT_VERSION="1.5.6" DOWNLOAD_REGEX="Spring Cloud Services Product Installer" ./scripts/import-product.sh
+PRODUCT_NAME="Spring Cloud Services for PCF" \
+PRODUCT_VERSION="1.5.6" \
+DOWNLOAD_REGEX="Spring Cloud Services Product Installer" \
+  ./scripts/import-product.sh
 IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/stage-product.sh
 IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/configure-product.sh
 ```
@@ -323,7 +348,7 @@ DOWNLOAD_REGEX="google" \
 ## Apply changes
 
 ```bash
-# deploy director and products
+# deploy configured director and products
 ./scripts/apply-changes.sh
 ```
 
