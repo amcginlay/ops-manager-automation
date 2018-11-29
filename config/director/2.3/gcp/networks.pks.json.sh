@@ -1,3 +1,4 @@
+cat <<EOF
 {
   "icmp_checks_enabled": false,
   "networks": [
@@ -36,3 +37,4 @@
     }
   ]
 }
+EOF
