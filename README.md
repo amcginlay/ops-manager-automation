@@ -217,46 +217,38 @@ alongside your targeted Ops Manager.
 ## PKS
 
 ```no-highlight
-# setup authentication
+# setup authentication and create certificate/key (if necessary)
 ./scripts/configure-authentication.sh
-
-# create certificate and key (if necessary)
 ./scripts/mk-ssl-cert-key.sh
 
 # configure director for PKS
 IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
 
 # install PKS
-PRODUCT_NAME="Pivotal Container Service (PKS)" PRODUCT_VERSION="1.2.2" DOWNLOAD_REGEX="Pivotal Container Service" ./scripts/import-product.sh
+PRODUCT_NAME="Pivotal Container Service (PKS)" \
+PRODUCT_VERSION="1.2.2" \
+DOWNLOAD_REGEX="Pivotal Container Service" \
+  ./scripts/import-product.sh
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/stage-product.sh
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/configure-product.sh
-
-# deploy director and products
-./scripts/apply-changes.sh
-
 ```
 
-## PAS
+## PAS and core product tiles
 ```no-highlight
-# setup authentication
+# setup authentication and create certificate/key (if necessary)
 ./scripts/configure-authentication.sh
-
-# create certificate and key (if necessary)
 ./scripts/mk-ssl-cert-key.sh
 
 # configure director for PAS
 IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pas ./scripts/configure-director-gcp.sh
 
 # install PAS (Small Footprint)
-PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" PRODUCT_VERSION="2.3.3" DOWNLOAD_REGEX="Small Footprint PAS" ./scripts/import-product.sh
+PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
+PRODUCT_VERSION="2.3.3" \
+DOWNLOAD_REGEX="Small Footprint PAS" \
+  ./scripts/import-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/stage-product.sh
 IMPORTED_NAME="cf" IMPORTED_VERSION="2.3.3" ./scripts/configure-product.sh
-
-# import required stemcells
-PRODUCT_NAME="Stemcells for PCF (Ubuntu Xenial)" PRODUCT_VERSION="97.18" DOWNLOAD_REGEX="Google Cloud Platform" ./scripts/import-product.sh
-PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3541.34" DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" ./scripts/import-product.sh
-PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3468.51" DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" ./scripts/import-product.sh
-PRODUCT_NAME="Stemcells for PCF" PRODUCT_VERSION="3586.27" DOWNLOAD_REGEX="google" ./scripts/import-product.sh
 
 # install MySQL
 PRODUCT_NAME="MySQL for PCF" PRODUCT_VERSION="2.4.1" DOWNLOAD_REGEX="^MySQL for PCF" ./scripts/import-product.sh
@@ -272,7 +264,11 @@ IMPORTED_NAME="p-healthwatch" IMPORTED_VERSION="1.4.4-build.1" ./scripts/configu
 PRODUCT_NAME="Pivotal Cloud Foundry Event Alerts" PRODUCT_VERSION="1.2.5" DOWNLOAD_REGEX="PCF Event Alerts" ./scripts/import-product.sh
 IMPORTED_NAME="p-event-alerts" IMPORTED_VERSION="1.2.5" ./scripts/stage-product.sh
 IMPORTED_NAME="p-event-alerts" IMPORTED_VERSION="1.2.5" ./scripts/configure-product.sh
+```
 
+## Other PAS tiles
+
+```bash
 # install RabbitMQ
 PRODUCT_NAME="RabbitMQ for PCF" PRODUCT_VERSION="1.12.7" DOWNLOAD_REGEX="RabbitMQ for PCF$" ./scripts/import-product.sh
 IMPORTED_NAME="p-rabbitmq" IMPORTED_VERSION="1.12.7" ./scripts/stage-product.sh
@@ -297,7 +293,37 @@ IMPORTED_NAME="aws-services" IMPORTED_VERSION="1.4.8" PCF_AWS_ACCESS_KEY_ID="SOM
 PRODUCT_NAME="Spring Cloud Services for PCF" PRODUCT_VERSION="1.5.6" DOWNLOAD_REGEX="Spring Cloud Services Product Installer" ./scripts/import-product.sh
 IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/stage-product.sh
 IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/configure-product.sh
+```
 
+## Various stemcells
+
+```bash
+# import required stemcells
+PRODUCT_NAME="Stemcells for PCF (Ubuntu Xenial)" \
+PRODUCT_VERSION="97.18" \
+DOWNLOAD_REGEX="Google Cloud Platform" \
+  ./scripts/import-product.sh
+
+PRODUCT_NAME="Stemcells for PCF" \
+PRODUCT_VERSION="3541.34" \
+DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" \
+  ./scripts/import-product.sh
+
+PRODUCT_NAME="Stemcells for PCF" \
+PRODUCT_VERSION="3468.51" \
+DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" \
+  ./scripts/import-product.sh
+
+PRODUCT_NAME="Stemcells for PCF" \
+PRODUCT_VERSION="3586.27" \
+DOWNLOAD_REGEX="google" \
+  ./scripts/import-product.sh
+```
+
+## Apply changes
+
+```bash
 # deploy director and products
 ./scripts/apply-changes.sh
 ```
+
