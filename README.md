@@ -320,7 +320,7 @@ IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/stage
 IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/configure-product.sh
 ```
 
-## Various stemcells
+## Various stemcells (as required)
 
 ```bash
 # import required stemcells
@@ -331,11 +331,6 @@ DOWNLOAD_REGEX="Google Cloud Platform" \
 
 PRODUCT_NAME="Stemcells for PCF" \
 PRODUCT_VERSION="3541.34" \
-DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" \
-  ./scripts/import-product.sh
-
-PRODUCT_NAME="Stemcells for PCF" \
-PRODUCT_VERSION="3468.51" \
 DOWNLOAD_REGEX="Ubuntu Trusty Stemcell for Google Cloud Platform" \
   ./scripts/import-product.sh
 
