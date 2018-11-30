@@ -2,18 +2,6 @@ cat <<EOF
 {
   "errands": [
     {
-      "name": "smoke_tests",
-      "post_deploy": false
-    },
-    {
-      "name": "push-usage-service",
-      "post_deploy": false
-    },
-    {
-      "name": "push-apps-manager",
-      "post_deploy": false
-    },
-    {
       "name": "deploy-notifications",
       "post_deploy": false
     },
