@@ -2,10 +2,6 @@ cat <<EOF
 {
   "errands": [
     {
-      "name": "smoke-tests",
-      "post_deploy": false
-    },
-    {
       "name": "on-demand-broker-smoke-tests",
       "post_deploy": false
     }
