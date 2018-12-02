@@ -16,6 +16,10 @@ PCF_AZ_2=CHANGE_ME_AZ_2                               # e.g. us-central1-b
 PCF_AZ_3=CHANGE_ME_AZ_3                               # e.g. us-central1-c	
 
 PCF_OPSMAN_FQDN=pcf.\${PCF_SUBDOMAIN_NAME}.\${PCF_DOMAIN_NAME}
+export OM_TARGET=\${PCF_OPSMAN_FQDN}
+export OM_USERNAME=admin
+export OM_PASSWORD=\${PCF_OPSMAN_ADMIN_PASSWD}
+export OM_DECRYPTION_PASSPHRASE=\${PCF_OPSMAN_ADMIN_PASSWD}
 EOF
 
-echo "Created template version of '${HOME}/.env'. Please customize to suit your target environment before continuing."
+echo "Created template version of '${HOME}/.env'. Please update the CHANGE_ME values to suit your target environment before continuing."
