@@ -214,13 +214,19 @@ Manager imports which collectively take a long time to complete.
 As such, we recommend you only run this script from a Jumpbox VM 
 alongside your targeted Ops Manager.
 
+The following sections require `./scripts/mk-ssl-cert-key.sh` to have been previously run.
+
+## Ops Manager authentication 
+
+This permits the `admin` account to use the Ops Manager
+
+```no-highlight
+./scripts/configure-authentication.sh
+```
+
 ## PKS
 
 ```no-highlight
-# setup authentication and create certificate/key (if necessary)
-./scripts/configure-authentication.sh
-./scripts/mk-ssl-cert-key.sh
-
 # configure director for PKS
 IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
 
@@ -234,11 +240,8 @@ IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scr
 ```
 
 ## PAS and core product tiles
-```no-highlight
-# setup authentication and create certificate/key (if necessary)
-./scripts/configure-authentication.sh
-./scripts/mk-ssl-cert-key.sh
 
+```no-highlight
 # configure director for PAS
 IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pas ./scripts/configure-director-gcp.sh
 
