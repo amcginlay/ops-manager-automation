@@ -1,0 +1,65 @@
+product-name: cf
+network-properties:
+  network:
+    name: pas
+  other_availability_zones:
+  - name: ((AZ_1))
+  - name: ((AZ_2))
+  - name: ((AZ_3))
+  singleton_availability_zone:
+    name: ((AZ_1))
+product-properties:
+  .cloud_controller.system_domain:
+    value: sys.((SUBDOMAIN_NAME)).((DOMAIN_NAME))
+  .cloud_controller.apps_domain:
+    value: sys.((SUBDOMAIN_NAME)).((DOMAIN_NAME))
+  .properties.networking_poe_ssl_certs:
+    value:
+    - name: certificate
+      certificate:
+        cert_pem: |
+          ((DOMAIN_CRT))
+        private_key_pem: |
+          ((DOMAIN_KEY))
+  .properties.haproxy_forward_tls:
+    value: disable
+  .ha_proxy.skip_cert_verify:
+    value: true
+  .properties.security_acknowledgement:
+    value: X
+  .uaa.service_provider_key_credentials:
+    value:
+      cert_pem: |
+        ((DOMAIN_CRT))
+      private_key_pem: |
+        ((DOMAIN_KEY))
+  .properties.credhub_key_encryption_passwords:
+    value:
+    - name: default
+      key:
+        secret: ((OPSMAN_ADMIN_PASSWD))
+      primary: true
+  .mysql_monitor.recipient_email:
+    value: fbloggs@gmail.com
+errand-config:
+  deploy-autoscaler:
+    post-deploy-state: false
+  deploy-notifications:
+    post-deploy-state: false
+  deploy-notifications-ui:
+    post-deploy-state: false
+  nfsbrokerpush:
+    post-deploy-state: false
+  test-autoscaling:
+    post-deploy-state: false
+resource-config:
+  compute:
+    instances: 3
+  control:
+    elb_names:
+    - tcp:((SUBDOMAIN_NAME))-cf-ssh
+  router:
+    elb_names:
+    - tcp:((SUBDOMAIN_NAME))-cf-ws
+    - http:((SUBDOMAIN_NAME))-httpslb
+

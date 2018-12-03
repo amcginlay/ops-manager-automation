@@ -14,6 +14,12 @@ if [ -z ${PCF_DOMAIN_KEY+x} ]; then
 	exit 1
 fi
 
+# WIP for om v0.45.0
+#om --skip-ssl-validation \
+#  configure-product \
+#    --config "${TEMPLATES}/config.yml" \
+#    --vars-env PCF
+
 PRODUCT_GUID=$(
   om --skip-ssl-validation \
     curl \
