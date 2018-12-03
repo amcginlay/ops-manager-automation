@@ -11,6 +11,12 @@ CONFIG_VERSION=${1}.${2}
 
 TEMPLATES=${SCRIPTDIR}/../config/director/${CONFIG_VERSION}/gcp
 
+# WIP for om v0.45.0
+#om --skip-ssl-validation \
+#  configure-director \
+#    --config "${TEMPLATES}/config.yml)" \
+#    --vars-env PCF
+
 om --skip-ssl-validation \
   configure-director \
     --iaas-configuration "$(source ${TEMPLATES}/iaas.json.sh)"
