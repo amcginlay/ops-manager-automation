@@ -3,5 +3,6 @@
 SCRIPTDIR=$(cd $(dirname "$0") && pwd -P)
 source ${SCRIPTDIR}/shared.sh
 
-om -k -t ${PCF_OPSMAN_FQDN} -u "admin" -p $PCF_OPSMAN_ADMIN_PASSWD \
-  stage-product -p ${IMPORTED_NAME} -v ${IMPORTED_VERSION}
+om --skip-ssl-validation \
+  stage-product \
+    -p ${IMPORTED_NAME} -v ${IMPORTED_VERSION}

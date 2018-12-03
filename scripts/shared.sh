@@ -25,8 +25,8 @@ if ! which jq > /dev/null; then
 fi
 
 if [ ! -f ${VARS} ]; then
-	echo "Please create a valid ~/.env by executing ./scripts/create-env.sh and customizing to suit your target environment"
-	exit 1
+  echo "Please create a valid ~/.env by executing ./scripts/create-env.sh and customizing to suit your target environment"
+  exit 1
 fi
 
 while read LINE; do

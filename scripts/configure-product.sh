@@ -15,19 +15,20 @@ if [ -z ${PCF_DOMAIN_KEY+x} ]; then
 fi
 
 PRODUCT_GUID=$(
-  om -k -t ${PCF_OPSMAN_FQDN} -u "admin" -p ${PCF_OPSMAN_ADMIN_PASSWD} \
-    curl --silent \
+  om --skip-ssl-validation \
+    curl \
+      --silent \
       --path "/api/v0/staged/products" | \
-        jq -r '.[] | select(.type == "'${IMPORTED_NAME}'") | .guid'
+        jq --raw-output '.[] | select(.type == "'${IMPORTED_NAME}'") | .guid'
 )
 
 # some products need network configured in isolation so configure in two steps
-om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
+om --skip-ssl-validation \
   configure-product \
     --product-name "${IMPORTED_NAME}" \
     --product-network "$(source ${TEMPLATES}/network.json.sh)"
 
-om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
+om --skip-ssl-validation \
   configure-product \
     --product-name "${IMPORTED_NAME}" \
     --product-properties "$(source ${TEMPLATES}/properties.json.sh)" \
@@ -35,9 +36,11 @@ om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
 
 # configure errands if config file exists
 if [ -f  ${TEMPLATES}/errands.json.sh ]; then
-  om -k -t "${PCF_OPSMAN_FQDN}" -u "admin" -p "${PCF_OPSMAN_ADMIN_PASSWD}" \
-    curl --silent \
+  om --skip-ssl-validation \
+    curl \
+      --silent \
       --path /api/v0/staged/products/${PRODUCT_GUID}/errands \
       --request "PUT" \
       --data "$(source ${TEMPLATES}/errands.json.sh)"
 fi
+
