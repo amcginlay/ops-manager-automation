@@ -13,6 +13,6 @@ TEMPLATES=${SCRIPTDIR}/../config/director/${CONFIG_VERSION}/gcp
 
 om --skip-ssl-validation \
   configure-director \
-    --config "${TEMPLATES}/config.yml)" \
+    --config "${TEMPLATES}/config.yml" \
     --vars-env PCF
 
