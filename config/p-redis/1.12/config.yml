@@ -1,0 +1,29 @@
+product-name: p-redis
+network-properties:
+  singleton_availability_zone:
+    name: ((AZ_1))
+  other_availability_zones:
+  - name: ((AZ_1))
+  - name: ((AZ_2))
+  - name: ((AZ_3))
+  network:
+    name: pas
+  service_network:
+    name: services
+product-properties:
+  .properties.small_plan_selector:
+    value: Plan Active
+  .properties.small_plan_selector.active.az_single_select:
+    value: ((AZ_1))
+  .properties.medium_plan_selector:
+    value: Plan Inactive 
+  .properties.large_plan_selector:
+    value: Plan Inactive
+  .properties.syslog_selector:
+    value: "No"
+errand-config:
+  on-demand-broker-smoke-tests:
+    post-deploy-state: false
+resource-config:
+  dedicated-node:
+    instances: 1
