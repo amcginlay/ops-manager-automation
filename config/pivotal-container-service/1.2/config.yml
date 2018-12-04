@@ -1,0 +1,60 @@
+product-name: pivotal-container-service
+network-properties:
+  singleton_availability_zone:
+    name: ((AZ_1))
+  other_availability_zones:
+  - name: ((AZ_1))
+  - name: ((AZ_2))
+  - name: ((AZ_3))
+  network:
+    name: pks
+  service_network:
+    name: pks-services
+product-properties:
+  .pivotal-container-service.pks_tls:
+    value: 
+      cert_pem: |
+        ((DOMAIN_CRT))
+      private_key_pem: |
+        ((DOMAIN_KEY))
+  .properties.pks_api_hostname:
+    value: api.pks.((SUBDOMAIN_NAME)).((DOMAIN_NAME))
+  .properties.plan1_selector.active.master_az_placement:
+    value:
+    - ((AZ_1))
+    - ((AZ_2))
+    - ((AZ_3))
+  .properties.plan1_selector.active.worker_az_placement:
+    value:
+    - ((AZ_1))
+    - ((AZ_2))
+    - ((AZ_3))
+  .properties.plan1_selector.active.worker_instances:
+    value: 1
+  .properties.plan2_selector:
+    value: Plan Inactive
+  .properties.plan3_selector:
+    value: Plan Inactive
+  .properties.cloud_provider:
+    value: GCP
+  .properties.cloud_provider.gcp.project_id:
+    value: ((PROJECT_ID))
+  .properties.cloud_provider.gcp.network:
+    value: ((SUBDOMAIN_NAME))-pcf-network
+  .properties.cloud_provider.gcp.master_service_account:
+    value: ((SUBDOMAIN_NAME))-pks-master@((PROJECT_ID)).iam.gserviceaccount.com
+  .properties.cloud_provider.gcp.worker_service_account:
+    value: ((SUBDOMAIN_NAME))-pks-worker@((PROJECT_ID)).iam.gserviceaccount.com
+  .properties.vm_extensions:
+    value:
+    - public_ip
+  .properties.telemetry_selector:
+    value: disabled
+errand-config:
+  upgrade-all-service-instances:
+    post-deploy-state: false
+resource-config:
+  pivotal-container-service:
+    elb_names:
+    - tcp:((SUBDOMAIN_NAME))-pks-api
+
