@@ -40,12 +40,10 @@ export PCF_PROJECT_ID=$(gcloud config get-value core/project)
 # calculated vars
 export PCF_DOMAIN=${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}
 if [ -f ./${PCF_DOMAIN}.key ]; then
-	export PCF_DOMAIN_KEY=$(cat ./${PCF_DOMAIN}.key | awk '{printf "%s\\n", $0}')
-	#export PCF_DOMAIN_KEY=$(cat ./${PCF_DOMAIN}.key)
+  export PCF_DOMAIN_KEY=$(cat ./${PCF_DOMAIN}.key)
 fi
 if [ -f ./${PCF_DOMAIN}.crt ]; then
-	export PCF_DOMAIN_CRT=$(cat ./${PCF_DOMAIN}.crt | awk '{printf "%s\\n", $0}')
-	#export PCF_DOMAIN_CRT=$(cat ./${PCF_DOMAIN}.crt)
+  export PCF_DOMAIN_CRT=$(cat ./${PCF_DOMAIN}.crt)
 fi
 
 if [ -z "${TMPDIR:-}" ]; then 

@@ -14,39 +14,8 @@ if [ -z ${PCF_DOMAIN_KEY+x} ]; then
 	exit 1
 fi
 
-# WIP for om v0.45.0
-#om --skip-ssl-validation \
-#  configure-product \
-#    --config "${TEMPLATES}/config.yml" \
-#    --vars-env PCF
-
-PRODUCT_GUID=$(
-  om --skip-ssl-validation \
-    curl \
-      --silent \
-      --path "/api/v0/staged/products" | \
-        jq --raw-output '.[] | select(.type == "'${IMPORTED_NAME}'") | .guid'
-)
-
-# some products need network configured in isolation so configure in two steps
 om --skip-ssl-validation \
   configure-product \
-    --product-name "${IMPORTED_NAME}" \
-    --product-network "$(source ${TEMPLATES}/network.json.sh)"
-
-om --skip-ssl-validation \
-  configure-product \
-    --product-name "${IMPORTED_NAME}" \
-    --product-properties "$(source ${TEMPLATES}/properties.json.sh)" \
-    --product-resources "$(source ${TEMPLATES}/resources.json.sh)"
-
-# configure errands if config file exists
-if [ -f  ${TEMPLATES}/errands.json.sh ]; then
-  om --skip-ssl-validation \
-    curl \
-      --silent \
-      --path /api/v0/staged/products/${PRODUCT_GUID}/errands \
-      --request "PUT" \
-      --data "$(source ${TEMPLATES}/errands.json.sh)"
-fi
+    --config "${TEMPLATES}/config.yml" \
+    --vars-env PCF
 
