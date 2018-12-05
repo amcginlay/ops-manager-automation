@@ -28,7 +28,7 @@ product-properties:
     value: ((PROJECT_ID))-mysql-backups
   .properties.backups_selector.gcs.service_account_json:
     value:
-      secret: ((SERVICE_ACCOUNT_JSON))
+      secret: '"this_is": "dummy_json"'
 errand-config:
   upgrade-all-service-instances:
     post-deploy-state: false
