@@ -38,7 +38,7 @@ networks-configuration:
       - ((AZ_3))
   - name: pks-services
     subnets:
-    - iaas_identifier: ((SUBDOMAIN_NAME))-pcf-network/((SUBDOMAIN_NAME))-services-subnet/((REGION))
+    - iaas_identifier: ((SUBDOMAIN_NAME))-pcf-network/((SUBDOMAIN_NAME))-pks-services-subnet/((REGION))
       cidr: 10.0.11.0/24
       dns: 169.254.169.254
       gateway: 10.0.11.1
