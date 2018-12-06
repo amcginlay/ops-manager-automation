@@ -220,7 +220,7 @@ Once `dig` can resolve the Ops Manager FQDN to an IP address within its __AUTHOR
 watch dig ${PCF_OPSMAN_FQDN}
 ```
 
-With DNS resolution successful we should probe the FQDN make sure we get a response.
+Probe the resolved FQDN to make sure we get a response.
 
 ```bash
 curl ${PCF_OPSMAN_FQDN}
