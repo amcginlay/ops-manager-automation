@@ -214,13 +214,19 @@ terraform apply --auto-approve
 This will take about 5 minutes to complete but you should allow some 
 extra time for the DNS updates to propagate.
 
-Once `dig` can resolve the Ops Manager FQDN to an IP address within its __AUTHORITY SECTION__, we're good to move on.  This may take about 5 minutes from your local machine.
+Once `dig` can resolve the Ops Manager FQDN to an IP address within its __AUTHORITY SECTION__, we're probably good to move on.  This may take about 5 minutes from your local machine.
 
 ```bash
 watch dig ${PCF_OPSMAN_FQDN}
 ```
 
-The above step is fully dependent on having a ${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME} NS record-set attached to your registered domain.  This record-set must point to _every_ google domain server, for example:
+Probe the resolved FQDN to make sure we get a response.
+
+```bash
+curl ${PCF_OPSMAN_FQDN}
+```
+
+Successful DNS resolution is fully dependent on having a ${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME} NS record-set attached to your registered domain.  This record-set must point to _every_ google domain server, for example:
 
 (screenshot from [AWS Route 53](https://aws.amazon.com/route53))
 
