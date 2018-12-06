@@ -224,7 +224,7 @@ This permits the `admin` account to use the Ops Manager
 ./scripts/configure-authentication.sh
 ```
 
-## PKS
+## Deploy PKS (plus BOSH director)
 
 ```no-highlight
 # configure director for PKS
@@ -239,7 +239,7 @@ IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scr
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/configure-product.sh
 ```
 
-## PAS and core product tiles
+## Deploy PAS and core product tiles (plus BOSH director)
 
 ```no-highlight
 # configure director for PAS
