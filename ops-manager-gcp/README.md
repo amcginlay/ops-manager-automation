@@ -220,13 +220,13 @@ Once `dig` can resolve the Ops Manager FQDN to an IP address within its __AUTHOR
 watch dig ${PCF_OPSMAN_FQDN}
 ```
 
-Probe the FQDN to check for some activity.
+With DNS resolution in place we should probe the FQDN for some activity.
 
 ```bash
 curl ${PCF_OPSMAN_FQDN}
 ```
 
-The above step is fully dependent on having a ${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME} NS record-set attached to your registered domain.  This record-set must point to _every_ google domain server, for example:
+Successful DNS resolution is fully dependent on having a ${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME} NS record-set attached to your registered domain.  This record-set must point to _every_ google domain server, for example:
 
 (screenshot from [AWS Route 53](https://aws.amazon.com/route53))
 
