@@ -55,6 +55,8 @@ errand-config:
 resource-config:
   compute:
     instances: 3
+    instance_type:
+      id: 2xlarge.disk
   control:
     elb_names:
     - tcp:((SUBDOMAIN_NAME))-cf-ssh
