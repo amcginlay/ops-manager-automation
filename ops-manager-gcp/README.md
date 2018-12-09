@@ -105,6 +105,7 @@ subsequent time the ubuntu user connects to the jumpbox.
 ```bash
 source ~/.env
 echo "source ~/.env" >> ~/.bashrc
+
 ```
 
 To review your currently active variable settings:
