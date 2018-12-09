@@ -216,6 +216,12 @@ alongside your targeted Ops Manager.
 
 The following sections require `./scripts/mk-ssl-cert-key.sh` to have been previously run.
 
+## Get in position
+
+```bash
+cd ~/ops-manager-automation
+```
+
 ## Ops Manager authentication 
 
 This permits the `admin` account to use the Ops Manager
