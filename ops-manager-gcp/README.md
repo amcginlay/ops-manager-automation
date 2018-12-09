@@ -123,7 +123,7 @@ gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
   --member "serviceAccount:terraform@$(gcloud config get-value core/project).iam.gserviceaccount.com" \
   --role 'roles/owner'
 
-# generate and download the service account key
+# generate and download a key for the service account
 gcloud iam service-accounts keys create 'gcp_credentials.json' \
   --iam-account "terraform@$(gcloud config get-value core/project).iam.gserviceaccount.com"
 ```
