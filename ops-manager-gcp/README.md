@@ -20,7 +20,6 @@ gcloud services enable iam.googleapis.com && \
 gcloud services enable cloudresourcemanager.googleapis.com && \
 gcloud services enable dns.googleapis.com && \
 gcloud services enable sqladmin.googleapis.com
-
 ```
 
 ## Install some essential tools
@@ -34,7 +33,6 @@ sudo apt install --yes jq && \
 sudo apt install --yes build-essential && \
 sudo apt install --yes ruby-dev && \
 sudo gem install --no-ri --no-rdoc cf-uaac
-
 ```
 
 ```bash
@@ -57,7 +55,6 @@ VERSION=5.4.0
 wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${VERSION}-linux-amd64 && \
   chmod +x bosh && \
   sudo mv bosh /usr/local/bin/
-
 ```
 
 Verify that these tools were installed:
@@ -105,7 +102,6 @@ subsequent time the ubuntu user connects to the jumpbox.
 ```bash
 source ~/.env
 echo "source ~/.env" >> ~/.bashrc
-
 ```
 
 To review your currently active variable settings:
@@ -114,7 +110,7 @@ To review your currently active variable settings:
 set | grep PCF
 ```
 
-## Create a GCP services account for terraform in current project
+## Create a GCP service account for terraform in current project
 
 ```bash
 gcloud iam service-accounts create terraform --display-name terraform
