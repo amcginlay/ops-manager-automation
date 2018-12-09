@@ -119,12 +119,13 @@ set | grep PCF
 ```bash
 gcloud iam service-accounts create terraform --display-name terraform
 
-gcloud iam service-accounts keys create 'gcp_credentials.json' \
-  --iam-account "terraform@$(gcloud config get-value core/project).iam.gserviceaccount.com"
-
 gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
   --member "serviceAccount:terraform@$(gcloud config get-value core/project).iam.gserviceaccount.com" \
   --role 'roles/owner'
+
+# generate and download the service account key
+gcloud iam service-accounts keys create 'gcp_credentials.json' \
+  --iam-account "terraform@$(gcloud config get-value core/project).iam.gserviceaccount.com"
 ```
 
 ## Download an Ops Manager image identifier from Pivotal Network
