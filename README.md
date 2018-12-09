@@ -232,6 +232,9 @@ This permits the `admin` account to use the Ops Manager
 
 ## Deploy PKS (plus BOSH director)
 
+These instructions depend upon the __PKS__ infrastructure being in place (`terraforming-pks`).
+Do not try to install PKS and PAS side-by-side.
+
 ```no-highlight
 # configure director for PKS
 IMPORTED_VERSION=2.3.5 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
@@ -246,6 +249,9 @@ IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scr
 ```
 
 ## Deploy PAS and core product tiles (plus BOSH director)
+
+These instructions depend upon the __PAS__ infrastructure being in place (`terraforming-pas`).
+Do not try to install PKS and PAS side-by-side.
 
 ```no-highlight
 # configure director for PAS
