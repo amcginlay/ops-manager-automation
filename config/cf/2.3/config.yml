@@ -12,7 +12,7 @@ product-properties:
   .cloud_controller.system_domain:
     value: sys.((SUBDOMAIN_NAME)).((DOMAIN_NAME))
   .cloud_controller.apps_domain:
-    value: sys.((SUBDOMAIN_NAME)).((DOMAIN_NAME))
+    value: apps.((SUBDOMAIN_NAME)).((DOMAIN_NAME))
   .properties.networking_poe_ssl_certs:
     value:
     - name: certificate
