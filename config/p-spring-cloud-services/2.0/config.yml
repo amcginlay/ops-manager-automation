@@ -1,0 +1,13 @@
+product-name: p-spring-cloud-services
+network-properties:
+  singleton_availability_zone:
+    name: ((AZ_1))
+  other_availability_zones:
+  - name: ((AZ_1))
+  - name: ((AZ_2))
+  - name: ((AZ_3))
+  network:
+    name: pas
+product-properties:
+errand-config:
+resource-config:

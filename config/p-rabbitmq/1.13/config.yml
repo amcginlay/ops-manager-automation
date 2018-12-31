@@ -1,0 +1,41 @@
+product-name: p-rabbitmq
+network-properties:
+  singleton_availability_zone:
+    name: ((AZ_1))
+  other_availability_zones:
+  - name: ((AZ_1))
+  - name: ((AZ_2))
+  - name: ((AZ_3))
+  network:
+    name: pas
+  service_network:
+    name: services
+product-properties:
+  .properties.multitenant_pre_upgrade_acknowledgement:
+    value:
+    - "acknowledge"
+  .properties.disk_alarm_threshold:
+    value: "mem_relative_1_0"
+  .properties.on_demand_broker_pre_upgrade_acknowledgement:
+    value:
+    - "acknowledge"
+  .rabbitmq-server.server_admin_credentials:
+    value: {
+    "identity": "admin",
+    "password": "password"
+    }
+  .properties.syslog_selector:
+    value: disabled
+  .properties.on_demand_broker_plan_1_cf_service_access:
+    value: "enable"
+  .properties.on_demand_broker_plan_1_rabbitmq_az_placement:
+    type: service_network_az_multi_select
+    value:
+    - ((AZ_1))
+  .properties.on_demand_broker_plan_1_disk_limit_acknowledgement:
+    type: multi_select_options
+    value:
+    - acknowledge
+resource-config:
+  rabbitmq-server:
+    instances: 1
