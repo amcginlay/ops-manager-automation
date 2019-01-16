@@ -1,0 +1,57 @@
+iaas-configuration:
+  project: ((PROJECT_ID))
+  associated_service_account: ((SUBDOMAIN_NAME))-opsman@((PROJECT_ID)).iam.gserviceaccount.com
+  default_deployment_tag: ((SUBDOMAIN_NAME))
+director-configuration:
+  ntp_servers_string: metadata.google.internal
+  post_deploy_enabled: true
+  resurrector_enabled: true
+  retry_bosh_deploys: true
+az-configuration:
+- name: ((AZ_1))
+- name: ((AZ_2))
+- name: ((AZ_3))
+networks-configuration:
+  icmp_checks_enabled: false
+  networks:
+  - name: infrastructure
+    subnets:
+    - iaas_identifier: ((SUBDOMAIN_NAME))-pcf-network/((SUBDOMAIN_NAME))-infrastructure-subnet/((REGION))
+      cidr: 10.0.0.0/26
+      dns: 169.254.169.254
+      gateway: 10.0.0.1
+      reserved_ip_ranges: 10.0.0.1-10.0.0.9
+      availability_zone_names:
+      - ((AZ_1))
+      - ((AZ_2))
+      - ((AZ_3))
+  - name: pks
+    subnets:
+    - iaas_identifier: ((SUBDOMAIN_NAME))-pcf-network/((SUBDOMAIN_NAME))-pks-subnet/((REGION))
+      cidr: 10.0.10.0/24
+      dns: 169.254.169.254
+      gateway: 10.0.10.1
+      reserved_ip_ranges: 10.0.10.1-10.0.10.9
+      availability_zone_names:
+      - ((AZ_1))
+      - ((AZ_2))
+      - ((AZ_3))
+  - name: pks-services
+    subnets:
+    - iaas_identifier: ((SUBDOMAIN_NAME))-pcf-network/((SUBDOMAIN_NAME))-pks-services-subnet/((REGION))
+      cidr: 10.0.11.0/24
+      dns: 169.254.169.254
+      gateway: 10.0.11.1
+      reserved_ip_ranges: 10.0.11.1-10.0.11.9
+      availability_zone_names:
+      - ((AZ_1))
+      - ((AZ_2))
+      - ((AZ_3))
+network-assignment:
+  network:
+    name: infrastructure
+  singleton_availability_zone:
+    name: ((AZ_1))
+resource-configuration:
+  compilation:
+    instances: 8
