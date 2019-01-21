@@ -351,10 +351,17 @@ IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/confi
 
 ## Various stemcells (as required)
 
+To check which stemcells you need, log in to the OpsManager UI at pcf.${PCF\_SUBDOMAIN\_NAME}.${PCF\_DOMAIN\_NAME}. Go to "Stemcell Library" in the top bar to see which stemcell versions are required for your tiles.
+
 ```bash
 # import required stemcells
 PRODUCT_NAME="Stemcells for PCF (Ubuntu Xenial)" \
 PRODUCT_VERSION="97.18" \
+DOWNLOAD_REGEX="Google Cloud Platform" \
+  ./scripts/import-product.sh
+
+PRODUCT_NAME="Stemcells for PCF (Ubuntu Xenial)" \
+PRODUCT_VERSION="170.14" \
 DOWNLOAD_REGEX="Google Cloud Platform" \
   ./scripts/import-product.sh
 
