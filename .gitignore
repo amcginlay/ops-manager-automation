@@ -5,3 +5,6 @@ downloads/
 .idea
 gcp_credentials.json
 pivotal-cf-terraforming-gcp-*
+*.ca.key.pkcs8
+*.csr
+*.srl
