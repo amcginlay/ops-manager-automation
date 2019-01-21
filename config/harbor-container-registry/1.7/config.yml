@@ -2,10 +2,10 @@ product-name: harbor-container-registry
 product-properties:
   .properties.admin_password:
     value:
-      secret: ((properties_admin_password.secret))
+      secret: ((OPSMAN_ADMIN_PASSWD))
   .properties.admin_password_for_smoketest:
     value:
-      secret: ((properties_admin_password_for_smoketest.secret))
+      secret: ((OPSMAN_ADMIN_PASSWD))
   .properties.auth_mode:
     value: db_auth
   .properties.clair_updater_interval:
@@ -13,15 +13,17 @@ product-properties:
   .properties.customize_container_network:
     value: default
   .properties.hostname:
-    value: harbor.apower.pivotaledu.io
+    value: harbor.((SUBDOMAIN_NAME)).((DOMAIN_NAME))
   .properties.no_proxy:
     value: 127.0.0.1,localhost,ui,registry
   .properties.registry_storage:
     value: filesystem
   .properties.server_cert_key:
     value:
-      cert_pem: ((properties_server_cert_key.cert_pem))
-      private_key_pem: ((properties_server_cert_key.private_key_pem))
+      cert_pem: |
+        ((DOMAIN_CRT))
+      private_key_pem: |
+        ((DOMAIN_KEY))
   .properties.with_clair:
     value: true
   .properties.with_notary:
@@ -30,11 +32,11 @@ network-properties:
   network:
     name: pks-services
   other_availability_zones:
-  - name: us-central1-a
-  - name: us-central1-b
-  - name: us-central1-c
+  - name: ((AZ_1))
+  - name: ((AZ_2))
+  - name: ((AZ_3))
   singleton_availability_zone:
-    name: us-central1-a
+    name: ((AZ_1))
 resource-config:
   harbor-app:
     instances: automatic
