@@ -45,6 +45,9 @@ fi
 if [ -f ./${PCF_DOMAIN}.crt ]; then
   export PCF_DOMAIN_CRT=$(cat ./${PCF_DOMAIN}.crt)
 fi
+if [ -f ./${PCF_DOMAIN}.ca.crt ]; then
+  export PCF_DOMAIN_CA=$(cat ./${PCF_DOMAIN}.ca.crt)
+fi
 
 if [ -z "${TMPDIR:-}" ]; then 
   TMPDIR=/tmp
