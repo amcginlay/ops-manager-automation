@@ -3,3 +3,4 @@ vars.txt
 *.crt
 downloads/
 .idea
+gcp_credentials.json
