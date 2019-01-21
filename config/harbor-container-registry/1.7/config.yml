@@ -1,0 +1,56 @@
+product-name: harbor-container-registry
+product-properties:
+  .properties.admin_password:
+    value:
+      secret: ((properties_admin_password.secret))
+  .properties.admin_password_for_smoketest:
+    value:
+      secret: ((properties_admin_password_for_smoketest.secret))
+  .properties.auth_mode:
+    value: db_auth
+  .properties.clair_updater_interval:
+    value: 0
+  .properties.customize_container_network:
+    value: default
+  .properties.hostname:
+    value: harbor.apower.pivotaledu.io
+  .properties.no_proxy:
+    value: 127.0.0.1,localhost,ui,registry
+  .properties.registry_storage:
+    value: filesystem
+  .properties.server_cert_key:
+    value:
+      cert_pem: ((properties_server_cert_key.cert_pem))
+      private_key_pem: ((properties_server_cert_key.private_key_pem))
+  .properties.with_clair:
+    value: true
+  .properties.with_notary:
+    value: true
+network-properties:
+  network:
+    name: pks-services
+  other_availability_zones:
+  - name: us-central1-a
+  - name: us-central1-b
+  - name: us-central1-c
+  singleton_availability_zone:
+    name: us-central1-a
+resource-config:
+  harbor-app:
+    instances: automatic
+    persistent_disk:
+      size_mb: automatic
+    instance_type:
+      id: automatic
+    internet_connected: true
+  smoke-testing:
+    instances: automatic
+    instance_type:
+      id: automatic
+    internet_connected: true
+errand-config:
+  smoke-testing:
+    post-deploy-state: when-changed
+  uaa-deregistration:
+    pre-delete-state: false
+
