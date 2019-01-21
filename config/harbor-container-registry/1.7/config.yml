@@ -24,6 +24,9 @@ product-properties:
         ((DOMAIN_CRT))
       private_key_pem: |
         ((DOMAIN_KEY))
+  .properties.server_cert_ca:
+    value: |
+      ((DOMAIN_CA))
   .properties.with_clair:
     value: true
   .properties.with_notary:
