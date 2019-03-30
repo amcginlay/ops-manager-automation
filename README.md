@@ -1,4 +1,4 @@
-## "When I grow up I wanna be just like my brother, [ops-manager-automation-cc](https://github.com/amcginlay/ops-manager-automation)"
+## "When I grow up I wanna be just like my brother, [ops-manager-automation-cc](https://github.com/amcginlay/ops-manager-automation-cc)"
 
 # [ops-manager-automation](./README.md)
 
