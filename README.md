@@ -250,6 +250,20 @@ IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scr
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.2-build.3" ./scripts/configure-product.sh
 ```
 
+## Deploy Harbor
+
+Harbor can be deployed on its own, or alongside __PAS__ or __PKS__. You can also not deploy it at all.
+
+```bash
+# install Harbor
+PRODUCT_NAME="VMware Harbor Container Registry for PCF" \
+PRODUCT_VERSION="1.7.1" \
+DOWNLOAD_REGEX="^VMware Harbor" \
+  ./scripts/import-product.sh
+IMPORTED_NAME="harbor-container-registry" IMPORTED_VERSION="1.7.1-build.3" ./scripts/stage-product.sh
+IMPORTED_NAME="harbor-container-registry" IMPORTED_VERSION="1.7.1-build.3" ./scripts/configure-product.sh
+```
+
 ## Deploy PAS and core product tiles (plus BOSH director)
 
 These instructions depend upon the __PAS__ infrastructure being in place (`terraforming-pas`).
@@ -339,10 +353,17 @@ IMPORTED_NAME="p-spring-cloud-services" IMPORTED_VERSION="1.5.6" ./scripts/confi
 
 ## Various stemcells (as required)
 
+To check which stemcells you need, log in to the OpsManager UI at pcf.${PCF\_SUBDOMAIN\_NAME}.${PCF\_DOMAIN\_NAME}. Go to "Stemcell Library" in the top bar to see which stemcell versions are required for your tiles.
+
 ```bash
 # import required stemcells
 PRODUCT_NAME="Stemcells for PCF (Ubuntu Xenial)" \
 PRODUCT_VERSION="97.18" \
+DOWNLOAD_REGEX="Google Cloud Platform" \
+  ./scripts/import-product.sh
+
+PRODUCT_NAME="Stemcells for PCF (Ubuntu Xenial)" \
+PRODUCT_VERSION="170.14" \
 DOWNLOAD_REGEX="Google Cloud Platform" \
   ./scripts/import-product.sh
 

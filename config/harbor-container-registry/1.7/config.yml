@@ -1,0 +1,61 @@
+product-name: harbor-container-registry
+product-properties:
+  .properties.admin_password:
+    value:
+      secret: ((OPSMAN_ADMIN_PASSWD))
+  .properties.admin_password_for_smoketest:
+    value:
+      secret: ((OPSMAN_ADMIN_PASSWD))
+  .properties.auth_mode:
+    value: db_auth
+  .properties.clair_updater_interval:
+    value: 0
+  .properties.customize_container_network:
+    value: default
+  .properties.hostname:
+    value: harbor.((SUBDOMAIN_NAME)).((DOMAIN_NAME))
+  .properties.no_proxy:
+    value: 127.0.0.1,localhost,ui,registry
+  .properties.registry_storage:
+    value: filesystem
+  .properties.server_cert_key:
+    value:
+      cert_pem: |
+        ((DOMAIN_CRT))
+      private_key_pem: |
+        ((DOMAIN_KEY))
+  .properties.server_cert_ca:
+    value: |
+      ((DOMAIN_CA))
+  .properties.with_clair:
+    value: true
+  .properties.with_notary:
+    value: true
+network-properties:
+  network:
+    name: pks-services
+  other_availability_zones:
+  - name: ((AZ_1))
+  - name: ((AZ_2))
+  - name: ((AZ_3))
+  singleton_availability_zone:
+    name: ((AZ_1))
+resource-config:
+  harbor-app:
+    instances: automatic
+    persistent_disk:
+      size_mb: automatic
+    instance_type:
+      id: automatic
+    internet_connected: true
+  smoke-testing:
+    instances: automatic
+    instance_type:
+      id: automatic
+    internet_connected: true
+errand-config:
+  smoke-testing:
+    post-deploy-state: when-changed
+  uaa-deregistration:
+    pre-delete-state: false
+

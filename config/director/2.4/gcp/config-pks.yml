@@ -52,6 +52,10 @@ network-assignment:
     name: infrastructure
   singleton_availability_zone:
     name: ((AZ_1))
+security-configuration:
+  generate_vm_passwords: true
+  trusted_certificates: |
+    ((DOMAIN_CA))
 resource-configuration:
   compilation:
     instances: 8
